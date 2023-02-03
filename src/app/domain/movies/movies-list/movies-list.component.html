@@ -1,0 +1,20 @@
+<div class="home-container">
+  <div class="dates">
+    <button
+      type="button"
+      class="date-button"
+      *ngFor="let date of week; let i = index"
+      [disabled]="currentIndex > i"
+      [ngClass]="clickedIndex === i ? 'active' : ''"
+    >
+      {{ date.slice(0, 5) }}
+    </button>
+  </div>
+  <ng-container *ngIf="movies$ | async as movies">
+    <div class="movies" *ngFor="let movie of movies">
+      <app-movies-card [movieCard]="movie"></app-movies-card>
+      <app-movies-shows [movieId]="movie.id"></app-movies-shows>
+    </div>
+  </ng-container>
+</div>
+<app-footer></app-footer>

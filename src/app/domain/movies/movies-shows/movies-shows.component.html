@@ -1,13 +1,11 @@
-<div class="movieCard-hours">
-  <div class="movieCard-hour" *ngFor="let show of shows">
-    <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"
-      ><button
-        type="button"
-        class="movieCard-hour-button"
-        (click)="handleSelectedmovieCard(show)"
+<ng-container *ngIf="shows$ | async as shows">
+  <div class="movieCard-hours">
+    <div class="movieCard-hour" *ngFor="let show of shows">
+      <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"
+        ><button type="button" class="movieCard-hour-button">
+          {{ show.hour }}
+        </button></a
       >
-        {{ show.hour }}
-      </button></a
-    >
+    </div>
   </div>
-</div>
+</ng-container>

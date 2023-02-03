@@ -8,7 +8,13 @@ import { HomeComponent } from './home.component';
       {
         path: '',
         component: HomeComponent,
-        children: [],
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../movies/movies-list/movies-list.module'),
+          },
+        ],
       },
     ]),
   ],
