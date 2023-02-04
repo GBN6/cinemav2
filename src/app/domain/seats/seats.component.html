@@ -1,28 +1,14 @@
-SEATS WORKS
 <div class="seat-selection-container">
   <ng-container *ngIf="selectedMovie$ | async as selectedMovie">
     <ng-container *ngIf="selectedShow$ | async as selectedShow">
       <div class="movie-title">
-        {{ selectedMovie.title }}, {{ selectedDate }}
+        {{ selectedMovie.title }}, {{ selectedDate }} {{ selectedShow.hour }}
       </div>
-
       <div class="screen">SCREEN</div>
       <div class="seats-grid">
-        <div
-          *ngFor="let row of rows"
-          class="row"
-          [ngStyle]="styleGrid(cols.length + 1)"
-        >
-          <div class="row seat">{{ row }}</div>
-          <span
-            class="seat"
-            *ngFor="let col of cols"
-            [ngClass]="getStatus(selectedShow, row + col)"
-          >
-            {{ col }}
-          </span>
-        </div>
+        <app-seats-grid [show]="selectedShow"></app-seats-grid>
       </div>
+
       <div class="legend">
         <div class="legend-square reserved"></div>
         <span>Zajęte</span>

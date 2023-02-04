@@ -14,15 +14,25 @@ export class SeatsService {
     return seats;
   }
 
+  addSeat(seat: string) {
+    this.selectedSeats$$.next([...this.selectedSeats$$.value, seat]);
+  }
+
+  removeSeat(seat: string) {
+    this.selectedSeats$$.next(
+      this.selectedSeats$$.value.filter((value) => value !== seat)
+    );
+  }
+
   getScreen(name?: string) {
     return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${name}`);
   }
 
-  getRows(n: number): string[] {
+  getRowsArray(n: number): string[] {
     return [...Array(n).keys()].map((i) => String.fromCharCode(i + 65));
   }
 
-  getColumns(n: number): number[] {
+  getColumnsArray(n: number): number[] {
     return [...Array(n).keys()].map((i) => i + 1);
   }
 }

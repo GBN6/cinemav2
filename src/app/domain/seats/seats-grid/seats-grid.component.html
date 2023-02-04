@@ -1,0 +1,17 @@
+<ng-container *ngIf="rows.length">
+  <div
+    *ngFor="let row of rows"
+    class="row"
+    [ngStyle]="styleGrid(cols.length + 1)"
+  >
+    <div class="row seat">{{ row }}</div>
+    <span
+      class="seat"
+      *ngFor="let col of cols"
+      [ngClass]="getStatus(screen, row + col)"
+      (click)="seatClicked(row + col)"
+    >
+      {{ col }}
+    </span>
+  </div>
+</ng-container>

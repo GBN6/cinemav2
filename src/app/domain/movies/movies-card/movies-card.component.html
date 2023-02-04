@@ -3,20 +3,20 @@
     <img class="movieCard-container__poster--img" src="{{ movieCard.img }}" />
   </div>
   <div class="movieCard-container__description">
-    <div class="movieCard-title">{{ movieCard.title }}</div>
+    <p class="movieCard-title">{{ movieCard.title }}</p>
     <div class="movieCard-info">
       <span>{{ movieCard.genre }} | </span
       ><span>{{ movieCard.length }} | </span>
       <span>{{ movieCard.ageRest }} </span>
     </div>
-    <div class="movieCard-desc">{{ movieCard.description }}</div>
+    <p class="movieCard-desc">{{ movieCard.description }}</p>
     <button type="button" class="show-info-button" (click)="showDescription()">
       Więcej
     </button>
     <ng-container *ngIf="showLongDescription">
-      <div class="more-info" *ngIf="showLongDescription">
+      <p class="more-info" *ngIf="showLongDescription">
         {{ movieCard.longDescription }}
-      </div>
+      </p>
     </ng-container>
     <app-movies-shows [movie]="movieCard"></app-movies-shows>
   </div>

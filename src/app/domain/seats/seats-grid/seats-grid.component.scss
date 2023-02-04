@@ -1,0 +1,33 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  text-align: center;
+}
+
+.row.seat {
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+.seat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--dark);
+  height: 4rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reserved {
+  background-color: var(--dark-lighter);
+  cursor: auto;
+}
+
+.special {
+  background-color: rgb(250, 222, 61);
+}
+
+.selected {
+  background-color: rgb(40, 214, 40);
+}
