@@ -1,6 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+:root {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 16px;
+  color: var(--text-primary);
+  box-sizing: border-box;
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  //colors
+  --primary: #32e0c4;
+  --primary-darker: #0d7377;
+  --secondary: #00adb5;
+  --white: #fff;
+  --white-darker: #eeeeee;
+  --text-grey: #ffffffb3;
+  --black: #000;
+  --dark: #222831;
+  --dark-grey: #212121;
+  --dark-lighter: #393e46;
+  --error: #f44336;
+  --errorLight: #e57373;
+  --errorDark: #d32f2f;
+  --warning: #ff9800;
+  --warningLight: #ffb74d;
+  --warningDark: #f57c00;
+}
+
 *,
 *::before,
 *::after {
@@ -11,7 +45,6 @@
 
 html {
   font-size: 62.5%;
-  line-height: 1.6;
   /* Footer support */
   position: relative;
   min-height: 100%;
@@ -31,11 +64,7 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  line-height: 1.2;
-}
-
-a {
+h6 a {
   text-decoration: none;
 }
 

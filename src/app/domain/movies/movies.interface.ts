@@ -11,7 +11,7 @@ export interface MoviesCard {
   premier: boolean;
 }
 
-export interface Shows {
+export interface Show {
   id: number;
   hour: string;
   screen: string;

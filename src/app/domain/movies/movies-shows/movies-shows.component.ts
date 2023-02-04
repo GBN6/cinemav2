@@ -5,23 +5,32 @@ import {
   Input,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Shows } from '../movies.interface';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { SelectedShowStatfullService } from 'src/app/shared/services/selectedShow.statefull.service';
+import { MoviesCard, Show } from '../movies.interface';
 import { MovieShowsService } from './movies-shows.service';
 
 @Component({
-  selector: 'app-movies-shows[movieId]',
+  selector: 'app-movies-shows[movie]',
   templateUrl: './movies-shows.component.html',
   styleUrls: ['./movies-shows.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoviesShowsComponent {
-  @Input() movieId!: number;
+  @Input() movie!: MoviesCard;
 
   private showsService = inject(MovieShowsService);
+  private selectedMovieService = inject(SelectedMovieStatfullService);
+  private selectedShowService = inject(SelectedShowStatfullService);
 
-  shows$: Observable<Shows[]> | null = null;
+  shows$: Observable<Show[]> | null = null;
+
+  handleSelectedMovieAndShow(show: Show) {
+    this.selectedMovieService.addNewSelectedMovie(this.movie);
+    this.selectedShowService.addNewSelectedShow(show);
+  }
 
   ngOnInit() {
-    this.shows$ = this.showsService.getShow(this.movieId);
+    this.shows$ = this.showsService.getShows(this.movie.id);
   }
 }

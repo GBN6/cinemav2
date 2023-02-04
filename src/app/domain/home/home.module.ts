@@ -14,6 +14,10 @@ import { HomeComponent } from './home.component';
             loadChildren: () =>
               import('../movies/movies-list/movies-list.module'),
           },
+          {
+            path: 'seats/:id',
+            loadChildren: () => import('../seats/seats.module'),
+          },
         ],
       },
     ]),

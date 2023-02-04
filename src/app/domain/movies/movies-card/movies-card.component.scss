@@ -1,0 +1,33 @@
+/* MOVIES CONTAINER AND CARTS */
+
+.movieCard-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+
+  &__poster {
+    &--img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    width: 60%;
+  }
+}
+
+.show-info-button {
+  justify-self: flex-end;
+  align-self: flex-end;
+  color: var(--secondary);
+  background-color: inherit;
+  font-weight: 900;
+}

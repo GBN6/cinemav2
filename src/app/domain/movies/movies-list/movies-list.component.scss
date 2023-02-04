@@ -1,0 +1,57 @@
+.home-container {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 95vw;
+  margin-bottom: 10rem;
+  position: relative;
+
+  &__dates {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    gap: 8px;
+    margin: 3rem 0rem;
+  }
+
+  &__movies {
+    background-color: var(--white-darker);
+    border-radius: 20px;
+  }
+}
+
+.dates-button {
+  background-color: var(--white);
+  color: var(--dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid var(--dark);
+
+  &--active {
+    background-color: var(--primary);
+    color: var(--dark);
+  }
+}
+
+.dates-button button:first-child {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.dates-button button:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.dates-button:disabled {
+  opacity: 20%;
+}
+
+.dates-button:disabled:hover {
+  background-color: var(--white);
+  color: var(--dark);
+}
+
+.dates-button:hover {
+  background-color: var(--primary);
+  color: var(--dark);
+}

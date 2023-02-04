@@ -1,8 +1,8 @@
 <div class="movieCard-container">
-  <div class="movieCard-poster">
-    <img class="poster-img" src="{{ movieCard.img }}" />
+  <div class="movieCard-container__poster">
+    <img class="movieCard-container__poster--img" src="{{ movieCard.img }}" />
   </div>
-  <div class="movieCard-description">
+  <div class="movieCard-container__description">
     <div class="movieCard-title">{{ movieCard.title }}</div>
     <div class="movieCard-info">
       <span>{{ movieCard.genre }} | </span
@@ -18,31 +18,6 @@
         {{ movieCard.longDescription }}
       </div>
     </ng-container>
+    <app-movies-shows [movie]="movieCard"></app-movies-shows>
   </div>
-  <!-- <div class="movieCard-score">
-    {{ movieCard.score }}
-    <div class="user-buttons" >
-      <button type="button" class="rate-movieCard-button">
-        Oceń ten film!
-      </button>
-      <ng-container *ngIf="ismovieCardInWishList; else addmovieCardToWishList"
-        ><button
-          type="button"
-          (click)="removeFromWishList(userId, movieCard.id)"
-          class="want-to-see-button"
-        >
-          Obejrzałem!
-        </button></ng-container
-      >
-      <ng-template #addmovieCardToWishList
-        ><button
-          type="button"
-          (click)="addToWishlist(userId, movieCard)"
-          class="want-to-see-button"
-        >
-          Chcę zobaczyć
-        </button></ng-template
-      >
-    </div>
-  </div> -->
 </div>

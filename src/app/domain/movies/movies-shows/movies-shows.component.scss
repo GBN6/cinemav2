@@ -1,0 +1,19 @@
+.movie-hours {
+  display: flex;
+  gap: 1rem;
+}
+
+.movie-hours button {
+  background-color: var(--white-darker);
+  color: var(--dark);
+  border: 2px solid var(--dark);
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  justify-items: flex-start;
+  align-items: flex-start;
+}
+
+.movie-hours button:hover {
+  background-color: var(--primary);
+  color: var(--dark);
+}

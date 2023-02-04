@@ -1,0 +1,47 @@
+<header>
+  <div class="header-container">
+    <div class="header-container__title">
+      <a [routerLinkActive]="['active']" class="router-link" routerLink=""
+        >FakeKino!</a
+      >
+    </div>
+    <div class="header-container__buttons">
+      <ng-container *ngIf="loggedIn">
+        <button class="header-button cart" type="button">
+          <fa-icon [icon]="cart"></fa-icon>
+          <div class="cart-ammount" *ngIf="ticketsInCart">
+            {{ ticketsInCart }}
+          </div>
+        </button>
+      </ng-container>
+      <div class="dropdown">
+        <ng-container *ngIf="loggedIn; else defaultLog">
+          <button class="header-button login-button" type="button">
+            {{ userLoggedIn.userName }}
+          </button>
+          <div class="login-dropdown-content">
+            <a
+              class="dropdown-link"
+              routerLink="/my-tickets/{{ userLoggedIn.id }}"
+              >Moje Bilety</a
+            >
+            <a
+              class="dropdown-link"
+              routerLink="/to-watch/{{ userLoggedIn.id }}"
+              >Chcę obejrzeć</a
+            >
+            <a class="dropdown-link" routerLink="/settings">Ustawienia</a>
+            <a class="dropdown-link" routerLink="">Wyloguj</a>
+          </div>
+        </ng-container>
+        <ng-template #defaultLog>
+          <a [routerLinkActive]="['active']" routerLink="/login"
+            ><button class="header-button login-button" type="button">
+              Zaloguj
+            </button></a
+          >
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</header>

@@ -7,12 +7,14 @@ import { MoviesListComponent } from './movies-list.component';
 import { MovieShowsService } from '../movies-shows/movies-shows.service';
 import { MoviesListService } from './movies-list.service';
 import { FooterComponent } from 'src/app/shared/footer/footer.compononet';
+import { MoviesCardButtonsComponent } from '../movies-card/movies-card-buttons/movies-card-buttons.component';
 
 @NgModule({
   declarations: [
     MoviesCardComponent,
     MoviesShowsComponent,
     MoviesListComponent,
+    MoviesCardButtonsComponent,
   ],
   imports: [
     RouterModule.forChild([

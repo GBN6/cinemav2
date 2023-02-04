@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { MoviesCard } from '../movies.interface';
 import { MoviesListService } from './movies-list.service';
 
 @Component({
@@ -9,11 +12,12 @@ import { MoviesListService } from './movies-list.service';
 })
 export class MoviesListComponent {
   private moviesListService = inject(MoviesListService);
+  private selectedMovieService = inject(SelectedMovieStatfullService);
 
   week: string[] = [];
   clickedIndex = 0;
   currentIndex = 0;
-  movies$ = this.moviesListService.getMovies(this.clickedIndex);
+  movies$: Observable<MoviesCard[]> | null = null;
 
   private getDates() {
     let curr = new Date();
@@ -38,10 +42,16 @@ export class MoviesListComponent {
     console.log(today);
   }
 
+  selectDate(index: number) {
+    this.clickedIndex = index;
+    this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
+    this.selectedMovieService.addNewSelectedDate(this.week[this.clickedIndex]);
+  }
+
   ngOnInit() {
     this.getDates();
     this.setDefaultDate();
-    // this.movieService.selectedDate = this.week[this.clickedIndex];
-    console.log(this.week[0] > this.week[this.clickedIndex]);
+    this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
+    this.selectedMovieService.addNewSelectedDate(this.week[this.clickedIndex]);
   }
 }
