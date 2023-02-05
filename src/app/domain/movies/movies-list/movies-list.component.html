@@ -11,12 +11,13 @@
       {{ date.slice(0, 5) }}
     </button>
   </div>
-  <ng-container *ngIf="movies$ | async as movies">
+  <ng-container *ngIf="movies$ | async as movies; else loading">
     <div class="home-container__movies">
       <div *ngFor="let movie of movies">
         <app-movies-card [movieCard]="movie"></app-movies-card>
       </div>
     </div>
   </ng-container>
+  <ng-template #loading> ...Ładowanie </ng-template>
 </div>
 <app-footer></app-footer>
