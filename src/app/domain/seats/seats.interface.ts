@@ -5,3 +5,9 @@ export interface Screen {
   colu: number;
   specialSeats: string[];
 }
+
+export interface ScreenGrid {
+  rows: string[];
+  cols: number[];
+  specialSeats: string[];
+}

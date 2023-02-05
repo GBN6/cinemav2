@@ -5,7 +5,7 @@
 }
 
 .row.seat {
-  color: var(--white);
+  color: var(--dark);
   background-color: var(--primary);
 }
 
@@ -25,9 +25,36 @@
 }
 
 .special {
-  background-color: rgb(250, 222, 61);
+  background-color: var(--secondary);
 }
 
 .selected {
   background-color: rgb(40, 214, 40);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-grey);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  background-color: var(--color-light-grey);
+}
+
+.legend-square {
+  width: 20px;
+  height: 20px;
+}
+
+.legend-square.special {
+  margin-left: 1rem;
+}
+
+.legend-square.bigger {
+  margin-left: 1rem;
+}
+
+.legend span {
+  margin-left: 0.5rem;
 }

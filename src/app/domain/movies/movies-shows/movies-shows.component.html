@@ -1,4 +1,4 @@
-<ng-container *ngIf="shows$ | async as shows">
+<ng-container *ngIf="shows$ | async as shows; else loading">
   <div class="movie-hours">
     <div class="movie-hour" *ngFor="let show of shows">
       <a class="router-link" routerLink="/seats/{{ show.id }}"
@@ -13,3 +13,4 @@
     </div>
   </div>
 </ng-container>
+<ng-template #loading> ...Ładowanie </ng-template>

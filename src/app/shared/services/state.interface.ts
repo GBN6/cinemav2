@@ -10,3 +10,8 @@ export interface SelectedDate {
   id: number;
   date: string;
 }
+
+export interface TicketState {
+  movie: MoviesCard;
+  show: Show;
+}

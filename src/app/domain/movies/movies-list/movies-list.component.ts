@@ -71,6 +71,10 @@ export class MoviesListComponent {
       id: this.clickedIndex,
       date: this.week[this.clickedIndex],
     });
+
+    this.selectedStateService.movieState$.subscribe((result) =>
+      console.log(result.selectedMovie)
+    );
   }
 
   ngOndestroy() {

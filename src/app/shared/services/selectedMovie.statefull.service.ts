@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { MoviesCard, Show } from '../../domain/movies/movies.interface';
@@ -18,6 +17,10 @@ export class SelectedMovieStatfullService {
 
   get stateSelectedDate$() {
     return this.movieState$$.pipe(map((state) => state.selectedDate));
+  }
+
+  get ScreenNameFromShow$() {
+    return this.movieState$$.pipe(map((state) => state.selectedShow.screen));
   }
 
   addNewSelectedDate(date: SelectedDate) {

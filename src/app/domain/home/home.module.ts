@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SelectedMovieGuard } from 'src/app/shared/guards/selectedMovie.guard';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HomeComponent } from './home.component';
           {
             path: 'seats/:id',
             loadChildren: () => import('../seats/seats.module'),
+            canActivate: [SelectedMovieGuard],
           },
         ],
       },

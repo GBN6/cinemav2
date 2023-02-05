@@ -16,53 +16,14 @@
 }
 
 .screen {
-  background-color: var(--color-border-grey);
+  background-color: var(--primary);
   height: 2rem;
   width: 70%;
-  color: var(--color-dark);
+  color: var(--dark-lighter);
   text-align: center;
+  border: 1px solid var(--dark);
 }
 
 .seats-grid {
   width: 60%;
-}
-
-.legend {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border-grey);
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  background-color: var(--color-light-grey);
-}
-
-.legend-square {
-  width: 20px;
-  height: 20px;
-}
-
-.legend-square.special {
-  margin-left: 1rem;
-}
-
-.legend-square.bigger {
-  margin-left: 1rem;
-}
-
-.legend span {
-  margin-left: 0.5rem;
-}
-
-.reserved {
-  background-color: var(--dark-grey);
-  cursor: auto;
-}
-
-.special {
-  background-color: rgb(250, 222, 61);
-}
-
-.selected {
-  background-color: rgb(40, 214, 40);
 }
