@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { SelectedShowStatfullService } from 'src/app/shared/services/selectedShow.statefull.service';
 import { SelectedMovieStatfullService } from '../../shared/services/selectedMovie.statefull.service';
 
 @Component({
@@ -8,10 +7,7 @@ import { SelectedMovieStatfullService } from '../../shared/services/selectedMovi
   styleUrls: ['./seats.component.scss'],
 })
 export class SeatsComponet {
-  private selectedMovieService = inject(SelectedMovieStatfullService);
-  private selectedShowService = inject(SelectedShowStatfullService);
+  private selectedStateService = inject(SelectedMovieStatfullService);
 
-  selectedMovie$ = this.selectedMovieService.selectedMovie$;
-  selectedShow$ = this.selectedShowService.selectedShow$;
-  selectedDate = this.selectedMovieService.selectedDate;
+  selectedState$ = this.selectedStateService.movieState$;
 }

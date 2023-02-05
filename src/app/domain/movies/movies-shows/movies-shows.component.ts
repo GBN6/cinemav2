@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
-import { SelectedShowStatfullService } from 'src/app/shared/services/selectedShow.statefull.service';
 import { MoviesCard, Show } from '../movies.interface';
 import { MovieShowsService } from './movies-shows.service';
 
@@ -20,14 +19,12 @@ export class MoviesShowsComponent {
   @Input() movie!: MoviesCard;
 
   private showsService = inject(MovieShowsService);
-  private selectedMovieService = inject(SelectedMovieStatfullService);
-  private selectedShowService = inject(SelectedShowStatfullService);
+  private selectedStateService = inject(SelectedMovieStatfullService);
 
   shows$: Observable<Show[]> | null = null;
 
-  handleSelectedMovieAndShow(show: Show) {
-    this.selectedMovieService.addNewSelectedMovie(this.movie);
-    this.selectedShowService.addNewSelectedShow(show);
+  handleSelectedMovieAndShow(movie: MoviesCard, show: Show) {
+    this.selectedStateService.addNewSelectedState(movie, show);
   }
 
   ngOnInit() {

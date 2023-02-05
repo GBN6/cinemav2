@@ -1,22 +1,23 @@
 <div class="seat-selection-container">
-  <ng-container *ngIf="selectedMovie$ | async as selectedMovie">
-    <ng-container *ngIf="selectedShow$ | async as selectedShow">
-      <div class="movie-title">
-        {{ selectedMovie.title }}, {{ selectedDate }} {{ selectedShow.hour }}
-      </div>
-      <div class="screen">SCREEN</div>
-      <div class="seats-grid">
-        <app-seats-grid [show]="selectedShow"></app-seats-grid>
-      </div>
+  <ng-container *ngIf="selectedState$ | async as selectedState">
+    <div class="movie-title">
+      {{ selectedState.selectedMovie.title }},
+      {{ selectedState.selectedDate.date }}
+      {{ selectedState.selectedShow.hour }}
+    </div>
+    <div class="screen">SCREEN</div>
+    <div class="seats-grid">
+      <app-seats-grid [show]="selectedState.selectedShow"></app-seats-grid>
+    </div>
 
-      <div class="legend">
-        <div class="legend-square reserved"></div>
-        <span>Zajęte</span>
-        <div class="legend-square special"></div>
-        <span>VIP</span>
-        <!-- <div class="legend-square bigger"></div><span>KANAPA</span> -->
-      </div>
-      <!-- <div class="all-selected-tickets">
+    <div class="legend">
+      <div class="legend-square reserved"></div>
+      <span>Zajęte</span>
+      <div class="legend-square special"></div>
+      <span>VIP</span>
+      <!-- <div class="legend-square bigger"></div><span>KANAPA</span> -->
+    </div>
+    <!-- <div class="all-selected-tickets">
     <div
       *ngFor="let seat of selected; let i = index"
       class="selected-ticket"
@@ -27,6 +28,5 @@
       ><button type="button" class="order-btn">Przejdz do zamówienia</button></a
     >
   </div> -->
-    </ng-container>
   </ng-container>
 </div>

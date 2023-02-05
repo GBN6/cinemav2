@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
 import { MoviesCard } from '../movies.interface';
 import { MoviesListService } from './movies-list.service';
@@ -12,7 +12,9 @@ import { MoviesListService } from './movies-list.service';
 })
 export class MoviesListComponent {
   private moviesListService = inject(MoviesListService);
-  private selectedMovieService = inject(SelectedMovieStatfullService);
+  private selectedStateService = inject(SelectedMovieStatfullService);
+
+  private subscription = new Subscription();
 
   week: string[] = [];
   clickedIndex = 0;
@@ -28,30 +30,50 @@ export class MoviesListComponent {
         .slice(0, 10);
       this.week.push(day);
     }
-    console.log(this.week);
   }
 
   private setDefaultDate() {
     let today = new Date().toLocaleDateString('en-GB').slice(0, 10);
     this.week.forEach((date, index) => {
       if (date === today) {
-        this.clickedIndex = index;
         this.currentIndex = index;
       }
     });
     console.log(today);
+
+    const sub = this.selectedStateService.stateSelectedDate$.subscribe(
+      (result) => {
+        this.week.forEach((date, index) => {
+          if (index === result.id) {
+            this.clickedIndex = index;
+          }
+        });
+      }
+    );
+
+    this.subscription.add(sub);
   }
 
   selectDate(index: number) {
     this.clickedIndex = index;
     this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
-    this.selectedMovieService.addNewSelectedDate(this.week[this.clickedIndex]);
+    this.selectedStateService.addNewSelectedDate({
+      id: this.clickedIndex,
+      date: this.week[this.clickedIndex],
+    });
   }
 
   ngOnInit() {
     this.getDates();
     this.setDefaultDate();
     this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
-    this.selectedMovieService.addNewSelectedDate(this.week[this.clickedIndex]);
+    this.selectedStateService.addNewSelectedDate({
+      id: this.clickedIndex,
+      date: this.week[this.clickedIndex],
+    });
+  }
+
+  ngOndestroy() {
+    this.subscription.unsubscribe();
   }
 }

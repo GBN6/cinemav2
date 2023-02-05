@@ -531,6 +531,27 @@
         ],
         "boxOff": 1000,
         "premier": false,
+        "dateId": 1
+      },
+      {
+        "id": 2,
+        "img": "assets/avatar2_poster.jpg",
+        "title": "Avatar: Istota wody",
+        "genre": "Science-Fiction",
+        "length": "193 min",
+        "ageRest": "PG-12",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+        "score": "8/10",
+        "director": "James Cameron",
+        "actors": [
+          "Stephen Lang",
+          "Zoe Saldana",
+          "Sam Worthington",
+          "Sigourney Weaver"
+        ],
+        "boxOff": 1000,
+        "premier": false,
         "dateId": 6
       },
       {
@@ -553,6 +574,48 @@
         "boxOff": 1000,
         "premier": false,
         "dateId": 6
+      },
+      {
+        "id": 3,
+        "img": "assets/kot_poster.jpg",
+        "title": "Kot w butach. Ostanie życzenie",
+        "genre": "Aniowany, Familijny, Przygodowy",
+        "length": "100 min",
+        "ageRest": "PG-6",
+        "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+        "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+        "score": "8/10",
+        "director": "James Cameron",
+        "actors": [
+          "Stephen Lang",
+          "Zoe Saldana",
+          "Sam Worthington",
+          "Sigourney Weaver"
+        ],
+        "boxOff": 1000,
+        "premier": false,
+        "dateId": 2
+      },
+      {
+        "id": 3,
+        "img": "assets/kot_poster.jpg",
+        "title": "Kot w butach. Ostanie życzenie",
+        "genre": "Aniowany, Familijny, Przygodowy",
+        "length": "100 min",
+        "ageRest": "PG-6",
+        "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+        "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+        "score": "8/10",
+        "director": "James Cameron",
+        "actors": [
+          "Stephen Lang",
+          "Zoe Saldana",
+          "Sam Worthington",
+          "Sigourney Weaver"
+        ],
+        "boxOff": 1000,
+        "premier": false,
+        "dateId": 3
       }
     ],
     "dates": [

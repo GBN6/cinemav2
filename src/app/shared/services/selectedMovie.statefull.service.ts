@@ -1,29 +1,34 @@
+import { state } from '@angular/animations';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { MoviesCard } from '../../domain/movies/movies.interface';
+import { BehaviorSubject, map } from 'rxjs';
+import { MoviesCard, Show } from '../../domain/movies/movies.interface';
+import { MovieState, SelectedDate } from './state.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SelectedMovieStatfullService {
-  private selectedMovie$$ = new BehaviorSubject<MoviesCard | null>(null);
-  private selectedDate$$ = new BehaviorSubject<string>('');
+  private movieState$$ = new BehaviorSubject<MovieState>({
+    selectedDate: { id: 0, date: '' },
+  } as MovieState);
 
-  get selectedDate() {
-    let date = '';
-    this.selectedDate$$.subscribe((result) => (date = result));
-    return date;
+  get movieState$() {
+    return this.movieState$$.asObservable();
   }
 
-  get selectedMovie$() {
-    return this.selectedMovie$$.asObservable();
+  get stateSelectedDate$() {
+    return this.movieState$$.pipe(map((state) => state.selectedDate));
   }
 
-  addNewSelectedDate(date: string) {
-    this.selectedDate$$.next(date);
+  addNewSelectedDate(date: SelectedDate) {
+    this.movieState$$.next({ ...this.movieState$$.value, selectedDate: date });
   }
 
-  addNewSelectedMovie(movie: MoviesCard) {
-    this.selectedMovie$$.next(movie);
+  addNewSelectedState(movie: MoviesCard, show: Show) {
+    this.movieState$$.next({
+      ...this.movieState$$.value,
+      selectedMovie: movie,
+      selectedShow: show,
+    });
   }
 }
