@@ -12,6 +12,17 @@ export interface SelectedDate {
 }
 
 export interface TicketState {
-  movie: MoviesCard;
-  show: Show;
+  id: string;
+  showId: number;
+  movieTitle: string;
+  date: string;
+  hour: string;
+  seat: Seat;
+}
+
+export interface Seat {
+  position: string;
+  type: string;
+  price: number;
+  special: boolean;
 }

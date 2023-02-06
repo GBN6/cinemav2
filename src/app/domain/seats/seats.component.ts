@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { TicketState } from 'src/app/shared/services/state.interface';
+import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { SelectedMovieStatfullService } from '../../shared/services/selectedMovie.statefull.service';
 import { SeatsService } from './seats.service';
 
@@ -10,7 +13,29 @@ import { SeatsService } from './seats.service';
 })
 export class SeatsComponet {
   private selectedStateService = inject(SelectedMovieStatfullService);
-  private seastService = inject(SeatsService);
+  private ticketStateService = inject(TicketStateService);
+
+  private subscriptions = new Subscription();
 
   selectedState$ = this.selectedStateService.movieState$;
+  ticketState$: Observable<TicketState[]> | null = null;
+
+  getFilteredTickets() {
+    const sub = this.selectedStateService.movieState$.subscribe((result) => {
+      this.ticketState$ = this.ticketStateService.getSelectedShowTickets(
+        result.selectedDate,
+        result.selectedMovie,
+        result.selectedShow
+      );
+    });
+    this.subscriptions.add(sub);
+  }
+
+  ngOnInit() {
+    this.getFilteredTickets();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 }

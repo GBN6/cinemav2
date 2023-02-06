@@ -34,4 +34,8 @@ export class SelectedMovieStatfullService {
       selectedShow: show,
     });
   }
+
+  clearMovieAndShowState() {
+    this.movieState$$.next({} as MovieState);
+  }
 }

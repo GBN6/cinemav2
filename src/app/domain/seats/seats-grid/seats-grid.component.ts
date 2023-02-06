@@ -5,24 +5,28 @@ import {
   Input,
 } from '@angular/core';
 import { mergeMap, Observable } from 'rxjs';
+import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
-import { Show } from '../../movies/movies.interface';
+import { MoviesCard, Show } from '../../movies/movies.interface';
 import { Screen, ScreenGrid } from '../seats.interface';
 import { SeatsService } from '../seats.service';
 
 @Component({
-  selector: 'app-seats-grid[show]',
+  selector: 'app-seats-grid[show][movie][date]',
   templateUrl: './seats-grid.component.html',
   styleUrls: ['./seats-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeatsGridComponent {
   @Input() show!: Show;
+  @Input() movie!: MoviesCard;
+  @Input() date!: string;
 
   private seatsService = inject(SeatsService);
-  private selectedSeatsService = inject(TicketStateService);
+  private ticketService = inject(TicketStateService);
+
   screenGrid$ = this.seatsService.screenGrid$;
-  selectedSeats$ = this.selectedSeatsService.selectedSeats$;
+  selectedSeats$ = this.ticketService.selectedSeats$;
 
   styleGrid(number: number) {
     return { 'grid-template-columns': `repeat(${number}, 1fr)` };
@@ -39,22 +43,43 @@ export class SeatsGridComponent {
     return 'freeSeat';
   }
 
+  addToTicketState(id: string, position: string, special: boolean) {
+    const ticketDTO: TicketState = {
+      id: id,
+      showId: this.show.id,
+      date: this.date,
+      hour: this.show.hour,
+      movieTitle: this.movie.title,
+      seat: {
+        position: position,
+        price: this.show.priceList[0].price,
+        special: special,
+        type: this.show.priceList[0].type,
+      },
+    };
+    this.ticketService.addTicket(ticketDTO);
+  }
+
   seatClicked(
     selectedSeats: string[],
     specialSeats: string[],
-    seatPos: string
+    seatPos: string,
+    id: string
   ) {
     let index = selectedSeats.indexOf(seatPos);
     if (index !== -1) {
       // seat already selected, remove
-      this.selectedSeatsService.removeSeat(seatPos);
+      this.ticketService.removeSeat(seatPos);
+      this.ticketService.removeTicket(id);
     } else {
       //push to selected array only if it is not reserved
       if (this.show.reservedSeats.indexOf(seatPos) === -1) {
         if (specialSeats.indexOf(seatPos) !== -1) {
-          this.selectedSeatsService.addSeat(seatPos);
+          this.ticketService.addSeat(seatPos);
+          this.addToTicketState(id, seatPos, true);
         } else {
-          this.selectedSeatsService.addSeat(seatPos);
+          this.ticketService.addSeat(seatPos);
+          this.addToTicketState(id, seatPos, false);
         }
       }
     }

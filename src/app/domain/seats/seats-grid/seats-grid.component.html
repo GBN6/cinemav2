@@ -1,30 +1,43 @@
-<ng-container *ngIf="screenGrid$ | async as screenGrid; else loading">
-  <ng-container *ngIf="selectedSeats$ | async as selectedSeats">
-    <div
-      *ngFor="let row of screenGrid.rows"
-      class="row"
-      [ngStyle]="styleGrid(screenGrid.cols.length + 1)"
-    >
-      <div class="row seat">{{ row }}</div>
-      <span
-        class="seat"
-        *ngFor="let col of screenGrid.cols"
-        [ngClass]="getStatus(selectedSeats, screenGrid.specialSeats, row + col)"
-        (click)="seatClicked(selectedSeats, screenGrid.specialSeats, row + col)"
-      >
-        {{ col }}
-      </span>
+<div class="seat-grid-and-legend">
+  <ng-container *ngIf="screenGrid$ | async as screenGrid; else loading">
+    <ng-container *ngIf="selectedSeats$ | async as selectedSeats">
+      <div class="seats-grid-container">
+        <div
+          *ngFor="let row of screenGrid.rows"
+          class="row"
+          [ngStyle]="styleGrid(screenGrid.cols.length + 1)"
+        >
+          <div class="row seat">{{ row }}</div>
+          <span
+            class="seat {{ show.id }}-{{ i }}-{{ row }}"
+            *ngFor="let col of screenGrid.cols; let i = &quot;index+1&quot;"
+            [ngClass]="
+              getStatus(selectedSeats, screenGrid.specialSeats, row + col)
+            "
+            (click)="
+              seatClicked(
+                selectedSeats,
+                screenGrid.specialSeats,
+                row + col,
+                i + row + show.id
+              )
+            "
+          >
+            {{ col }}
+          </span>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="legend">
+      <div class="legend-square reserved"></div>
+      <span>Zajęte</span>
+      <div class="legend-square special"></div>
+      <span>VIP</span>
+      <!-- <div class="legend-square bigger"></div><span>KANAPA</span> -->
     </div>
   </ng-container>
-
-  <div class="legend">
-    <div class="legend-square reserved"></div>
-    <span>Zajęte</span>
-    <div class="legend-square special"></div>
-    <span>VIP</span>
-    <!-- <div class="legend-square bigger"></div><span>KANAPA</span> -->
-  </div>
-</ng-container>
-<ng-template #loading>
-  <h1>...Ładowanie</h1>
-</ng-template>
+  <ng-template #loading>
+    <h1>...Ładowanie</h1>
+  </ng-template>
+</div>

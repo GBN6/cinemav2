@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
 import { MoviesCard } from '../movies.interface';
 
 @Component({
@@ -9,6 +15,9 @@ import { MoviesCard } from '../movies.interface';
 })
 export class MoviesCardComponent {
   @Input() movieCard!: MoviesCard;
+  private selectedMovieService = inject(SelectedMovieStatfullService);
+
+  selectedDate$ = this.selectedMovieService.stateSelectedDate$;
 
   showLongDescription = false;
 

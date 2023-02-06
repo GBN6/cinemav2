@@ -6,11 +6,24 @@
   padding: 1rem;
 
   &__poster {
+    position: relative;
     &--img {
       max-width: 200px;
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 20px;
+    }
+
+    &--premier {
+      font-weight: 600;
+      font-size: 4rem;
+      backdrop-filter: blur(10px);
+      color: var(--warning);
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
       border-radius: 20px;
     }
   }
@@ -28,11 +41,18 @@
 .show-info-button {
   justify-self: flex-end;
   align-self: flex-end;
-  color: var(--secondary);
-  background-color: inherit;
-  font-weight: 900;
+  color: var(--primary);
+  background-color: var(--dark);
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 20px;
 }
 
 .movieCard-title {
   font-weight: 700;
+  font-size: 3rem;
+  color: var(--dark-grey);
+}
+.movieCard-info {
+  font-size: 2rem;
 }

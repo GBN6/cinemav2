@@ -9,22 +9,34 @@
     display: flex;
     justify-content: center;
     padding: 1rem;
-    gap: 8px;
     margin: 3rem 0rem;
+
+    & button:first-child {
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+    & button:last-child {
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+    }
   }
 
   &__movies {
-    background-color: var(--white-darker);
     border-radius: 20px;
+    background-color: var(--white);
+    border-radius: 20px;
+  }
+
+  &__movies > div:not(:last-child) {
+    border-bottom: 2px solid rgb(169, 169, 169);
   }
 }
 
 .dates-button {
-  background-color: var(--white);
-  color: var(--dark);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: 2px solid var(--dark);
+  background-color: var(--dark);
+  color: var(--primary);
+  padding: 1rem 2rem;
+  border: 1px solid var(--primary-darker);
 
   &--active {
     background-color: var(--primary);

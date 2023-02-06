@@ -1,0 +1,109 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 2px solid var(--secondary);
+}
+.name-container,
+.invoice-city-form {
+  display: flex;
+  gap: 3rem;
+}
+form p {
+  color: rgb(255, 92, 92);
+}
+
+form input.error.input.ng-touched {
+  border: 2px solid rgb(253, 86, 86);
+}
+
+form input {
+  padding: 1rem;
+  border: 2px solid var(--dark-grey);
+  border-radius: 5px;
+}
+
+#email,
+#confirm-email,
+#nip,
+#user-street {
+  width: 70%;
+}
+
+.order {
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: var(--dark);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.order:disabled {
+  background-color: #888;
+  border: 2px solid rgb(255, 92, 92);
+}
+
+.invoice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* TOGGLE SWITCH CSS */
+.toggle-switch {
+  display: flex;
+  gap: 2rem;
+}
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  /* text-indent: -9999px; */
+  width: 50px;
+  height: 20px;
+  background: var(--white-darker);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  border: 1px solid var(--dark);
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 18px;
+  height: 18px;
+  background: var(--dark);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: var(--primary);
+}
+
+input:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 50px;
+}
+
+.toggle-text.invoice-text {
+  font-weight: 900;
+}

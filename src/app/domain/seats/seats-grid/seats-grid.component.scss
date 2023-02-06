@@ -1,3 +1,7 @@
+.seats-grid-container {
+  width: 100%;
+  margin-bottom: 16px;
+}
 .row {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
@@ -7,6 +11,7 @@
 .row.seat {
   color: var(--dark);
   background-color: var(--primary);
+  font-weight: 600;
 }
 
 .seat {
@@ -17,6 +22,8 @@
   height: 4rem;
   text-align: center;
   cursor: pointer;
+  color: var(--dark--lighter);
+  background-color: var(--white);
 }
 
 .reserved {
@@ -25,7 +32,7 @@
 }
 
 .special {
-  background-color: var(--secondary);
+  background-color: var(--warningLight);
 }
 
 .selected {
@@ -36,10 +43,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-border-grey);
+  border: 1px solid var(--secondary);
   padding: 1rem 2rem;
   border-radius: 20px;
-  background-color: var(--color-light-grey);
+  background-color: var(--white);
+  width: 30%;
 }
 
 .legend-square {
@@ -57,4 +65,10 @@
 
 .legend span {
   margin-left: 0.5rem;
+}
+
+.seat-grid-and-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,0 +1,37 @@
+.selected-seats {
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.seat-desc {
+  font-weight: 600;
+
+  &__special {
+    color: var(--warning);
+  }
+}
+
+.ticket-price {
+  align-self: center;
+  justify-items: center;
+  flex: 0.5 1 0;
+}
+
+.delete-seat {
+  align-self: center;
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+.selected-seat,
+#ticket {
+  flex: 1 1 0;
+}
+
+.ticket-select {
+  border: 2px solid var(--secondary);
+  background-color: var(--dark);
+  color: var(--white);
+  border-radius: 5px;
+}

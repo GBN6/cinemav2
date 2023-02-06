@@ -5,16 +5,10 @@
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  font-size: 16px;
-  color: var(--text-primary);
   box-sizing: border-box;
   background-color: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  .mat-mdc-form-field-subscript-wrapper {
-    display: none;
-  }
 
   //colors
   --primary: #32e0c4;
@@ -56,7 +50,7 @@ body {
   height: 100%;
   /* Footer support */
   /* margin-bottom: 5.2rem; */
-  background-color: white;
+  background-color: var(--white-darker);
 }
 
 h1,

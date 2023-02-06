@@ -1,0 +1,279 @@
+<form [formGroup]="orderForm" (ngSubmit)="submitUserForm()">
+  <div class="toggle-switch">
+    <input
+      formControlName="isInvoiceNeeded"
+      type="checkbox"
+      id="switch-1"
+      (click)="enableInvoiceForm()"
+    />
+    <label for="switch-1"></label>
+    <div class="toggle-text invoice-text">Potrzebuję faktury</div>
+  </div>
+  <div class="name-container">
+    <div class="user-input">
+      <input
+        [class.error]="
+          orderForm.controls.userName.touched &&
+          orderForm.controls.userName.errors
+        "
+        formControlName="userName"
+        id="name"
+        class="input"
+        name="user-name"
+        placeholder="Imię"
+      />
+      <ng-container *ngIf="orderForm.controls.userName.errors as errors">
+        <ng-container *ngIf="orderForm.controls.userName.touched">
+          <p *ngIf="errors['pattern']">Tylko litery</p>
+          <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+          <p *ngIf="errors['maxlength'] as maxLength">
+            Max liczba znaków to {{ maxLength.requiredLength }}
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="user-input">
+      <input
+        [class.error]="
+          orderForm.controls.userLastName.touched &&
+          orderForm.controls.userLastName.errors
+        "
+        formControlName="userLastName"
+        id="country"
+        class="input"
+        name="user-last-name"
+        placeholder="Nazwisko"
+      />
+      <ng-container *ngIf="orderForm.controls.userLastName.errors as errors">
+        <ng-container *ngIf="orderForm.controls.userLastName.touched">
+          <p *ngIf="errors['pattern']">Tylko litery</p>
+          <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+          <p *ngIf="errors['maxlength'] as maxLength">
+            Max liczba znaków to {{ maxLength.requiredLength }}
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="user-input">
+    <input
+      [class.error]="
+        orderForm.controls.userPhoneNumber.touched &&
+        orderForm.controls.userPhoneNumber.errors
+      "
+      formControlName="userPhoneNumber"
+      type="tel"
+      id="phone"
+      class="input"
+      name="user-phone"
+      placeholder="Nr telefonu"
+    />
+    <ng-container *ngIf="orderForm.controls.userPhoneNumber.errors as errors">
+      <ng-container *ngIf="orderForm.controls.userPhoneNumber.touched">
+        <p *ngIf="errors['pattern']" class="text-danger">
+          Podaj NUMER telefonu
+        </p>
+        <p *ngIf="errors['minlength'] as minLength">
+          Podałeś {{ minLength.actualLength }} znaków, minimum to
+          {{ minLength.requiredLength }}
+        </p>
+        <p *ngIf="errors['maxlength']">Maksymalna liczba znaków to 9</p>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="user-input">
+    <input
+      [class.error]="
+        orderForm.controls.userMail.touched &&
+        orderForm.controls.userMail.errors
+      "
+      formControlName="userMail"
+      type="email"
+      id="email"
+      class="input"
+      name="user-email"
+      placeholder="Email"
+    />
+    <ng-container *ngIf="orderForm.controls.userMail.errors as errors">
+      <ng-container *ngIf="orderForm.controls.userMail.touched">
+        <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+        <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="user-input">
+    <input
+      [class.error]="
+        (orderForm.controls.userMailConfirmation.touched &&
+          orderForm.controls.userMailConfirmation.errors) ||
+        orderForm.errors
+      "
+      formControlName="userMailConfirmation"
+      type="email"
+      id="confirm-email"
+      class="input"
+      placeholder="Potwierdz email"
+      name="user-email"
+    />
+    <ng-container
+      *ngIf="orderForm.controls.userMailConfirmation.errors as errors"
+    >
+      <ng-container *ngIf="orderForm.controls.userMailConfirmation.touched">
+        <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+        <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="orderForm.errors as errors">
+      <ng-container *ngIf="orderForm.controls.userMailConfirmation.touched">
+        <p *ngIf="errors['emailMismatch']">Adresy email się różnią!</p>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div
+    class="invoice-form"
+    *ngIf="orderForm.controls.isInvoiceNeeded.value"
+    formGroupName="userInvoiceForm"
+  >
+    <div class="user-input">
+      <input
+        [class.error]="
+          orderForm.controls.userInvoiceForm.controls.userNIP.touched &&
+          orderForm.controls.userInvoiceForm.controls.userNIP.errors
+        "
+        formControlName="userNIP"
+        id="nip"
+        class="input"
+        name="user-nip"
+        placeholder="NIP"
+      />
+      <ng-container
+        *ngIf="
+          orderForm.controls.userInvoiceForm.controls.userNIP.errors as errors
+        "
+      >
+        <ng-container
+          *ngIf="orderForm.controls.userInvoiceForm.controls.userNIP.touched"
+        >
+          <p *ngIf="errors['pattern']" class="text-danger">Podaj NUMER NIP</p>
+          <p *ngIf="errors['minlength'] as minLength">
+            Podałeś {{ minLength.actualLength }} znaków, minimum to
+            {{ minLength.requiredLength }}
+          </p>
+          <p *ngIf="errors['maxlength'] as maxLength">
+            Maksymalna liczba znaków to {{ maxLength.requiredLength }}
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="user-input">
+      <input
+        [class.error]="
+          orderForm.controls.userInvoiceForm.controls.userStreet.touched &&
+          orderForm.controls.userInvoiceForm.controls.userStreet.errors
+        "
+        formControlName="userStreet"
+        id="user-street"
+        class="input"
+        name="user-street"
+        placeholder="Ulica"
+      />
+      <ng-container
+        *ngIf="
+          orderForm.controls.userInvoiceForm.controls.userStreet
+            .errors as errors
+        "
+      >
+        <ng-container
+          *ngIf="orderForm.controls.userInvoiceForm.controls.userStreet.touched"
+        >
+          <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+          <p *ngIf="errors['maxlength'] as maxLength">
+            Max liczba znaków to {{ maxLength.requiredLength }}
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="invoice-city-form">
+      <div class="user-input">
+        <input
+          [class.error]="
+            orderForm.controls.userInvoiceForm.controls.userPostCode.touched &&
+            orderForm.controls.userInvoiceForm.controls.userPostCode.errors
+          "
+          formControlName="userPostCode"
+          id="post-code"
+          class="input"
+          name="user-postcode"
+          placeholder="Kod Pocztowy"
+        />
+        <ng-container
+          *ngIf="
+            orderForm.controls.userInvoiceForm.controls.userPostCode
+              .errors as errors
+          "
+        >
+          <ng-container
+            *ngIf="
+              orderForm.controls.userInvoiceForm.controls.userPostCode.touched
+            "
+          >
+            <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+            <p *ngIf="errors['pattern']">
+              Podaj kod w odpowiednim foramcie XX-XXX
+            </p>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="user-input">
+        <input
+          [class.error]="
+            orderForm.controls.userInvoiceForm.controls.userCity.touched &&
+            orderForm.controls.userInvoiceForm.controls.userCity.errors
+          "
+          formControlName="userCity"
+          id="city"
+          class="input"
+          name="user-city"
+          placeholder="Miasto"
+        />
+        <ng-container
+          *ngIf="
+            orderForm.controls.userInvoiceForm.controls.userCity
+              .errors as errors
+          "
+        >
+          <ng-container
+            *ngIf="orderForm.controls.userInvoiceForm.controls.userCity.touched"
+          >
+            <p *ngIf="errors['pattern']">Tylko litery</p>
+            <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+            <p *ngIf="errors['maxlength'] as maxLength">
+              Max liczba znaków to {{ maxLength.requiredLength }}
+            </p>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="toggle-switch">
+    <input formControlName="userNewsletter" type="checkbox" id="switch-2" />
+    <label for="switch-2"></label>
+    <div class="toggle-text">
+      Chce otrzymywac informacje o znizkach, promocjach itp
+    </div>
+  </div>
+  <div class="user-input">
+    <input
+      type="text"
+      id="voucher-code"
+      class="input"
+      placeholder="Kod znizkowy"
+      name="voucher-code"
+    />
+    <p class="error"></p>
+  </div>
+  <button type="submit" [disabled]="!orderForm.valid" class="order">
+    Zamawiam
+  </button>
+  <h1></h1>
+</form>

@@ -5,21 +5,30 @@
       {{ selectedState.selectedDate.date }}
       {{ selectedState.selectedShow.hour }}
     </div>
-
     <div class="screen">SCREEN</div>
     <div class="seats-grid">
-      <app-seats-grid [show]="selectedState.selectedShow"></app-seats-grid>
+      <app-seats-grid
+        [date]="selectedState.selectedDate.date"
+        [movie]="selectedState.selectedMovie"
+        [show]="selectedState.selectedShow"
+      ></app-seats-grid>
     </div>
-    <!-- <div class="all-selected-tickets">
-    <div
-      *ngFor="let seat of selected; let i = index"
-      class="selected-ticket"
-    ></div>
-  </div>
-  <div class="navigation-links">
-    <a *ngIf="selected.length" class="router-link" routerLink="/form"
-      ><button type="button" class="order-btn">Przejdz do zamówienia</button></a
-    >
-  </div> -->
+    <ng-container *ngIf="ticketState$ | async as tickets; else loading">
+      <div class="all-selected-tickets">
+        <app-seats-selected
+          *ngFor="let ticket of tickets"
+          [show]="selectedState.selectedShow"
+          [ticket]="ticket"
+        ></app-seats-selected>
+      </div>
+      <div class="navigation-links">
+        <a *ngIf="tickets.length" class="router-link" routerLink="/order">
+          Przejdz do zamówienia
+        </a>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <p>...Ładowanie</p>
+    </ng-template>
   </ng-container>
 </div>

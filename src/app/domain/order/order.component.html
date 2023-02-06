@@ -1,0 +1,80 @@
+<ng-container *ngIf="ticketState$ | async as tickets">
+  <div class="form-container">
+    <div class="order-title">
+      <h1>Podsumowanie</h1>
+    </div>
+
+    <div class="selected-seats">
+      <div class="one-ticket" *ngFor="let ticket of tickets">
+        <div class="seat" *ngIf="ticket.seat.price">
+          <div class="ticekt-movie-title">{{ ticket.movieTitle }}:</div>
+          <div class="ticekt-date">{{ ticket.date }}, {{ ticket.hour }}</div>
+          <div class="ticket-position">
+            Rząd {{ ticket.seat.position.charAt(0) }} Miejsce
+            {{ ticket.seat.position.slice(1) }}, Rodzaj: {{ ticket.seat.type }}
+            <span class="special-seat" *ngIf="ticket.seat.special">VIP</span>
+          </div>
+        </div>
+        <div class="seat-price" *ngIf="ticket.seat.price">
+          {{ ticket.seat.price }} PLN
+        </div>
+      </div>
+      <div class="all" *ngIf="getFullPrice(tickets)">
+        <p class="total-price">ŁĄCZNIE:</p>
+        <p class="total-price">{{ getFullPrice(tickets) }} PLN</p>
+      </div>
+    </div>
+    <app-order-form
+      (openModal)="handleModalFlag($event)"
+      (userDataForm)="handleUserDataForm($event)"
+    ></app-order-form>
+    <div class="return-to-seats">
+      <a
+        [routerLinkActive]="['active']"
+        class="router-link"
+        routerLink="/seats/{{ tickets[0].id.at(-1) }}"
+      >
+        &#9754; Wróć do wyboru miejsc</a
+      >
+    </div>
+  </div>
+
+  <ng-container *ngIf="modalFlag">
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h1>Wprowadź kod blik</h1>
+        <form (ngSubmit)="submitPayment(tickets)">
+          <input
+            [formControl]="blikControl"
+            [class.error]="blikControl.touched && blikControl.errors"
+            class="blik-input"
+            placeholder="Kod Blik"
+          />
+          <ng-container *ngIf="blikControl.errors as errors">
+            <ng-container *ngIf="blikControl.touched">
+              <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
+              <p *ngIf="errors['minlength'] as minLength">
+                Podałeś {{ minLength.actualLength }} liczb, BLIK składa się z
+                {{ minLength.requiredLength }}
+              </p>
+              <p *ngIf="errors['maxlength'] as maxLength">
+                Max liczba cyfr to {{ maxLength.requiredLength }}
+              </p>
+              <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+            </ng-container>
+          </ng-container>
+          <div class="modal-nav">
+            <button class="modal-btn blik-btn">Potwierdź</button>
+            <button
+              type="button"
+              class="modal-btn close-modal"
+              (click)="closeModal()"
+            >
+              Wyjdź
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

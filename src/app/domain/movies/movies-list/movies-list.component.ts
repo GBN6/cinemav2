@@ -32,14 +32,13 @@ export class MoviesListComponent {
     }
   }
 
-  private setDefaultDate() {
+  private setTodayDate() {
     let today = new Date().toLocaleDateString('en-GB').slice(0, 10);
     this.week.forEach((date, index) => {
       if (date === today) {
         this.currentIndex = index;
       }
     });
-    console.log(today);
 
     const sub = this.selectedStateService.stateSelectedDate$.subscribe(
       (result) => {
@@ -50,7 +49,6 @@ export class MoviesListComponent {
         });
       }
     );
-
     this.subscription.add(sub);
   }
 
@@ -65,16 +63,12 @@ export class MoviesListComponent {
 
   ngOnInit() {
     this.getDates();
-    this.setDefaultDate();
+    this.setTodayDate();
     this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
     this.selectedStateService.addNewSelectedDate({
       id: this.clickedIndex,
       date: this.week[this.clickedIndex],
     });
-
-    this.selectedStateService.movieState$.subscribe((result) =>
-      console.log(result.selectedMovie)
-    );
   }
 
   ngOndestroy() {

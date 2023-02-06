@@ -10,10 +10,11 @@
   width: 100%;
   padding: 1rem 0px;
   text-align: center;
-  border-top: 2px solid var(--dark);
+  border-top: 2px solid var(--primary);
   margin-top: 3rem;
   position: absolute;
   gap: 8px;
+  background-color: var(--dark);
 
   &__links {
     width: 90%;
@@ -29,7 +30,7 @@
 
 .icons a {
   font-size: 2rem;
-  color: var(--color-dark);
+  color: var(--primary);
 }
 
 .text-links {
@@ -38,7 +39,12 @@
   gap: 1rem;
 }
 
+.copyright {
+  font-weight: 700;
+  color: var(--primary);
+}
+
 .link-txt {
-  color: var(--color-dark);
+  color: var(--primary);
   text-decoration: none;
 }

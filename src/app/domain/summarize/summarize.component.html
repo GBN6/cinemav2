@@ -1,0 +1,15 @@
+<div class="summarize-container">
+  <div class="summarize">
+    <h1>Dziękujemy za zamówienie!</h1>
+    <ng-container *ngIf="email$ | async as email">
+      <p>
+        Twoje bilety zostały wysłane na adres email:
+        <span class="order-email">{{ email }}</span>
+      </p>
+    </ng-container>
+    <div class="qr-img-container">
+      <img src="assets\qr.jpg" />
+    </div>
+    <a class="go-back-btn" routerLink="">&#9754; Wróć na stronę główną</a>
+  </div>
+</div>

@@ -17,6 +17,9 @@
         <app-movies-card [movieCard]="movie"></app-movies-card>
       </div>
     </div>
+    <ng-container *ngIf="movies.length === 0">
+      <h1>Brak seansów w wybrany dzień!</h1>
+    </ng-container>
   </ng-container>
   <ng-template #loading> ...Ładowanie </ng-template>
 </div>
