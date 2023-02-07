@@ -40,7 +40,6 @@ export class OrderComponent {
 
   handleUserDataForm(userFormData: UserData) {
     this.userFormData = userFormData;
-    console.log(this.userFormData);
   }
 
   handleModalFlag(status: boolean) {
@@ -48,6 +47,7 @@ export class OrderComponent {
   }
 
   submitPayment(tickets: TicketState[]) {
+    console.log(tickets);
     this.blikControl.markAllAsTouched();
     if (this.blikControl.invalid) {
       return;
@@ -56,8 +56,8 @@ export class OrderComponent {
     this.orderService.addToReservedSeats(tickets);
     this.orderService.addOrder(this.userFormData, tickets);
     // this.movieStateService.clearMovieAndShowState();
-    this.ticketStateService.clearTicketsState();
     this.router.navigate(['summarize']);
+    this.ticketStateService.clearTicketsState();
   }
 
   closeModal() {

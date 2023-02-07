@@ -7,9 +7,7 @@ import { MovieState, SelectedDate } from './state.interface';
   providedIn: 'root',
 })
 export class SelectedMovieStatfullService {
-  private movieState$$ = new BehaviorSubject<MovieState>({
-    selectedDate: { id: 0, date: '' },
-  } as MovieState);
+  private movieState$$ = new BehaviorSubject<MovieState>({} as MovieState);
 
   get movieState$() {
     return this.movieState$$.asObservable();
@@ -39,3 +37,5 @@ export class SelectedMovieStatfullService {
     this.movieState$$.next({} as MovieState);
   }
 }
+
+// selectedDate: { id: 0, date: '' },

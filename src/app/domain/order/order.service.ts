@@ -47,8 +47,6 @@ export class OrderService {
     };
 
     this.orderEmail$$.next(userMail);
-    console.log(orderDTO);
-    console.log(userMail);
     this.http.post<Order>(this.orderUrl, orderDTO).subscribe();
   }
 

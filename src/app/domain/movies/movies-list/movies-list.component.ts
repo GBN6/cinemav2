@@ -37,12 +37,14 @@ export class MoviesListComponent {
     this.week.forEach((date, index) => {
       if (date === today) {
         this.currentIndex = index;
+        this.clickedIndex = index;
       }
     });
 
     const sub = this.selectedStateService.stateSelectedDate$.subscribe(
       (result) => {
         this.week.forEach((date, index) => {
+          if (!result) return;
           if (index === result.id) {
             this.clickedIndex = index;
           }

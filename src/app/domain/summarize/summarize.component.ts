@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { OrderService } from '../order/order.service';
 
 @Component({
@@ -7,14 +8,10 @@ import { OrderService } from '../order/order.service';
   standalone: true,
   templateUrl: './summarize.component.html',
   styleUrls: ['./summarize.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export default class SummarizeComponent {
   private orderService = inject(OrderService);
 
   email$ = this.orderService.orderEmail$;
-
-  ngOnInit() {
-    this.orderService.orderEmail$.subscribe((result) => console.log(result));
-  }
 }
