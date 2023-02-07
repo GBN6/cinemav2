@@ -15,6 +15,10 @@ import { AppComponent } from './app.component';
         path: '',
         children: [
           {
+            path: 'login',
+            loadChildren: () => import('./auth/auth.module'),
+          },
+          {
             path: '',
             loadChildren: () => import('./domain/home/home.module'),
           },

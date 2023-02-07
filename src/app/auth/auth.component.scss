@@ -1,0 +1,54 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark);
+}
+
+.login {
+  background-color: var(--white-darker);
+  border: 2px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 1rem;
+  width: 300px;
+  border-radius: 20px;
+}
+h1 {
+  align-self: center;
+  color: var(--dark);
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login form input {
+  width: 90%;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 2px solid var(--dark);
+}
+
+.login form p {
+  font-weight: 800;
+  color: rgb(255, 92, 92);
+}
+.login-btn {
+  padding: 1rem 3rem;
+  background-color: var(--dark);
+  border-radius: 20px;
+  font-weight: 900;
+  border: 2px solid var(--primary-darker);
+  color: var(--primary);
+}
+
+.forgot-btn {
+  text-decoration: underline;
+  color: rgb(66, 66, 25);
+}
