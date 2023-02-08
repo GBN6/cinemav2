@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { AuthState } from './auth/auth.interface';
+import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './auth/store/auth.reducer';
+import { AuthEffects } from './auth/store/auth.effects';
+
+export interface AppState {
+  auth: AuthState;
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +38,8 @@ import { StoreModule } from '@ngrx/store';
         ],
       },
     ]),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ auth: authReducer }),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

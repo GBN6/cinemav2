@@ -3,14 +3,18 @@
     <ng-container *ngIf="!forgotPassword; else passwordReco">
       <h1>Zaloguj się</h1>
       <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
-        <input formControlName="userEmail" placeholder="Email" />
-        <input
-          formControlName="userPassword"
-          placeholder="Hasło"
-          type="password"
-        />
-        <ng-container *ngIf="invalidUser">
-          <p>Blędny email lub hasło użytkownika</p>
+        <input formControlName="email" placeholder="Email" />
+        <ng-container *ngIf="loginForm.controls.email.errors as errors">
+          <ng-container *ngIf="loginForm.controls.email.touched">
+            <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+            <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
+          </ng-container>
+        </ng-container>
+        <input formControlName="password" placeholder="Hasło" type="password" />
+        <ng-container *ngIf="authLoading$ | async as loader">
+          <p *ngIf="loader.status === 'failed'">
+            Blędny email lub hasło użytkownika
+          </p>
         </ng-container>
         <button class="login-btn">Zaloguj</button>
         <button type="button" class="forgot-btn" (click)="passwordRecover()">
@@ -21,11 +25,7 @@
     <ng-template #passwordReco>
       <h1>Zresetuj hasło</h1>
       <form [formGroup]="loginForm">
-        <input
-          formControlName="userEmail"
-          placeholder="Email"
-          type="password"
-        />
+        <input formControlName="email" placeholder="Email" type="password" />
         <button class="login-btn">Wyślij</button>
         <button class="forgot-btn" type="button" (click)="passwordRecover()">
           &#9754; Wróć do logowania
