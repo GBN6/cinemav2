@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, mergeMap, of, tap } from 'rxjs';
+import { BehaviorSubject, filter, map, mergeMap, of, tap } from 'rxjs';
+import { Show } from '../movies/movies.interface';
 import { Screen, ScreenGrid } from './seats.interface';
 
 @Injectable()
 export class SeatsService {
   private http = inject(HttpClient);
   private screenGrid$$ = new BehaviorSubject<ScreenGrid>({} as ScreenGrid);
+
+  private apiUrl = 'http://localhost:3000';
 
   get screenGrid$() {
     return this.screenGrid$$.asObservable();
@@ -22,6 +25,38 @@ export class SeatsService {
 
   private getColumnsArray(n: number): number[] {
     return [...Array(n).keys()].map((i) => i + 1);
+  }
+
+  private getCurrentReservedSeats(number: number) {
+    return this.http.get<Show>(`${this.apiUrl}/show/${number}`);
+  }
+
+  reserveSeat(seat: string, showId: number) {
+    this.getCurrentReservedSeats(showId).subscribe(({ reservedSeats }) => {
+      this.http
+        .patch(`${this.apiUrl}/show/${showId}`, {
+          reservedSeats: [...reservedSeats, seat],
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+    });
+  }
+
+  cancelReservation(seat: string, showId: number) {
+    this.getCurrentReservedSeats(showId)
+      .pipe(
+        map(({ reservedSeats }) => {
+          return reservedSeats.filter((seatPos) => seatPos !== seat);
+        })
+      )
+      .subscribe((reservedSeats) => {
+        this.http
+          .patch(this.apiUrl + `/show/${showId}`, {
+            reservedSeats: reservedSeats,
+          })
+          .subscribe((data) => console.log(data));
+      });
   }
 
   getScreenRowsAndCols(screenName: string) {

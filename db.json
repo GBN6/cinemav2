@@ -18,7 +18,7 @@
       "id": 2,
       "accountType": "admin",
       "userData": {
-        "userName": "Grzegorz",
+        "userFirstName": "Grzegorz",
         "userLastName": "Bandyra",
         "userPhoneNumber": "123456789",
         "userWishList": []
@@ -855,7 +855,9 @@
         "F4",
         "D1",
         "C9",
-        "A12"
+        "A12",
+        "H1",
+        "H12"
       ],
       "priceList": [
         {

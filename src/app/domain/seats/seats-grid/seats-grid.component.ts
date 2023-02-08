@@ -4,11 +4,9 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { mergeMap, Observable } from 'rxjs';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { MoviesCard, Show } from '../../movies/movies.interface';
-import { Screen, ScreenGrid } from '../seats.interface';
 import { SeatsService } from '../seats.service';
 
 @Component({
@@ -28,22 +26,7 @@ export class SeatsGridComponent {
   screenGrid$ = this.seatsService.screenGrid$;
   selectedSeats$ = this.ticketService.selectedSeats$;
 
-  styleGrid(number: number) {
-    return { 'grid-template-columns': `repeat(${number}, 1fr)` };
-  }
-
-  getStatus(selectedSeats: string[], specialSeats: string[], seatPos: string) {
-    if (this.show.reservedSeats.indexOf(seatPos) !== -1) {
-      return 'reserved';
-    } else if (selectedSeats.indexOf(seatPos) !== -1) {
-      return 'selected';
-    } else if (specialSeats.indexOf(seatPos) !== -1) {
-      return 'special';
-    }
-    return 'freeSeat';
-  }
-
-  addToTicketState(id: string, position: string, special: boolean) {
+  private addToTicketState(id: string, position: string, special: boolean) {
     const ticketDTO: TicketState = {
       id: id,
       showId: this.show.id,
@@ -60,6 +43,21 @@ export class SeatsGridComponent {
     this.ticketService.addTicket(ticketDTO);
   }
 
+  styleGrid(number: number) {
+    return { 'grid-template-columns': `repeat(${number}, 1fr)` };
+  }
+
+  getStatus(selectedSeats: string[], specialSeats: string[], seatPos: string) {
+    if (this.show.reservedSeats.indexOf(seatPos) !== -1) {
+      return 'reserved';
+    } else if (selectedSeats.indexOf(seatPos) !== -1) {
+      return 'selected';
+    } else if (specialSeats.indexOf(seatPos) !== -1) {
+      return 'special';
+    }
+    return 'freeSeat';
+  }
+
   seatClicked(
     selectedSeats: string[],
     specialSeats: string[],
@@ -71,9 +69,11 @@ export class SeatsGridComponent {
       // seat already selected, remove
       this.ticketService.removeSeat(seatPos);
       this.ticketService.removeTicket(id);
+      this.seatsService.cancelReservation(seatPos, this.show.id);
     } else {
       //push to selected array only if it is not reserved
       if (this.show.reservedSeats.indexOf(seatPos) === -1) {
+        this.seatsService.reserveSeat(seatPos, this.show.id);
         if (specialSeats.indexOf(seatPos) !== -1) {
           this.ticketService.addSeat(seatPos);
           this.addToTicketState(id, seatPos, true);
