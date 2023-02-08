@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { LoginApiResponse, LoginCredentials, User } from '../auth.interface';
+import { LoginApiResponse, LoginData, User } from '../auth.interface';
 
 export const AuthLoaderActions = createActionGroup({
   source: 'Auth loader',
@@ -12,7 +12,7 @@ export const AuthLoaderActions = createActionGroup({
 export const AuthActions = createActionGroup({
   source: 'Auth',
   events: {
-    login: props<LoginCredentials>(),
+    login: props<LoginData>(),
     'get user': props<{ userId: number }>(),
     logout: emptyProps(),
   },

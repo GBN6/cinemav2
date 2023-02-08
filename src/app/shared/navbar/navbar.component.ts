@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
 import { AuthActions } from 'src/app/auth/store/auth.actions';
+import { TicketStateService } from '../services/ticket.state.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +17,12 @@ import { AuthActions } from 'src/app/auth/store/auth.actions';
 })
 export class NavbarComponent {
   private store = inject<Store<AppState>>(Store);
-  authState = this.store.select((state) => state.auth);
+  private ticketStateService = inject(TicketStateService);
 
   cart = faCartShopping;
 
-  
+  authState = this.store.select((state) => state.auth);
+  ticketState$ = this.ticketStateService.ticketState$;
 
   handleLogout() {
     this.store.dispatch(AuthActions.logout());

@@ -6,17 +6,9 @@
       "id": 1,
       "accountType": "user",
       "userData": {
-        "userName": "Janek",
+        "userFirstName": "Janek",
         "userLastName": "Kowalski",
         "userPhoneNumber": "600700800",
-        "userInvoiceDetails": [
-          {
-            "userNIP": "",
-            "userStreet": "",
-            "userPostCode": "",
-            "userCity": ""
-          }
-        ],
         "userWishList": []
       }
     },
@@ -29,14 +21,6 @@
         "userName": "Grzegorz",
         "userLastName": "Bandyra",
         "userPhoneNumber": "123456789",
-        "userInvoiceDetails": [
-          {
-            "userNIP": "",
-            "userStreet": "",
-            "userPostCode": "",
-            "userCity": ""
-          }
-        ],
         "userWishList": []
       }
     }

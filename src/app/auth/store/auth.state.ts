@@ -5,9 +5,9 @@ export const initialAuthState: AuthState = {
   id: null,
   accountType: null,
   data: {
-    firstName: '',
-    lastName: '',
-    email: '',
+    userFirstName: '',
+    userLastName: '',
+    userEmail: '',
   },
   loader: {
     status: 'initial',

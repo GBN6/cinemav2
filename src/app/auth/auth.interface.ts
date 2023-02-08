@@ -1,3 +1,9 @@
+import { MoviesCard } from '../domain/movies/movies.interface';
+
+export type AccountType = 'user' | 'admin' | null;
+
+type Loader = LoaderSuccess | LoaderFailed | LoaderPending | LoaderInitial;
+
 export interface AuthState {
   isLogged: boolean;
   accountType: AccountType;
@@ -7,10 +13,10 @@ export interface AuthState {
 }
 
 export interface Data {
-  firstName: string;
-  lastName: string;
-  phone?: string;
-  email: string;
+  userFirstName: string;
+  userLastName: string;
+  userPhone?: string;
+  userEmail: string;
 }
 
 export interface LoaderSuccess {
@@ -31,9 +37,7 @@ export interface LoaderInitial {
   status: 'initial';
 }
 
-type Loader = LoaderSuccess | LoaderFailed | LoaderPending | LoaderInitial;
-
-export interface LoginCredentials {
+export interface LoginData {
   email: string;
   password: string;
 }
@@ -51,16 +55,8 @@ export interface User {
 }
 
 export interface UserData {
-  firstName: string;
-  lastName: string;
-  phone?: string;
-}
-
-export type AccountType = 'user' | 'admin' | null;
-
-export interface RegisterPayload {
-  email: string;
-  password: string;
-  accountType: AccountType;
-  userData: UserData;
+  userFirstName: string;
+  userLastName: string;
+  userPhoneNumber?: string;
+  userWishList: MoviesCard[];
 }

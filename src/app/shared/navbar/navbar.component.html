@@ -8,13 +8,17 @@
     <div class="header-container__buttons">
       <ng-container *ngIf="authState | async as authState">
         <ng-container *ngIf="authState.isLogged; else notLogged">
-          <button class="header-button cart" type="button">
-            <fa-icon [icon]="cart"></fa-icon>
-            <div class="cart-ammount"></div>
-          </button>
+          <ng-container *ngIf="ticketState$ | async as ticketState">
+            <button class="header-button cart" type="button">
+              <fa-icon [icon]="cart"></fa-icon>
+              <ng-container *ngIf="ticketState.length !== 0">
+                <div class="cart-ammount">{{ ticketState.length }}</div>
+              </ng-container>
+            </button>
+          </ng-container>
           <div class="dropdown">
             <button class="header-button login-button" type="button">
-              {{ authState.data!.firstName }}
+              {{ authState.data!.userFirstName }}
             </button>
             <div class="login-dropdown-content">
               <a
@@ -26,7 +30,7 @@
                 >Chcę obejrzeć</a
               >
               <a class="dropdown-link" routerLink="/settings">Ustawienia</a>
-              <a class="dropdown-link" routerLink="">Wyloguj</a>
+              <a class="dropdown-link" (click)="handleLogout()">Wyloguj</a>
             </div>
           </div>
         </ng-container>

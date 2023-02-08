@@ -13,11 +13,13 @@ export const authReducer = createReducer(
     accountType: action.user.accountType,
     id: action.user.id,
     data: {
-      firstName: action.user.userData.firstName,
-      lastName: action.user.userData.lastName,
-      email: action.user.email,
+      userEmail: action.user.email,
+      userFirstName: action.user.userData.userFirstName,
+      userLastName: action.user.userData.userLastName,
+      userPhone: action.user.userData.userPhoneNumber,
     },
   })),
+
   on(AuthApiActions.getUserSuccess, (state, action) => ({
     ...state,
     loader: {
@@ -27,9 +29,10 @@ export const authReducer = createReducer(
     accountType: action.accountType,
     id: action.id,
     data: {
-      firstName: action.userData.firstName,
-      lastName: action.userData.lastName,
-      email: action.email,
+      userEmail: action.email,
+      userFirstName: action.userData.userFirstName,
+      userLastName: action.userData.userLastName,
+      userPhone: action.userData.userPhoneNumber,
     },
   })),
   on(AuthActions.logout, (state) => ({

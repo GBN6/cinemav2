@@ -24,7 +24,7 @@ export class AuthEffects {
         return this.authService.login(loginCredentials).pipe(
           map((result) => {
             this.tokenService.saveToken(result.accessToken);
-            this.router.navigate(['/']);
+            this.router.navigate(['']);
             return AuthApiActions.loginSuccess(result);
           }),
           catchError((error) => {
