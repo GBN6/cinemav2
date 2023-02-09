@@ -42,6 +42,8 @@ form input {
   color: var(--primary);
   font-weight: 600;
   font-size: 3rem;
+  align-self: center;
+  border-radius: 30px;
 }
 
 .order:disabled {

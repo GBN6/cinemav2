@@ -6,7 +6,7 @@ import { map, of, switchMap, tap, catchError } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
-import { AuthActions, AuthApiActions, AuthLoaderActions } from './auth.actions';
+import { AuthActions, AuthApiActions, AuthErrorActions } from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -19,7 +19,6 @@ export class AuthEffects {
   loginEffect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
-      tap(() => this.store.dispatch(AuthLoaderActions.setLoading())),
       switchMap((loginCredentials) => {
         return this.authService.login(loginCredentials).pipe(
           map((result) => {
@@ -29,7 +28,7 @@ export class AuthEffects {
           }),
           catchError((error) => {
             console.log(error.error);
-            return of(AuthLoaderActions.setError({ error: error.error }));
+            return of(AuthErrorActions.setError({ error: error.error }));
           })
         );
       })

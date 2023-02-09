@@ -7,6 +7,7 @@
 
   &__poster {
     position: relative;
+    margin-right: 8px;
     &--img {
       max-width: 200px;
       width: 100%;
@@ -19,7 +20,7 @@
       font-weight: 600;
       font-size: 4rem;
       backdrop-filter: blur(10px);
-      color: var(--warning);
+      color: var(--error);
       position: absolute;
       top: 0;
       right: 0;
@@ -31,10 +32,11 @@
   &__description {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: left;
     width: 60%;
     color: var(--dark);
+    margin-right: 8px;
   }
 }
 
@@ -53,6 +55,21 @@
   font-size: 3rem;
   color: var(--dark-grey);
 }
+
 .movieCard-info {
   font-size: 2rem;
+}
+
+.movie-card-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &__score {
+    color: var(--dark-grey);
+    font-weight: 600;
+    font-size: 2rem;
+  }
 }

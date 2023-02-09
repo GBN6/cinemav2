@@ -9,7 +9,7 @@ export const initialAuthState: AuthState = {
     userLastName: '',
     userEmail: '',
   },
-  loader: {
+  loading: {
     status: 'initial',
   },
 };

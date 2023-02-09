@@ -4,6 +4,8 @@ import {
   inject,
   Input,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.module';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
 import { MoviesCard } from '../movies.interface';
 
@@ -16,7 +18,9 @@ import { MoviesCard } from '../movies.interface';
 export class MoviesCardComponent {
   @Input() movieCard!: MoviesCard;
   private selectedMovieService = inject(SelectedMovieStatfullService);
+  private store = inject<Store<AppState>>(Store);
 
+  authState = this.store.select((state) => state.auth);
   selectedDate$ = this.selectedMovieService.stateSelectedDate$;
 
   showLongDescription = false;

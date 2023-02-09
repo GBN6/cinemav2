@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { AuthActions, AuthApiActions, AuthLoaderActions } from './auth.actions';
+import { AuthActions, AuthApiActions, AuthErrorActions } from './auth.actions';
 import { initialAuthState } from './auth.state';
 
 export const authReducer = createReducer(
@@ -16,7 +16,6 @@ export const authReducer = createReducer(
       userEmail: action.user.email,
       userFirstName: action.user.userData.userFirstName,
       userLastName: action.user.userData.userLastName,
-      userPhone: action.user.userData.userPhoneNumber,
     },
   })),
 
@@ -33,8 +32,10 @@ export const authReducer = createReducer(
       userFirstName: action.userData.userFirstName,
       userLastName: action.userData.userLastName,
       userPhone: action.userData.userPhoneNumber,
+      userWishList: action.userData.userWishList,
     },
   })),
+
   on(AuthActions.logout, (state) => ({
     ...state,
     isLogged: false,
@@ -42,15 +43,10 @@ export const authReducer = createReducer(
     id: null,
     data: null,
   })),
-  on(AuthLoaderActions.setLoading, (state) => ({
+
+  on(AuthErrorActions.setError, (state, { error }) => ({
     ...state,
-    loader: {
-      status: 'pending',
-    },
-  })),
-  on(AuthLoaderActions.setError, (state, { error }) => ({
-    ...state,
-    loader: {
+    loading: {
       status: 'failed',
       errorMessage: error,
     },

@@ -3,7 +3,7 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
 import { AuthActions } from '../store/auth.actions';
-import { selectAuthLoader } from '../store/auth.selectors';
+import { selectAuthLoading } from '../store/auth.selectors';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +17,7 @@ export class AuthComponent {
   forgotPassword = false;
   invalidUser = false;
 
-  authLoading$ = this.store.select(selectAuthLoader);
+  authLoading$ = this.store.select(selectAuthLoading);
 
   passwordRecover() {
     this.forgotPassword = !this.forgotPassword;

@@ -1,40 +1,19 @@
 import { MoviesCard } from '../domain/movies/movies.interface';
 
-export type AccountType = 'user' | 'admin' | null;
-
-type Loader = LoaderSuccess | LoaderFailed | LoaderPending | LoaderInitial;
-
 export interface AuthState {
   isLogged: boolean;
   accountType: AccountType;
   id: number | null;
   data: Data | null;
-  loader: Loader;
+  loading: Loading;
 }
 
 export interface Data {
   userFirstName: string;
   userLastName: string;
-  userPhone?: string;
   userEmail: string;
-}
-
-export interface LoaderSuccess {
-  status: 'success';
-  successMessage?: string;
-}
-
-export interface LoaderFailed {
-  status: 'failed';
-  errorMessage: string;
-}
-
-export interface LoaderPending {
-  status: 'pending';
-}
-
-export interface LoaderInitial {
-  status: 'initial';
+  userPhone?: string;
+  userWishList?: MoviesCard[];
 }
 
 export interface LoginData {
@@ -58,5 +37,22 @@ export interface UserData {
   userFirstName: string;
   userLastName: string;
   userPhoneNumber?: string;
-  userWishList: MoviesCard[];
+  userWishList?: MoviesCard[];
 }
+
+export interface LoadingError {
+  status: 'failed';
+  errorMessage: string;
+}
+
+export interface LoadingPending {
+  status: 'pending';
+}
+
+export interface LoadingInitial {
+  status: 'initial';
+}
+
+export type AccountType = 'user' | 'admin' | null;
+
+type Loading = LoadingError | LoadingPending | LoadingInitial;

@@ -11,8 +11,8 @@
           </ng-container>
         </ng-container>
         <input formControlName="password" placeholder="Hasło" type="password" />
-        <ng-container *ngIf="authLoading$ | async as loader">
-          <p *ngIf="loader.status === 'failed'">
+        <ng-container *ngIf="authLoading$ | async as loading">
+          <p *ngIf="loading.status === 'failed'">
             Blędny email lub hasło użytkownika
           </p>
         </ng-container>

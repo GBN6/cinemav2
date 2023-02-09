@@ -1,12 +1,11 @@
 <div class="movie-card-buttons">
-  {{ movieCard.score }}
-  <div class="movie-card-buttons__user">
-    <button type="button" class="rate-movieCard-button">Oceń ten film!</button>
-    <ng-container *ngIf="ismovieCardInWishList; else addmovieCardToWishList">
-      <button type="button" class="want-to-see-button">Obejrzałem!</button>
-    </ng-container>
-    <ng-template #addmovieCardToWishList>
-      <button type="button" class="want-to-see-button">Chcę zobaczyć</button>
-    </ng-template>
-  </div>
+  <button type="button" class="movie-card-buttons__rate">Oceń ten film!</button>
+  <ng-container *ngIf="ismovieCardInWishList; else addmovieCardToWishList">
+    <button type="button" class="movie-card-buttons__watch">Obejrzałem!</button>
+  </ng-container>
+  <ng-template #addmovieCardToWishList>
+    <button type="button" class="movie-card-buttons__watch">
+      Chcę zobaczyć
+    </button>
+  </ng-template>
 </div>

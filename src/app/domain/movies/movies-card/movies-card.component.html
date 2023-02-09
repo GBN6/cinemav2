@@ -28,4 +28,18 @@
       ></app-movies-shows>
     </ng-container>
   </div>
+  <div class="movie-card-buttons">
+    <div class="movie-card-buttons__score">
+      <p>Ocena:</p>
+      <p>{{ movieCard.score }}</p>
+    </div>
+
+    <ng-container *ngIf="authState | async as authState">
+      <ng-container *ngIf="authState.isLogged">
+        <app-movies-card-buttons
+          [movieCard]="movieCard"
+        ></app-movies-card-buttons>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>

@@ -20,7 +20,7 @@
         id="name"
         class="input"
         name="user-name"
-        placeholder="Imię"
+        placeholder="Imię*"
       />
       <ng-container *ngIf="orderForm.controls.userName.errors as errors">
         <ng-container *ngIf="orderForm.controls.userName.touched">
@@ -42,7 +42,7 @@
         id="country"
         class="input"
         name="user-last-name"
-        placeholder="Nazwisko"
+        placeholder="Nazwisko*"
       />
       <ng-container *ngIf="orderForm.controls.userLastName.errors as errors">
         <ng-container *ngIf="orderForm.controls.userLastName.touched">
@@ -92,7 +92,7 @@
       id="email"
       class="input"
       name="user-email"
-      placeholder="Email"
+      placeholder="Email*"
     />
     <ng-container *ngIf="orderForm.controls.userMail.errors as errors">
       <ng-container *ngIf="orderForm.controls.userMail.touched">
@@ -112,7 +112,7 @@
       type="email"
       id="confirm-email"
       class="input"
-      placeholder="Potwierdz email"
+      placeholder="Potwierdź email*"
       name="user-email"
     />
     <ng-container

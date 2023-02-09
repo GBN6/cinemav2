@@ -1,10 +1,9 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { LoginApiResponse, LoginData, User } from '../auth.interface';
 
-export const AuthLoaderActions = createActionGroup({
-  source: 'Auth loader',
+export const AuthErrorActions = createActionGroup({
+  source: 'Auth error',
   events: {
-    'set loading': emptyProps(),
     'set error': props<{ error: string }>(),
   },
 });

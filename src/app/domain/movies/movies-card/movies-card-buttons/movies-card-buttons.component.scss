@@ -1,0 +1,16 @@
+.movie-card-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  &__rate,
+  &__watch {
+    background-color: var(--dark);
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 100%;
+  }
+}
