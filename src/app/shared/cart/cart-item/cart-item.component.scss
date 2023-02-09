@@ -11,6 +11,8 @@
   justify-content: space-between;
   width: 100%;
   font-size: 2rem;
+  color: var(--dark);
+  padding-bottom: 1rem;
 }
 
 .ticket-title {
@@ -28,6 +30,11 @@
 
 .remove-ticket-btn {
   background-color: inherit;
+}
+
+.ticket-price,
+.ticket-position {
+  align-self: center;
 }
 
 .ng-fa-icon {

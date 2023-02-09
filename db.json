@@ -55,6 +55,124 @@
         }
       ],
       "userId": 0
+    },
+    {
+      "id": 2,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Thu Feb 09 2023 22:29:52 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "1A0",
+          "showId": 0,
+          "date": "09/02/2023",
+          "hour": "12.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "A1",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Thu Feb 09 2023 22:35:26 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "12A1",
+          "showId": 1,
+          "date": "09/02/2023",
+          "hour": "16.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "A12",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "12B1",
+          "showId": 1,
+          "date": "09/02/2023",
+          "hour": "16.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "B12",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Thu Feb 09 2023 22:36:25 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "9A6",
+          "showId": 6,
+          "date": "12/02/2023",
+          "hour": "18.30",
+          "movieTitle": "Kot w butach. Ostanie życzenie",
+          "seat": {
+            "position": "A9",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "9B6",
+          "showId": 6,
+          "date": "12/02/2023",
+          "hour": "18.30",
+          "movieTitle": "Kot w butach. Ostanie życzenie",
+          "seat": {
+            "position": "B9",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -126,7 +244,12 @@
         "E1",
         "C5",
         "B7",
-        "A4"
+        "A4",
+        "E8",
+        "D8",
+        "A9",
+        "A1",
+        "A1"
       ],
       "priceList": [
         {
@@ -155,7 +278,16 @@
         "F4",
         "H6",
         "C7",
-        "C8"
+        "C8",
+        "H8",
+        "G9",
+        "H9",
+        "A7",
+        "A8",
+        "A12",
+        "B12",
+        "A12",
+        "B12"
       ],
       "priceList": [
         {
@@ -186,7 +318,18 @@
         "E10",
         "F1",
         "L9",
-        "A9"
+        "A9",
+        "K13",
+        "B16",
+        "C16",
+        "B13",
+        "A13",
+        "C13",
+        "I16",
+        "H16",
+        "F7",
+        "J7",
+        "J8"
       ],
       "priceList": [
         {
@@ -215,7 +358,11 @@
         "C9",
         "A12",
         "H1",
-        "H12"
+        "H12",
+        "A1",
+        "A2",
+        "A1",
+        "A2"
       ],
       "priceList": [
         {
@@ -299,7 +446,11 @@
         "A6",
         "D2",
         "D4",
-        "E7"
+        "E7",
+        "A9",
+        "B9",
+        "A9",
+        "B9"
       ],
       "priceList": [
         {

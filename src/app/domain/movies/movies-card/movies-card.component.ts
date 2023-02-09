@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
-import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { MoviesCard } from '../movies.interface';
 
 @Component({

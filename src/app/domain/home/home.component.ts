@@ -13,7 +13,9 @@ import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
     <ng-container *ngIf="cartStatus$ | async as cartStatus">
-      <app-cart></app-cart>
+      <ng-container *ngIf="cartStatus.cartOpen">
+        <app-cart></app-cart>
+      </ng-container>
     </ng-container>
   `,
   styles: [],

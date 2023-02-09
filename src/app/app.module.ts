@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { AuthState } from './auth/auth.interface';
 import { EffectsModule } from '@ngrx/effects';
 import { authReducer } from './auth/store/auth.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
+import { fetchLoggedUser } from './auth/fetchLoggedUser';
 
 export interface AppState {
   auth: AuthState;
@@ -41,7 +42,12 @@ export interface AppState {
     StoreModule.forRoot({ auth: authReducer }),
     EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: fetchLoggedUser,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

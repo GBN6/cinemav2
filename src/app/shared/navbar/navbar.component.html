@@ -9,7 +9,11 @@
       <ng-container *ngIf="authState | async as authState">
         <ng-container *ngIf="authState.isLogged; else notLogged">
           <ng-container *ngIf="ticketState$ | async as ticketState">
-            <button class="header-button cart" type="button">
+            <button
+              (click)="openCart()"
+              class="header-button cart"
+              type="button"
+            >
               <fa-icon [icon]="cart"></fa-icon>
               <ng-container *ngIf="ticketState.length !== 0">
                 <div class="cart-ammount">{{ ticketState.length }}</div>

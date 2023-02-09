@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { MoviesCard } from '../movies.interface';
 import { MoviesListService } from './movies-list.service';
 

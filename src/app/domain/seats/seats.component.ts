@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
-import { SelectedMovieStatfullService } from '../../shared/services/selectedMovie.statefull.service';
+import { SelectedMovieStatfullService } from '../../shared/services/selected-movie.state.service';
 import { SeatsService } from './seats.service';
 
 @Component({

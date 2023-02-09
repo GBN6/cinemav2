@@ -18,11 +18,10 @@ export class CartComponent {
   private cartService = inject(CartService);
 
   ticketState$ = this.ticketService.ticketState$;
+  cartStatus$ = this.cartService.cartStatus$;
 
-  cartStatus = false;
-
-  cartModal() {
-    if (this.cartStatus) {
+  cartModal(cartstatus: boolean) {
+    if (cartstatus) {
       return 'open-cart';
     } else {
       return 'close-cart';
@@ -33,8 +32,8 @@ export class CartComponent {
     this.cartService.closeCart();
   }
 
-  cartOverlayClass() {
-    if (this.cartStatus) {
+  cartOverlayClass(cartStatus: boolean) {
+    if (cartStatus) {
       return 'open-overlay';
     } else {
       return 'close-overlay';

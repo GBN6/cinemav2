@@ -43,11 +43,11 @@
 .show-info-button {
   justify-self: flex-end;
   align-self: flex-end;
-  color: var(--primary);
-  background-color: var(--dark);
+  color: var(--dark);
   font-weight: 600;
-  padding: 1rem;
-  border-radius: 20px;
+  font-size: 2rem;
+  border-bottom: 2px solid var(--secondary);
+  background-color: inherit;
 }
 
 .movieCard-title {

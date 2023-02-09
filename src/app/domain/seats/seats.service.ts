@@ -55,7 +55,7 @@ export class SeatsService {
           .patch(this.apiUrl + `/show/${showId}`, {
             reservedSeats: reservedSeats,
           })
-          .subscribe((data) => console.log(data));
+          .subscribe();
       });
   }
 

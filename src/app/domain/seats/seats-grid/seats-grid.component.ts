@@ -40,6 +40,9 @@ export class SeatsGridComponent {
         type: this.show.priceList[0].type,
       },
     };
+    if (special) {
+      ticketDTO.seat.price = ticketDTO.seat.price + 5;
+    }
     this.ticketService.addTicket(ticketDTO);
   }
 

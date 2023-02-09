@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { map, Observable, of, tap } from 'rxjs';
-import { SelectedMovieStatfullService } from '../services/selectedMovie.statefull.service';
+import { SelectedMovieStatfullService } from '../services/selected-movie.state.service';
 
 @Injectable({
   providedIn: 'root',

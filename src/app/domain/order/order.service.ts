@@ -24,7 +24,7 @@ export class OrderService {
     return this.http.get<Show>(`${this.showUrl}/${number}`);
   }
 
-  addOrder(userData: UserData, tickets: TicketState[]) {
+  addOrder(userId: number | null, userData: UserData, tickets: TicketState[]) {
     const {
       userName,
       userLastName,
@@ -46,8 +46,19 @@ export class OrderService {
       ticket: tickets,
     };
 
-    this.orderEmail$$.next(userMail);
-    this.http.post<Order>(this.orderUrl, orderDTO).subscribe();
+    if (userId) {
+      console.log(userId, 'tu powinno być userID');
+      const userOrderDTO = {
+        ...orderDTO,
+        userId: userId,
+      };
+
+      this.orderEmail$$.next(userMail);
+      this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe();
+    } else {
+      this.orderEmail$$.next(userMail);
+      this.http.post<Order>(this.orderUrl, orderDTO).subscribe();
+    }
   }
 
   addToReservedSeats(tickets: TicketState[]) {

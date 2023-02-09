@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { AppState } from 'src/app/app.module';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { UserData } from './order.interface';
@@ -14,11 +16,14 @@ import { OrderService } from './order.service';
 })
 export class OrderComponent {
   private ticketStateService = inject(TicketStateService);
-  private movieStateService = inject(SelectedMovieStatfullService);
   private orderService = inject(OrderService);
+  private store = inject<Store<AppState>>(Store);
   private router = inject(Router);
 
+  private subscription = new Subscription();
+
   ticketState$ = this.ticketStateService.ticketState$;
+  userId: number | null = null;
   userFormData!: UserData;
 
   modalFlag = false;
@@ -31,6 +36,15 @@ export class OrderComponent {
       Validators.maxLength(6),
     ],
   });
+
+  getUserId() {
+    const sub = this.store
+      .select((state) => state.auth.id)
+      .subscribe((result) => {
+        this.userId = result;
+      });
+    this.subscription.add(sub);
+  }
 
   getFullPrice(tickets: TicketState[]) {
     return tickets.reduce((total, price) => {
@@ -53,8 +67,9 @@ export class OrderComponent {
       return;
     }
 
+    console.log(this.userId);
     this.orderService.addToReservedSeats(tickets);
-    this.orderService.addOrder(this.userFormData, tickets);
+    this.orderService.addOrder(this.userId, this.userFormData, tickets);
     // this.movieStateService.clearMovieAndShowState();
     this.router.navigate(['summarize']);
     this.ticketStateService.clearTicketsState();
@@ -62,5 +77,13 @@ export class OrderComponent {
 
   closeModal() {
     this.modalFlag = !this.modalFlag;
+  }
+
+  ngOnInit() {
+    this.getUserId();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

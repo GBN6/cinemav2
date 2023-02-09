@@ -10,7 +10,7 @@
   width: 50rem;
   height: 100%;
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--dark);
   font-size: 3rem;
   transition: right 0.85s ease-in-out;
 }
@@ -19,6 +19,7 @@
   margin-bottom: 2rem;
   font-size: 4rem;
   font-weight: bold;
+  color: var(--primary);
 }
 
 .tickets-in-cart {
@@ -27,6 +28,12 @@
   gap: 3rem;
   width: 100%;
   overflow: auto;
+  background-color: var(--white);
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+}
+.tickets-in-cart > *:not(:last-child) {
+  border-bottom: 2px solid var(--secondary);
 }
 
 .cart-overlay {
@@ -50,9 +57,15 @@
   padding: 2rem;
   border-radius: 20px;
   font-weight: 600;
-  background-color: rgb(255, 215, 0, 0.6);
-  border: 2px solid rgb(255, 215, 0);
+  background-color: var(--dark-grey);
+  border: 2px solid var(--primary);
+  color: var(--white);
 }
+
+.tickets-total-price {
+  color: var(--primary);
+}
+
 .router-link {
   color: inherit;
 }
@@ -61,6 +74,6 @@
   padding: 2rem;
   border-radius: 20px;
   font-weight: 600;
-  background-color: rgb(253, 86, 86);
-  border: 2px solid rgb(124, 0, 0);
+  background-color: var(--error);
+  border: 2px solid var(--errorLight);
 }

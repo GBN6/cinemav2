@@ -5,7 +5,7 @@ import {
   Input,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SelectedMovieStatfullService } from 'src/app/shared/services/selectedMovie.statefull.service';
+import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { SelectedDate } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { MoviesCard, Show } from '../movies.interface';
