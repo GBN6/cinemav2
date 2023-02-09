@@ -1,0 +1,28 @@
+<div class="card-item-container">
+  <div class="ticket-details">
+    <div class="ticket-title">{{ ticket.movieTitle }}</div>
+    <div class="ticket-when">
+      <div class="ticket-date">{{ ticket.date }}</div>
+      <div class="ticket-hour">{{ ticket.hour }}</div>
+    </div>
+    <div class="ticket-pay">
+      <div class="ticket-type">
+        Rodzaj biletu:
+        <span class="ticket-position">{{ ticket.seat.position }}</span>
+        {{ ticket.seat.type }}
+      </div>
+      <div class="ticket-price">{{ ticket.seat.price }} PLN</div>
+    </div>
+    <div class="ticket-remove-container">
+      <button
+        (click)="
+          removeTicketFromCart(ticket.seat.position, ticket.id, ticket.showId)
+        "
+        class="remove-ticket-btn"
+        type="button"
+      >
+        <fa-icon [icon]="trashCan"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>

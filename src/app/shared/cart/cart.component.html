@@ -1,0 +1,32 @@
+<div *ngIf="cartStatus" class="cart-contianer" [ngClass]="cartModal()">
+  <div class="cart-title">Twój koszyk biletów</div>
+  <ng-container *ngIf="ticketState$ | async as tickets">
+    <div class="tickets-in-cart">
+      <app-cart-item
+        *ngFor="let ticket of tickets"
+        [ticket]="ticket"
+      ></app-cart-item>
+    </div>
+
+    <div class="tickets-total-price">
+      Suma do zapłaty: {{ getFullPrice(tickets) }} PLN
+    </div>
+    <a
+      *ngIf="tickets.length"
+      (click)="closeCart()"
+      class="router-link"
+      routerLink="/form"
+      ><button class="ticket-checkout-btn" type="button">
+        Podsumowanie
+      </button></a
+    >
+    <button class="close-cart-btn" (click)="closeCart()" type="button">
+      Zamknij koszyk
+    </button>
+  </ng-container>
+  <div
+    class="cart-overlay"
+    (click)="closeCart()"
+    [ngClass]="cartOverlayClass()"
+  ></div>
+</div>
