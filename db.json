@@ -8,8 +8,7 @@
       "userData": {
         "userFirstName": "Janek",
         "userLastName": "Kowalski",
-        "userPhoneNumber": "600700800",
-        "userWishList": []
+        "userPhoneNumber": "600700800"
       }
     },
     {
@@ -20,42 +19,30 @@
       "userData": {
         "userFirstName": "Grzegorz",
         "userLastName": "Bandyra",
-        "userPhoneNumber": "123456789",
-        "userWishList": []
+        "userPhoneNumber": "123456789"
       }
     }
   ],
-  "orders": [
+  "userWatchList": [
     {
       "id": 1,
-      "userName": "Grzegorz",
-      "userLastName": "Bandyra",
-      "userMail": "grzegorzbandyra@gmail.com",
-      "discountCode": "",
-      "userPhoneNumber": "",
-      "userInvoiceForm": {
-        "userNIP": "",
-        "userStreet": "",
-        "userPostCode": "",
-        "userCity": ""
+      "movies": {
+        "id": 1,
+        "img": "assets/apokawixa_poster.jpeg",
+        "title": "Apokawixa",
+        "genre": "Horro",
+        "length": "110 min",
+        "ageRest": "PG-13",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "score": "6/10",
+        "boxOff": 10,
+        "premier": false
       },
-      "paiedAt": "1670683894646",
-      "ticket": [
-        {
-          "id": 0.7626349055187085,
-          "title": "Black Panther: Wakanda Forever",
-          "date": "10/12/2022",
-          "hour": "16.30",
-          "seat": {
-            "positon": "F4",
-            "type": "Normalny",
-            "price": 50,
-            "special": false
-          }
-        }
-      ],
-      "userId": 0
-    },
+      "userId": 1
+    }
+  ],
+  "orders": [
     {
       "id": 2,
       "userName": "Jan",
@@ -377,7 +364,11 @@
         "L3",
         "L4",
         "L3",
-        "L4"
+        "L4",
+        "L11",
+        "K11",
+        "L14",
+        "K14"
       ],
       "priceList": [
         {

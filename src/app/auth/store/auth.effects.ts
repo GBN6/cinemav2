@@ -4,6 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, of, switchMap, tap, catchError } from 'rxjs';
 import { AppState } from 'src/app/app.module';
+import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchlist.service';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
 import { AuthActions, AuthApiActions, AuthErrorActions } from './auth.actions';
@@ -13,6 +14,7 @@ export class AuthEffects {
   private store = inject<Store<AppState>>(Store);
   private actions$ = inject(Actions);
   private authService = inject(AuthService);
+  private userWatchListService = inject(UserWatchlistService);
   private tokenService = inject(TokenService);
   private router = inject(Router);
 
@@ -23,6 +25,7 @@ export class AuthEffects {
         return this.authService.login(loginCredentials).pipe(
           map((result) => {
             this.tokenService.saveToken(result.accessToken);
+            this.userWatchListService.getUserWatchlist(result.user.id);
             this.router.navigate(['']);
             return AuthApiActions.loginSuccess(result);
           }),

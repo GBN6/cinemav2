@@ -13,7 +13,6 @@ export interface Data {
   userLastName: string;
   userEmail: string;
   userPhone?: string;
-  userWishList?: MoviesCard[];
 }
 
 export interface LoginData {
@@ -37,7 +36,6 @@ export interface UserData {
   userFirstName: string;
   userLastName: string;
   userPhoneNumber?: string;
-  userWishList?: MoviesCard[];
 }
 
 export interface LoadingError {

@@ -32,7 +32,6 @@ export const authReducer = createReducer(
       userFirstName: action.userData.userFirstName,
       userLastName: action.userData.userLastName,
       userPhone: action.userData.userPhoneNumber,
-      userWishList: action.userData.userWishList,
     },
   })),
 

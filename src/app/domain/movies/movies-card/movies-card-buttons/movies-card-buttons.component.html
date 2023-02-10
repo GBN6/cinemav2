@@ -1,11 +1,15 @@
 <div class="movie-card-buttons">
   <button type="button" class="movie-card-buttons__rate">Oceń ten film!</button>
-  <ng-container *ngIf="ismovieCardInWishList; else addmovieCardToWishList">
-    <button type="button" class="movie-card-buttons__watch">Obejrzałem!</button>
+  <ng-container *ngIf="isMovieInWatchList$ | async as isMovieInWatchList">
+    <ng-container *ngIf="!isMovieInWatchList; else addMovieCardToWishList">
+      <button type="button" class="movie-card-buttons__watch">
+        Obejrzałem!
+      </button>
+    </ng-container>
+    <ng-template #addMovieCardToWishList>
+      <button type="button" class="movie-card-buttons__watch">
+        Chcę zobaczyć
+      </button>
+    </ng-template>
   </ng-container>
-  <ng-template #addmovieCardToWishList>
-    <button type="button" class="movie-card-buttons__watch">
-      Chcę zobaczyć
-    </button>
-  </ng-template>
 </div>

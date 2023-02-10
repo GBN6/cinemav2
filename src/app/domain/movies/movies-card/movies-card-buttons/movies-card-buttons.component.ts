@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchlist.service';
 import { MoviesCard } from '../../movies.interface';
 
 @Component({
@@ -8,5 +10,19 @@ import { MoviesCard } from '../../movies.interface';
 })
 export class MoviesCardButtonsComponent {
   @Input() movieCard!: MoviesCard;
-  ismovieCardInWishList = false;
+  @Input() userId!: number;
+
+  private userWishlistService = inject(UserWatchlistService);
+
+  isMovieInWatchList$: Observable<boolean | null> = of(null);
+
+  // addMovieToWishList() {
+  //   this.userWishlistService.addMovieToWatchList(this.userId, this.movieCard);
+  // }
+
+  ngOnInit() {
+    this.isMovieInWatchList$ = this.userWishlistService.isMovieInWachlist(
+      this.movieCard.id
+    );
+  }
 }

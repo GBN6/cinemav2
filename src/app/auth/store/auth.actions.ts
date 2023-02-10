@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { MoviesCard } from 'src/app/domain/movies/movies.interface';
 import { LoginApiResponse, LoginData, User } from '../auth.interface';
 
 export const AuthErrorActions = createActionGroup({

@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription, take } from 'rxjs';
+import { AppState } from 'src/app/app.module';
+import { selectUserId } from 'src/app/auth/store/auth.selectors';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
+import { UserWatchlistService } from '../../user-watchlist/user-watchlist.service';
 import { MoviesCard } from '../movies.interface';
 import { MoviesListService } from './movies-list.service';
 

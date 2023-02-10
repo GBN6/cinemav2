@@ -36,6 +36,13 @@ import { HomeComponent } from './home.component';
             loadComponent: () => import('../user-orders/user-order.component'),
             canActivate: [AuthGuard],
           },
+          {
+            path: 'my-watchlist/:id',
+            loadComponent: () =>
+              import(
+                '../user-watchlist/user-watchlist/user-watchlist.component'
+              ),
+          },
         ],
       },
     ]),
