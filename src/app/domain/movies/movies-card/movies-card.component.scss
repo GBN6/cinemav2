@@ -19,8 +19,8 @@
     &--premier {
       font-weight: 600;
       font-size: 4rem;
-      backdrop-filter: blur(10px);
-      color: var(--error);
+      background-color: var(--error);
+      color: var(--white);
       position: absolute;
       top: 0;
       right: 0;
