@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 import { SelectedTicketsGuard } from 'src/app/shared/guards/selected-tickets.guard';
 import { SelectedMovieGuard } from 'src/app/shared/guards/selectedMovie.guard';
 import { HomeComponent } from './home.component';
@@ -29,6 +30,11 @@ import { HomeComponent } from './home.component';
           {
             path: 'summarize',
             loadComponent: () => import('../summarize/summarize.component'),
+          },
+          {
+            path: 'my-tickets/:id',
+            loadComponent: () => import('../user-orders/user-order.component'),
+            canActivate: [AuthGuard],
           },
         ],
       },

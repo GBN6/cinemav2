@@ -1,0 +1,25 @@
+<div class="user-orders-container">
+  <h1>Twoje Bilety</h1>
+  <ng-container *ngIf="userOrders$ | async as userOrders; else loading">
+    <ng-container *ngIf="userOrders.length; else noOrders">
+      <div class="user-orders" *ngFor="let order of userOrders">
+        <div class="user-order">
+          <h3>Zamówienie nr {{ order.id }}</h3>
+          <app-user-order-item
+            *ngFor="let ticket of order.ticket"
+            [userOrderItem]="ticket"
+          ></app-user-order-item>
+          <button type="button" class="download-ticket-btn">
+            Pobierz rachunek/fakturę
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noOrders>
+      <h1>Brak poprzednich zamówień</h1>
+    </ng-template>
+  </ng-container>
+  <ng-template #loading>
+    <p>...Ładowanie</p>
+  </ng-template>
+</div>

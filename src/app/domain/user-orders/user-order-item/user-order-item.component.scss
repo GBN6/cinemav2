@@ -1,0 +1,32 @@
+.order-ticket {
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+  border-bottom: 2px solid var(--dark);
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.ticket-details,
+.ticket-pay {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-when {
+  display: flex;
+  gap: 1rem;
+}
+
+.download-ticket-btn {
+  padding: 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  background-color: var(--dark);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}

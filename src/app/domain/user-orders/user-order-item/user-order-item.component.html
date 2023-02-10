@@ -1,0 +1,19 @@
+<div class="order-ticket">
+  <div class="ticket">
+    <div class="ticket-details">
+      <div class="ticket-titlte">{{ userOrderItem.title }}</div>
+      <div class="ticket-when">
+        <div class="ticket-date">{{ userOrderItem.date }}</div>
+        <div class="ticket-hour">{{ userOrderItem.hour }}</div>
+      </div>
+    </div>
+    <div class="ticket-pay">
+      <div class="ticket-type">
+        Rodzaj biletu: {{ userOrderItem.seat.type }}
+        {{ userOrderItem.seat.positon }}
+      </div>
+      <div class="ticket-price">{{ userOrderItem.seat.price }} PLN</div>
+    </div>
+  </div>
+  <button type="button" class="download-ticket-btn">Pobierz bilet w PDF</button>
+</div>

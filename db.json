@@ -173,6 +173,50 @@
           }
         }
       ]
+    },
+    {
+      "id": 5,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Fri Feb 10 2023 09:58:19 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "3L2",
+          "showId": 2,
+          "date": "10/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "L3",
+            "price": 15,
+            "special": false,
+            "type": "Senior"
+          }
+        },
+        {
+          "id": "4L2",
+          "showId": 2,
+          "date": "10/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "L4",
+            "price": 10,
+            "special": false,
+            "type": "Ulgowy"
+          }
+        }
+      ],
+      "userId": 1
     }
   ],
   "blik": [
@@ -329,7 +373,11 @@
         "H16",
         "F7",
         "J7",
-        "J8"
+        "J8",
+        "L3",
+        "L4",
+        "L3",
+        "L4"
       ],
       "priceList": [
         {
