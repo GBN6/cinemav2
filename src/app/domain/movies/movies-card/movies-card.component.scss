@@ -4,10 +4,15 @@
   display: flex;
   justify-content: space-around;
   padding: 1rem;
+  gap: 8px;
+
+  // & > div:not(:last-child) {
+  //   border-right: 2px solid var(--secondary);
+  //   padding-right: 1rem;
+  // }
 
   &__poster {
     position: relative;
-    margin-right: 8px;
     &--img {
       max-width: 200px;
       width: 100%;
@@ -36,7 +41,6 @@
     text-align: left;
     width: 60%;
     color: var(--dark);
-    margin-right: 8px;
   }
 }
 

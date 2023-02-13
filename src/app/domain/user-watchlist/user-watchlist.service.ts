@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { map, take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { WatchlistActions } from './store/watchlist.actions';
 import { UserWatchList } from './user-watchlist.interface';
@@ -52,5 +53,16 @@ export class UserWatchlistService {
         (watchlist) => watchlist.id !== movieId
       );
     });
+  }
+
+  findUserWatchListId(movieId: number) {
+    return this.store
+      .select((state) => state.userWatchList.userWatchlist)
+      .pipe(
+        take(1),
+        map((result) => {
+          return result.find((watchlist) => watchlist.movies.id === movieId);
+        })
+      );
   }
 }

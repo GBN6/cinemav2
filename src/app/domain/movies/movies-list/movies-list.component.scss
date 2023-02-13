@@ -29,7 +29,7 @@
   }
 
   &__movies > div:not(:last-child) {
-    border-bottom: 2px solid rgb(169, 169, 169);
+    border-bottom: 2px solid var(--primary-darker);
   }
 }
 

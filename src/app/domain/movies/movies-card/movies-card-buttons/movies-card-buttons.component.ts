@@ -16,8 +16,16 @@ export class MoviesCardButtonsComponent {
 
   isMovieInWatchList$: Observable<boolean | null> = of(null);
 
-  // addMovieToWishList() {
-  //   this.userWishlistService.addMovieToWatchList(this.userId, this.movieCard);
+  addMovieToWishList() {
+    this.userWishlistService.addMovieToWatchList(this.userId, {
+      id: 0,
+      movies: this.movieCard,
+      userId: this.userId,
+    });
+  }
+
+  // removeMovieFromWishList() {
+  //   this.userWishlistService.removeMovieFromWatchList()
   // }
 
   ngOnInit() {
