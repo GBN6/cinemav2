@@ -23,7 +23,92 @@
       }
     }
   ],
-  "userWatchList": [],
+  "userWatchList": [
+    {
+      "id": 2,
+      "movies": {
+        "id": 2,
+        "img": "assets/avatar2_poster.jpg",
+        "title": "Avatar: Istota wody",
+        "genre": "Science-Fiction",
+        "length": "193 min",
+        "ageRest": "PG-12",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+        "score": "8/10",
+        "director": "James Cameron",
+        "actors": [
+          "Stephen Lang",
+          "Zoe Saldana",
+          "Sam Worthington",
+          "Sigourney Weaver"
+        ],
+        "boxOff": 1000,
+        "premier": false,
+        "dateId": 1
+      },
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "movies": {
+        "id": 0,
+        "img": "assets/wakanda_poster.jpg",
+        "title": "Black Panther: Wakanda Forever",
+        "genre": "Action, Super hero",
+        "length": "130 min",
+        "ageRest": "PG-13",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "score": "8/10",
+        "premier": true,
+        "dateId": 1
+      },
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "movies": {
+        "id": 1,
+        "img": "assets/apokawixa_poster.jpeg",
+        "title": "Apokawixa",
+        "genre": "Horro",
+        "length": "110 min",
+        "ageRest": "PG-13",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "score": "6/10",
+        "premier": false,
+        "dateId": 3
+      },
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "movies": {
+        "id": 3,
+        "img": "assets/kot_poster.jpg",
+        "title": "Kot w butach. Ostanie życzenie",
+        "genre": "Aniowany, Familijny, Przygodowy",
+        "length": "100 min",
+        "ageRest": "PG-6",
+        "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+        "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+        "score": "8/10",
+        "director": "James Cameron",
+        "actors": [
+          "Stephen Lang",
+          "Zoe Saldana",
+          "Sam Worthington",
+          "Sigourney Weaver"
+        ],
+        "boxOff": 1000,
+        "premier": false,
+        "dateId": 3
+      },
+      "userId": 1
+    }
+  ],
   "orders": [
     {
       "id": 2,
@@ -186,6 +271,94 @@
         }
       ],
       "userId": 1
+    },
+    {
+      "id": 6,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Tue Feb 14 2023 19:37:07 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "1H1",
+          "showId": 1,
+          "date": "15/02/2023",
+          "hour": "16.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "H1",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "1G1",
+          "showId": 1,
+          "date": "15/02/2023",
+          "hour": "16.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "G1",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@costma.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Tue Feb 14 2023 19:40:06 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "5H2",
+          "showId": 2,
+          "date": "14/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "H5",
+            "price": 20,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "3H2",
+          "showId": 2,
+          "date": "14/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "H3",
+            "price": 20,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
     }
   ],
   "blik": [
@@ -300,7 +473,11 @@
         "A12",
         "B12",
         "A12",
-        "B12"
+        "B12",
+        "H1",
+        "G1",
+        "H1",
+        "G1"
       ],
       "priceList": [
         {
@@ -352,7 +529,11 @@
         "L14",
         "K14",
         "J1",
-        "I1"
+        "I1",
+        "H5",
+        "H3",
+        "H5",
+        "H3"
       ],
       "priceList": [
         {

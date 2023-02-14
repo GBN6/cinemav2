@@ -18,14 +18,9 @@ export class UserWatchlistService {
   // userWatchList?userId=1
 
   getUserWatchlist(userId: number) {
-    this.http
-      .get<UserWatchList[]>(this.apiUrl + `/users/${userId}/userWatchList`)
-      .subscribe((result) => {
-        console.log(result);
-        this.store.dispatch(
-          WatchlistActions.addWatchlist({ userWatchList: result })
-        );
-      });
+    return this.http.get<UserWatchList[]>(
+      this.apiUrl + `/users/${userId}/userWatchList`
+    );
   }
 
   addMovieToWatchList(userId: number, movie: UserWatchList) {
@@ -33,19 +28,15 @@ export class UserWatchlistService {
       this.apiUrl + `/userWatchList?userId=${userId}`,
       movie
     );
-    // .subscribe((result) => {
-    //   this.store.dispatch(WatchlistActions.addMovieToWatchlist(result));
-    // });
   }
 
   removeMovieFromWatchList(userWatchListId: number) {
-    this.http
-      .delete(this.apiUrl + `/userWatchList/${userWatchListId}`)
-      .subscribe(() => {
-        this.store.dispatch(
-          WatchlistActions.removeMovieFromWatchlist({ userWatchListId })
-        );
-      });
+    return this.http.delete(this.apiUrl + `/userWatchList/${userWatchListId}`);
+    // .subscribe(() => {
+    //   this.store.dispatch(
+    //     WatchlistActions.removeMovieFromWatchlist({ userWatchListId })
+    //   );
+    // });
   }
 
   isMovieInWachlist(movieId: number) {

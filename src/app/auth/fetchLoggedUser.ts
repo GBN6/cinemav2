@@ -4,6 +4,7 @@ import { AppState } from 'src/app/app.module';
 import { TokenService } from './token.service';
 import { AuthActions } from './store/auth.actions';
 import { UserWatchlistService } from '../domain/user-watchlist/user-watchlist.service';
+import { WatchlistActions } from '../domain/user-watchlist/store/watchlist.actions';
 
 export function fetchLoggedUser() {
   const tokenService = inject(TokenService);
@@ -15,7 +16,10 @@ export function fetchLoggedUser() {
   if (token) {
     if (!tokenService.isTokenExpired() && decodedToken!.sub) {
       store.dispatch(AuthActions.getUser({ userId: +decodedToken!.sub }));
-      userWatchListService.getUserWatchlist(+decodedToken!.sub);
+      store.dispatch(
+        WatchlistActions.addWatchlist({ userId: +decodedToken!.sub })
+      );
+      // userWatchListService.getUserWatchlist(+decodedToken!.sub);
     } else if (tokenService.isTokenExpired()) {
       tokenService.removeToken();
     }

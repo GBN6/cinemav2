@@ -1,20 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
-import { WatchlistActions } from './watchlist.actions';
+import { WatchlistActions, WatchlistAPIActions } from './watchlist.actions';
 import { initialWatchlistState } from './watchlist.state';
 
 export const watchlistReducer = createReducer(
   initialWatchlistState,
-  on(WatchlistActions.addWatchlist, (state, action) => ({
+
+  on(WatchlistAPIActions.fetchUserwacthlistSuccess, (state, action) => ({
     ...state,
     userWatchlist: [...action.userWatchList],
   })),
 
-  on(WatchlistActions.addMovieToWatchlist, (state, action) => ({
+  on(WatchlistAPIActions.addMovieToWatchlistSuccess, (state, action) => ({
     ...state,
     userWatchlist: [...state.userWatchlist, action],
   })),
 
-  on(WatchlistActions.removeMovieFromWatchlist, (state, action) => {
+  on(WatchlistAPIActions.removeMovieFromWatchlistSuccess, (state, action) => {
     const filteredWatchlist = state.userWatchlist.filter(
       (userWatchlist) => userWatchlist.id !== action.userWatchListId
     );
