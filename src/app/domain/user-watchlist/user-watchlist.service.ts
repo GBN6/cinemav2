@@ -29,14 +29,13 @@ export class UserWatchlistService {
   }
 
   addMovieToWatchList(userId: number, movie: UserWatchList) {
-    this.http
-      .post<UserWatchList>(
-        this.apiUrl + `/userWatchList?userId=${userId}`,
-        movie
-      )
-      .subscribe((result) => {
-        this.store.dispatch(WatchlistActions.addMovieToWatchlist(result));
-      });
+    return this.http.post<UserWatchList>(
+      this.apiUrl + `/userWatchList?userId=${userId}`,
+      movie
+    );
+    // .subscribe((result) => {
+    //   this.store.dispatch(WatchlistActions.addMovieToWatchlist(result));
+    // });
   }
 
   removeMovieFromWatchList(userWatchListId: number) {

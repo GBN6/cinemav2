@@ -13,6 +13,10 @@ export const WatchlistActions = createActionGroup({
 export const WatchlistAPIActions = createActionGroup({
   source: 'User Watchlist API',
   events: {
+    'add movie to watchlist': props<{
+      userWatchlist: UserWatchList;
+      userId: number;
+    }>(),
     'remove movie from watchlist success': props<{ userWatchListId: number }>(),
     'remove movie from watchlist failure': emptyProps(),
   },
