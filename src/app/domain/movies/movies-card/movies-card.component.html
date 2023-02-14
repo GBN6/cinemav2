@@ -38,6 +38,7 @@
       <ng-container *ngIf="authState.isLogged">
         <app-movies-card-buttons
           [movieCard]="movieCard"
+          [userId]="authState.id!"
         ></app-movies-card-buttons>
       </ng-container>
     </ng-container>

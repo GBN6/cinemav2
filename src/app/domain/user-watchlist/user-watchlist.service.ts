@@ -15,6 +15,8 @@ export class UserWatchlistService {
 
   private apiUrl = 'http://localhost:3000';
 
+  // userWatchList?userId=1
+
   getUserWatchlist(userId: number) {
     this.http
       .get<UserWatchList[]>(this.apiUrl + `/users/${userId}/userWatchList`)
@@ -29,7 +31,7 @@ export class UserWatchlistService {
   addMovieToWatchList(userId: number, movie: UserWatchList) {
     this.http
       .post<UserWatchList>(
-        this.apiUrl + `/users/${userId}/userWatchList`,
+        this.apiUrl + `/userWatchList?userId=${userId}`,
         movie
       )
       .subscribe((result) => {
@@ -50,19 +52,22 @@ export class UserWatchlistService {
   isMovieInWachlist(movieId: number) {
     return this.store.select((state) => {
       return state.userWatchList.userWatchlist.some(
-        (watchlist) => watchlist.id !== movieId
+        (watchlist) => watchlist.movies.id === movieId
       );
     });
   }
 
-  findUserWatchListId(movieId: number) {
-    return this.store
-      .select((state) => state.userWatchList.userWatchlist)
-      .pipe(
-        take(1),
-        map((result) => {
-          return result.find((watchlist) => watchlist.movies.id === movieId);
-        })
-      );
+  findUserWatchListId(userId: number, movieId: number) {
+    return this.store.select((state) => {
+      return state.userWatchList.userWatchlist.find((watchlistMovie) => {
+        if (
+          watchlistMovie.userId === userId &&
+          watchlistMovie.movies.id === movieId
+        ) {
+          return watchlistMovie.id;
+        }
+        return null;
+      });
+    });
   }
 }

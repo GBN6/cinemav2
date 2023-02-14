@@ -23,25 +23,7 @@
       }
     }
   ],
-  "userWatchList": [
-    {
-      "id": 1,
-      "movies": {
-        "id": 1,
-        "img": "assets/apokawixa_poster.jpeg",
-        "title": "Apokawixa",
-        "genre": "Horro",
-        "length": "110 min",
-        "ageRest": "PG-13",
-        "description": "Whenever i have time i will add some description",
-        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "score": "6/10",
-        "boxOff": 10,
-        "premier": false
-      },
-      "userId": 1
-    }
-  ],
+  "userWatchList": [],
   "orders": [
     {
       "id": 2,
