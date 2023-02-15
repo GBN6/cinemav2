@@ -5,6 +5,7 @@ import { AppState } from 'src/app/app.module';
 import { WatchlistActions } from 'src/app/domain/user-watchlist/store/watchlist.actions';
 import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchlist.service';
 import { MoviesCard } from '../../movies.interface';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movies-card-buttons[movieCard][userId]',
@@ -17,6 +18,7 @@ export class MoviesCardButtonsComponent {
 
   private userWishlistService = inject(UserWatchlistService);
   private store = inject<Store<AppState>>(Store);
+  private dialogWindow = inject(MatDialog);
 
   isMovieInWatchList$: Observable<boolean | null> = of(null);
 

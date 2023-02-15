@@ -24,17 +24,8 @@ export class MoviesCardComponent {
   selectedDate$ = this.selectedMovieService.stateSelectedDate$;
 
   showLongDescription = false;
-  isRatingModalVisible = false;
 
   showDescription() {
     this.showLongDescription = !this.showLongDescription;
-  }
-
-  howRatingModal() {
-    this.isRatingModalVisible = true;
-  }
-
-  closeRatingModal() {
-    this.isRatingModalVisible = false;
   }
 }

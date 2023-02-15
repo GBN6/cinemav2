@@ -8,6 +8,7 @@ import { MovieShowsService } from '../movies-shows/movies-shows.service';
 import { MoviesListService } from './movies-list.service';
 import { FooterComponent } from 'src/app/shared/footer/footer.compononet';
 import { MoviesCardButtonsComponent } from '../movies-card/movies-card-buttons/movies-card-buttons.component';
+import { UserMovieRatingComponent } from '../movies-card/user-movie-rating/user-movie-rating.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MoviesCardButtonsComponent } from '../movies-card/movies-card-buttons/m
     MoviesShowsComponent,
     MoviesListComponent,
     MoviesCardButtonsComponent,
+    UserMovieRatingComponent,
   ],
   imports: [
     RouterModule.forChild([

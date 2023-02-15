@@ -13,6 +13,7 @@ import { fetchLoggedUser } from './auth/fetchLoggedUser';
 import { UserWatchlistInitialState } from './domain/user-watchlist/store/watchlist.state';
 import { watchlistReducer } from './domain/user-watchlist/store/watchlist.reducer';
 import { userWatchlistEffects } from './domain/user-watchlist/store/watchlist.effects';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export interface AppState {
   auth: AuthState;
@@ -45,6 +46,7 @@ export interface AppState {
     ]),
     StoreModule.forRoot({ auth: authReducer, userWatchList: watchlistReducer }),
     EffectsModule.forRoot([AuthEffects, userWatchlistEffects]),
+    FontAwesomeModule,
   ],
   providers: [
     {
