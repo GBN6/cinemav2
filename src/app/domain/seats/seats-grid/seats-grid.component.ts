@@ -67,6 +67,7 @@ export class SeatsGridComponent {
     seatPos: string,
     id: string
   ) {
+    if (this.ticketService.isTicketCartFUll()) return;
     let index = selectedSeats.indexOf(seatPos);
     if (index !== -1) {
       // seat already selected, remove

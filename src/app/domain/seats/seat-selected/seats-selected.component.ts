@@ -44,9 +44,6 @@ export class SeatsSelectedComponent {
   removeTicket(seat: string, id: string) {
     this.ticketStateService.removeSeat(seat);
     this.ticketStateService.removeTicket(id);
-    console.log('dsalhflashfsalfh');
-    // console.log(id, seat);
-    // this.ticketStateService.ticketState$.subscribe(console.log);
   }
 
   ngOnInit() {

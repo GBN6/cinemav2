@@ -82,6 +82,11 @@ export class TicketStateService {
     );
   }
 
+  isTicketCartFUll() {
+    if (this.ticketState$$.value.length === 10) return true;
+    return false;
+  }
+
   clearTicketsState() {
     this.ticketState$$.next([]);
   }
