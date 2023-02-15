@@ -24,3 +24,16 @@ export interface PriceList {
   type: string;
   price: number;
 }
+
+export interface RatingState {
+  rating: number;
+  hasUserRated: boolean;
+  movieId: number | null;
+  userId: number | null;
+}
+
+export interface Rate {
+  rate: number;
+  userId: number;
+  movieId: number;
+}

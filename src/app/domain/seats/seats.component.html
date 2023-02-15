@@ -1,5 +1,5 @@
 <div class="seat-selection-container">
-  <ng-container *ngIf="selectedState$ | async as selectedState">
+  <ng-container *ngIf="selectedState$ | async as selectedState; else loading">
     <div class="movie-title">
       {{ selectedState.selectedMovie.title }},
       {{ selectedState.selectedDate.date }}
@@ -13,22 +13,25 @@
         [show]="selectedState.selectedShow"
       ></app-seats-grid>
     </div>
-    <ng-container *ngIf="ticketState$ | async as tickets; else loading">
-      <div class="all-selected-tickets">
+    <ng-container *ngIf="ticketState$ | async as tickets">
+      <div *ngIf="tickets.length; else noTickets" class="all-selected-tickets">
         <app-seats-selected
           *ngFor="let ticket of tickets"
           [show]="selectedState.selectedShow"
           [ticket]="ticket"
         ></app-seats-selected>
       </div>
+      <ng-template #noTickets>
+        <h2>Wybierz siedzenie aby dodać bilet</h2>
+      </ng-template>
       <div class="navigation-links">
         <a *ngIf="tickets.length" class="router-link" routerLink="/order">
           Przejdz do zamówienia
         </a>
       </div>
     </ng-container>
-    <ng-template #loading>
-      <p>...Ładowanie</p>
-    </ng-template>
   </ng-container>
+  <ng-template #loading>
+    <p>...Ładowanie</p>
+  </ng-template>
 </div>

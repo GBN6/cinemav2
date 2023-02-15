@@ -9,6 +9,8 @@ import { MoviesListService } from './movies-list.service';
 import { FooterComponent } from 'src/app/shared/footer/footer.compononet';
 import { MoviesCardButtonsComponent } from '../movies-card/movies-card-buttons/movies-card-buttons.component';
 import { UserMovieRatingComponent } from '../movies-card/user-movie-rating/user-movie-rating.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { UserMovieRatingComponent } from '../movies-card/user-movie-rating/user-
     ]),
     CommonModule,
     FooterComponent,
+    MatDialogModule,
+    FontAwesomeModule,
   ],
   providers: [MovieShowsService, MoviesListService],
 })

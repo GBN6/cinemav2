@@ -4,24 +4,12 @@ import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable, take, tap } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { selectUserId } from 'src/app/auth/store/auth.selectors';
-
-export interface RatingState {
-  rating: number;
-  hasUserRated: boolean;
-  movieId: number | null;
-  userId: number | null;
-}
-
-export interface Rate {
-  rate: number;
-  userId: number;
-  movieId: number;
-}
+import { Rate, RatingState } from '../../movies.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RatingService {
+export class UserMovieRatingService {
   private store = inject<Store<AppState>>(Store);
   private apiUrl = 'http://localhost:3000';
   private http = inject(HttpClient);

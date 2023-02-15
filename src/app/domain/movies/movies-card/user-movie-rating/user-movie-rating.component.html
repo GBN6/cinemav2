@@ -1,0 +1,36 @@
+<div class="rating-scale">
+  <h2 *ngIf="rate; else elseBlock">{{ rate }} Gwiazdek</h2>
+  <ng-template #elseBlock>
+    <p class="rating-scale__text">Wybierz ocenę.</p>
+  </ng-template>
+  <div class="rating-scale__stars-container">
+    <fa-icon
+      *ngFor="let i of [].constructor(rateScale); let index = index"
+      [icon]="star"
+      class="rating-scale__star"
+      [ngClass]="{
+        'rating-scale__star-active': rate > index
+      }"
+      (click)="handleChangeRate(index + 1)"
+    ></fa-icon>
+  </div>
+  <div class="rating-buttons">
+    <button
+      class="rating-buttons__add"
+      mat-flat-button
+      color="primary"
+      [mat-dialog-close]=""
+      cdkFocusInitial
+    >
+      Oceń!
+    </button>
+    <button
+      class="rating-buttons__close"
+      mat-flat-button
+      color="primary"
+      mat-dialog-close
+    >
+      Zamknij
+    </button>
+  </div>
+</div>

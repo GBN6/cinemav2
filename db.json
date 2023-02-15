@@ -23,31 +23,31 @@
       }
     }
   ],
-  "userWatchList": [],
+  "userWatchList": [
+    {
+      "id": 1,
+      "movies": {
+        "id": 0,
+        "img": "assets/wakanda_poster.jpg",
+        "title": "Black Panther: Wakanda Forever",
+        "genre": "Action, Super hero",
+        "length": "130 min",
+        "ageRest": "PG-13",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "score": "8/10",
+        "premier": true,
+        "dateId": 2
+      },
+      "userId": 1
+    }
+  ],
   "rating": [
     {
       "rate": 4,
       "movieId": 1,
       "userId": 1,
       "id": 1
-    },
-    {
-      "rate": 4,
-      "movieId": 1,
-      "userId": 4,
-      "id": 2
-    },
-    {
-      "rate": 3,
-      "movieId": 2,
-      "userId": 4,
-      "id": 3
-    },
-    {
-      "rate": 5,
-      "movieId": 3,
-      "userId": 4,
-      "id": 4
     }
   ],
   "orders": [
@@ -132,6 +132,62 @@
           "seat": {
             "position": "B9",
             "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Wed Feb 15 2023 13:48:49 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "16A2",
+          "showId": 2,
+          "date": "16/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "A16",
+            "price": 15,
+            "special": false,
+            "type": "Senior"
+          }
+        },
+        {
+          "id": "16B2",
+          "showId": 2,
+          "date": "16/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "B16",
+            "price": 10,
+            "special": false,
+            "type": "Ulgowy"
+          }
+        },
+        {
+          "id": "16C2",
+          "showId": 2,
+          "date": "16/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "C16",
+            "price": 20,
             "special": false,
             "type": "Normalny"
           }
@@ -292,7 +348,17 @@
         "G2",
         "H2",
         "I2",
-        "J2"
+        "J2",
+        "J12",
+        "I12",
+        "H12",
+        "A16",
+        "B16",
+        "C16",
+        "A16",
+        "B16",
+        "C16",
+        "L14"
       ],
       "priceList": [
         {
