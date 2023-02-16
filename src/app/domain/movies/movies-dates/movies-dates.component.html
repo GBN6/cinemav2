@@ -1,0 +1,12 @@
+<div class="home-container__dates">
+  <button
+    type="button"
+    class="dates-button"
+    *ngFor="let date of week; let i = index"
+    (click)="selectDate(i)"
+    [disabled]="currentIndex > i"
+    [ngClass]="clickedIndex === i ? 'dates-button--active' : ''"
+  >
+    {{ date.slice(0, 5) }}
+  </button>
+</div>

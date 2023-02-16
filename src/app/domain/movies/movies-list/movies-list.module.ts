@@ -11,6 +11,7 @@ import { MoviesCardButtonsComponent } from '../movies-card/movies-card-buttons/m
 import { UserMovieRatingComponent } from '../movies-card/user-movie-rating/user-movie-rating.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MoviesDatesComponent } from '../movies-dates/movies-dates.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MoviesListComponent,
     MoviesCardButtonsComponent,
     UserMovieRatingComponent,
+    MoviesDatesComponent,
   ],
   imports: [
     RouterModule.forChild([
       {
-        path: '',
+        path: ':id',
         component: MoviesListComponent,
+      },
+      {
+        path: '',
+        redirectTo: '112',
+        pathMatch: 'full',
       },
     ]),
     CommonModule,

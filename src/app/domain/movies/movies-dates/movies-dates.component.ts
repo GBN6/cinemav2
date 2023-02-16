@@ -1,35 +1,21 @@
-import { Location } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  inject,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
-import { MoviesCard } from '../movies.interface';
-import { MoviesListService } from './movies-list.service';
 
 @Component({
-  selector: 'app-movies-list',
-  templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-movies-dates',
+  templateUrl: 'movies-dates.component.html',
+  styleUrls: ['./movies-dates.component.scss'],
 })
-export class MoviesListComponent {
-  private moviesListService = inject(MoviesListService);
+export class MoviesDatesComponent {
   private selectedStateService = inject(SelectedMovieStatfullService);
-  private activeRoute = inject(ActivatedRoute);
-  private cdr = inject(ChangeDetectorRef);
-  private location = inject(Location);
-
   private subscription = new Subscription();
+  private router = inject(Router);
 
   week: string[] = [];
   clickedIndex = 0;
   currentIndex = 0;
-  movies$: Observable<MoviesCard[]> | null = null;
 
   private getDates() {
     let curr = new Date();
@@ -48,6 +34,7 @@ export class MoviesListComponent {
       if (date === today) {
         this.currentIndex = index;
         this.clickedIndex = index;
+        this.router.navigate([index]);
       }
     });
 
@@ -57,6 +44,7 @@ export class MoviesListComponent {
           if (!result) return;
           if (index === result.id) {
             this.clickedIndex = index;
+            this.router.navigate([index]);
           }
         });
       }
@@ -66,28 +54,20 @@ export class MoviesListComponent {
 
   selectDate(index: number) {
     this.clickedIndex = index;
-    this.movies$ = this.moviesListService.getMovies(this.clickedIndex);
     this.selectedStateService.addNewSelectedDate({
       id: this.clickedIndex,
       date: this.week[this.clickedIndex],
     });
-    this.location.replaceState(`${index}`);
+    this.router.navigate([index]);
   }
 
   ngOnInit() {
     this.getDates();
     this.setTodayDate();
-    this.activeRoute.params.subscribe((params) => {
-      if (params['id'] === '112') {
-        this.selectDate(this.clickedIndex);
-      } else {
-        this.selectDate(+params['id']);
-        this.cdr.detectChanges;
-      }
-    });
+    console.log(this.clickedIndex);
   }
 
-  ngOndestroy() {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }
