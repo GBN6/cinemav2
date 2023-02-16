@@ -35,13 +35,12 @@
     </div>
 
     <ng-container *ngIf="authState | async as authState">
-      <ng-container *ngIf="authState.isLogged; else loadbuttons">
+      <ng-container *ngIf="authState.isLogged">
         <app-movies-card-buttons
           [movieCard]="movieCard"
           [userId]="authState.id!"
         ></app-movies-card-buttons>
       </ng-container>
-      <ng-template #loadbuttons>...Ładowanie</ng-template>
     </ng-container>
   </div>
 </div>
