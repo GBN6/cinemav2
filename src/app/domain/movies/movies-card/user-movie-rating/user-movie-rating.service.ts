@@ -9,10 +9,11 @@ import { Rate, RatingState } from '../../movies.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class UserMovieRatingService {
+export class UserMovieRateService {
   private store = inject<Store<AppState>>(Store);
-  private apiUrl = 'http://localhost:3000';
   private http = inject(HttpClient);
+
+  private apiUrl = 'http://localhost:3000';
 
   constructor() {
     this.store
@@ -23,19 +24,20 @@ export class UserMovieRatingService {
       });
   }
 
-  private _ratingState$$ = new BehaviorSubject<RatingState>({
+  private userMovieRateState$$ = new BehaviorSubject<RatingState>({
     rating: 0,
     hasUserRated: false,
     movieId: null,
     userId: null,
   });
 
-  public readonly ratingState$: Observable<RatingState> =
-    this._ratingState$$.asObservable();
+  get ratingState$() {
+    return this.userMovieRateState$$.asObservable();
+  }
 
   private patchState(stateSlice: Partial<RatingState>) {
-    this._ratingState$$.next({
-      ...this._ratingState$$.value,
+    this.userMovieRateState$$.next({
+      ...this.userMovieRateState$$.value,
       ...stateSlice,
     });
   }
@@ -44,7 +46,7 @@ export class UserMovieRatingService {
     this.patchState({ movieId: movieId });
     this.http
       .get<Rate[]>(
-        `${this.apiUrl}/rating?movieId=${movieId}&userId=${this._ratingState$$.value.userId}`
+        `${this.apiUrl}/rating?movieId=${movieId}&userId=${this.userMovieRateState$$.value.userId}`
       )
       .subscribe({
         next: (result) => {
@@ -61,9 +63,9 @@ export class UserMovieRatingService {
   submitRating() {
     return this.http
       .post(`${this.apiUrl}/rating`, {
-        rate: this._ratingState$$.value.rating,
-        movieId: this._ratingState$$.value.movieId,
-        userId: this._ratingState$$.value.userId,
+        rate: this.userMovieRateState$$.value.rating,
+        movieId: this.userMovieRateState$$.value.movieId,
+        userId: this.userMovieRateState$$.value.userId,
       })
       .pipe(
         tap({

@@ -5,6 +5,10 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { take } from 'rxjs';
+import { AppState } from 'src/app/app.module';
+import { selectData } from 'src/app/auth/store/auth.selectors';
 import { UserData } from '../order.interface';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {
@@ -23,6 +27,7 @@ export class OrderFormComponent implements OnInit {
   @Output() openModal = new EventEmitter<boolean>();
 
   private fb = inject(NonNullableFormBuilder);
+  private store = inject<Store<AppState>>(Store);
 
   orderForm = this.fb.group(
     {
@@ -132,5 +137,21 @@ export class OrderFormComponent implements OnInit {
     this.openModal.emit(true);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select(selectData)
+      .pipe(take(1))
+      .subscribe((result) => {
+        if (result) {
+          this.orderForm.controls.userName.setValue(result.userFirstName);
+          this.orderForm.controls.userLastName.setValue(result.userLastName);
+          this.orderForm.controls.userMail.setValue(result.userEmail);
+          this.orderForm.controls.userMailConfirmation.setValue(
+            result.userEmail
+          );
+          if (result.userPhone)
+            this.orderForm.controls.userPhoneNumber.setValue(result.userPhone);
+        }
+      });
+  }
 }

@@ -7,28 +7,39 @@ import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchli
 import { MoviesCard } from '../../movies.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { UserMovieRatingComponent } from '../user-movie-rating/user-movie-rating.component';
-import { UserMovieRatingService } from '../user-movie-rating/user-movie-rating.service';
+import { UserMovieRateService } from '../user-movie-rating/user-movie-rating.service';
 
 @Component({
   selector: 'app-movies-card-buttons[movieCard][userId]',
   templateUrl: './movies-card-buttons.component.html',
   styleUrls: ['./movies-card-buttons.component.scss'],
+  providers: [UserMovieRateService],
 })
 export class MoviesCardButtonsComponent {
   @Input() movieCard!: MoviesCard;
   @Input() userId!: number;
 
   private userWishlistService = inject(UserWatchlistService);
-  private userMovieRatingService = inject(UserMovieRatingService);
   private store = inject<Store<AppState>>(Store);
   private dialogWindow = inject(MatDialog);
+  private userMovieRateService = inject(UserMovieRateService);
 
   isMovieInWatchList$: Observable<boolean | null> = of(null);
-  userMovieRatingState$ = this.userMovieRatingService.ratingState$;
+  userMovieRateState$ = this.userMovieRateService.ratingState$;
+
+  userRate: number = 0;
 
   openDialog() {
-    this.dialogWindow.open(UserMovieRatingComponent, {
+    const dialogRef = this.dialogWindow.open(UserMovieRatingComponent, {
       panelClass: 'rating-dialog',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (!result) return;
+      this.userRate = result;
+      this.userMovieRateService.updateRating(this.userRate);
+      this.userMovieRateService.submitRating().subscribe();
     });
   }
 
@@ -60,5 +71,6 @@ export class MoviesCardButtonsComponent {
     this.isMovieInWatchList$ = this.userWishlistService.isMovieInWachlist(
       this.movieCard.id
     );
+    this.userMovieRateService.fetchRating(this.movieCard.id);
   }
 }

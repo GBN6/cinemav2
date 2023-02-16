@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -13,5 +14,14 @@ export class UserMovieRatingComponent {
 
   handleChangeRate(rate: number) {
     this.rate = rate;
+  }
+
+  constructor(
+    public dialogRef: MatDialogRef<UserMovieRatingComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: number
+  ) {}
+
+  onClick(): void {
+    this.dialogRef.close(this.rate);
   }
 }

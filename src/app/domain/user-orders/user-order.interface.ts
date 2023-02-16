@@ -21,7 +21,7 @@ export interface UserOrdersInvoice {
 export interface UserOrdersTicket {
   id: number;
   showId: number;
-  title: string;
+  movieTitle: string;
   date: string;
   hour: string;
   seat: UserOrdersSeat;

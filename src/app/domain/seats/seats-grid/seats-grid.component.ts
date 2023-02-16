@@ -51,7 +51,15 @@ export class SeatsGridComponent {
   }
 
   getStatus(selectedSeats: string[], specialSeats: string[], seatPos: string) {
-    if (this.show.reservedSeats.indexOf(seatPos) !== -1) {
+    if (
+      this.show.reservedSeats.indexOf(seatPos) !== -1 &&
+      selectedSeats.indexOf(seatPos) !== -1
+    ) {
+      return 'selected';
+    } else if (
+      this.show.reservedSeats.indexOf(seatPos) !== -1 &&
+      selectedSeats.indexOf(seatPos) === -1
+    ) {
       return 'reserved';
     } else if (selectedSeats.indexOf(seatPos) !== -1) {
       return 'selected';

@@ -1,16 +1,18 @@
 <div class="movie-card-buttons">
-  <ng-container *ngIf="userMovieRatingState$ | async as userMovieRating"
-    ><button
-      *ngIf="!userMovieRating.hasUserRated"
+  <ng-container *ngIf="userMovieRateState$ | async as userMovieRate">
+    <button
       type="button"
+      *ngIf="!userMovieRate.hasUserRated; else userVoted"
       (click)="openDialog()"
       class="movie-card-buttons__rate"
     >
       Oceń ten film!
     </button>
-    <p *ngIf="userMovieRating.hasUserRated">
-      Oceniłeś ten film na: {{ userMovieRating.rating }}
-    </p>
+    <ng-template #userVoted>
+      <p class="movie-card-buttons__user-rate">
+        Twoja ocena: {{ userMovieRate.rating }}
+      </p>
+    </ng-template>
   </ng-container>
 
   <ng-container
