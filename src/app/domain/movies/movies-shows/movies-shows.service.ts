@@ -5,7 +5,7 @@ import { Show } from '../movies.interface';
 @Injectable()
 export class MovieShowsService {
   private http = inject(HttpClient);
-  private movieUrl = 'http://localhost:3000/films';
+  private movieUrl = 'http://localhost:3000/movies';
 
   getShows(id: number) {
     return this.http.get<Show[]>(this.movieUrl + `/${id}/show`);

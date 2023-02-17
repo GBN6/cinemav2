@@ -27,7 +27,7 @@
     {
       "id": 1,
       "movies": {
-        "id": 0,
+        "id": 4,
         "img": "assets/wakanda_poster.jpg",
         "title": "Black Panther: Wakanda Forever",
         "genre": "Action, Super hero",
@@ -37,7 +37,8 @@
         "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "score": "8/10",
         "premier": true,
-        "dateId": 2
+        "dateId": 4,
+        "movieId": 0
       },
       "userId": 1
     }
@@ -193,6 +194,80 @@
           }
         }
       ]
+    },
+    {
+      "id": 4,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Fri Feb 17 2023 08:57:32 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "16K2",
+          "showId": 2,
+          "date": "17/02/2023",
+          "hour": "20.30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "K16",
+            "price": 20,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "userName": "Janek",
+      "userLastName": "Kowalski",
+      "userMail": "user@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "600700800",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Fri Feb 17 2023 10:50:53 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "16L2",
+          "showId": 2,
+          "date": "17/02/2023",
+          "hour": "20:30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "L16",
+            "price": 10,
+            "special": false,
+            "type": "Ulgowy"
+          }
+        },
+        {
+          "id": "16K2",
+          "showId": 2,
+          "date": "17/02/2023",
+          "hour": "20:30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "seat": {
+            "position": "K16",
+            "price": 20,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
     }
   ],
   "blik": [
@@ -256,7 +331,7 @@
   "show": [
     {
       "id": 0,
-      "hour": "12.30",
+      "hour": "9:30",
       "screen": "B",
       "reservedSeats": [
         "A3",
@@ -285,11 +360,11 @@
           "price": 20
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 1,
-      "hour": "16.30",
+      "hour": "16:30",
       "screen": "A",
       "reservedSeats": [
         "A3",
@@ -300,14 +375,7 @@
         "C7",
         "C8",
         "H8",
-        "G9",
-        "H9",
-        "A7",
-        "A8",
-        "A12",
-        "B12",
-        "A12",
-        "B12"
+        "H10"
       ],
       "priceList": [
         {
@@ -323,11 +391,11 @@
           "price": 20
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 2,
-      "hour": "20.30",
+      "hour": "20:30",
       "screen": "C",
       "reservedSeats": [
         "A7",
@@ -339,35 +407,12 @@
         "F1",
         "L9",
         "A9",
-        "L1",
-        "K1",
-        "J1",
-        "I1",
-        "H1",
-        "G1",
-        "G2",
-        "H2",
-        "I2",
-        "J2",
-        "J12",
-        "I12",
-        "H12",
-        "A16",
-        "B16",
-        "C16",
-        "A16",
-        "B16",
-        "C16",
-        "L14",
-        "A13",
-        "B13",
-        "C13",
-        "J5",
-        "K5",
-        "L5",
-        "L11",
-        "L7",
-        "K8"
+        "L13",
+        "K13",
+        "L16",
+        "K16",
+        "L16",
+        "K16"
       ],
       "priceList": [
         {
@@ -383,12 +428,12 @@
           "price": 10
         }
       ],
-      "filmId": 0
+      "movieId": 0
     },
     {
       "id": 3,
       "screen": "A",
-      "hour": "10.30",
+      "hour": "10:30",
       "reservedSeats": [
         "F5",
         "F4",
@@ -416,11 +461,11 @@
           "price": 10
         }
       ],
-      "filmId": 1
+      "movieId": 1
     },
     {
       "id": 4,
-      "hour": "14.30",
+      "hour": "14:30",
       "screen": "C",
       "reservedSeats": [
         "G10",
@@ -443,11 +488,11 @@
           "price": 20
         }
       ],
-      "filmId": 1
+      "movieId": 1
     },
     {
       "id": 5,
-      "hour": "18.30",
+      "hour": "18:30",
       "screen": "B",
       "reservedSeats": [
         "A7",
@@ -457,7 +502,8 @@
         "E7",
         "E10",
         "F1",
-        "A9"
+        "A9",
+        "A4"
       ],
       "priceList": [
         {
@@ -473,11 +519,11 @@
           "price": 20
         }
       ],
-      "filmId": 1
+      "movieId": 1
     },
     {
       "id": 6,
-      "hour": "18.30",
+      "hour": "18:30",
       "screen": "B",
       "reservedSeats": [
         "A7",
@@ -504,11 +550,11 @@
           "price": 20
         }
       ],
-      "filmId": 3
+      "movieId": 3
     },
     {
       "id": 7,
-      "hour": "14.30",
+      "hour": "14:30",
       "screen": "C",
       "reservedSeats": [
         "G10",
@@ -535,11 +581,11 @@
           "price": 20
         }
       ],
-      "filmId": 2
+      "movieId": 2
     },
     {
       "id": 8,
-      "hour": "20.30",
+      "hour": "20:30",
       "screen": "C",
       "reservedSeats": [
         "A7",
@@ -566,7 +612,7 @@
           "price": 10
         }
       ],
-      "filmId": 2
+      "movieId": 2
     }
   ],
   "films": [
@@ -581,8 +627,170 @@
       "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "score": "8/10",
       "premier": true,
-      "dateId": 0
+      "dateId": 0,
+      "movieId": 0
     },
+    {
+      "id": 1,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 1,
+      "movieId": 0
+    },
+    {
+      "id": 2,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 2,
+      "movieId": 0
+    },
+    {
+      "id": 3,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 3,
+      "movieId": 0
+    },
+    {
+      "id": 4,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 4,
+      "movieId": 0
+    },
+    {
+      "id": 5,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 6,
+      "movieId": 0
+    },
+    {
+      "id": 6,
+      "img": "assets/apokawixa_poster.jpeg",
+      "title": "Apokawixa",
+      "genre": "Horro",
+      "length": "110 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "6/10",
+      "premier": false,
+      "dateId": 3,
+      "movieId": 1
+    },
+    {
+      "id": 7,
+      "img": "assets/avatar2_poster.jpg",
+      "title": "Avatar: Istota wody",
+      "genre": "Science-Fiction",
+      "length": "193 min",
+      "ageRest": "PG-12",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+      "score": "8/10",
+      "boxOff": 1000,
+      "premier": false,
+      "dateId": 1,
+      "movieId": 2
+    },
+    {
+      "id": 8,
+      "img": "assets/avatar2_poster.jpg",
+      "title": "Avatar: Istota wody",
+      "genre": "Science-Fiction",
+      "length": "193 min",
+      "ageRest": "PG-12",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+      "score": "8/10",
+      "boxOff": 1000,
+      "premier": false,
+      "dateId": 6,
+      "movieId": 2
+    },
+    {
+      "id": 9,
+      "img": "assets/kot_poster.jpg",
+      "title": "Kot w butach. Ostanie życzenie",
+      "genre": "Aniowany, Familijny, Przygodowy",
+      "length": "100 min",
+      "ageRest": "PG-6",
+      "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+      "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+      "score": "8/10",
+      "boxOff": 1000,
+      "premier": false,
+      "dateId": 6,
+      "movieId": 3
+    },
+    {
+      "id": 10,
+      "img": "assets/kot_poster.jpg",
+      "title": "Kot w butach. Ostanie życzenie",
+      "genre": "Aniowany, Familijny, Przygodowy",
+      "length": "100 min",
+      "ageRest": "PG-6",
+      "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+      "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+      "score": "8/10",
+      "boxOff": 1000,
+      "premier": false,
+      "dateId": 2,
+      "movieId": 3
+    },
+    {
+      "id": 11,
+      "img": "assets/kot_poster.jpg",
+      "title": "Kot w butach. Ostanie życzenie",
+      "genre": "Aniowany, Familijny, Przygodowy",
+      "length": "100 min",
+      "ageRest": "PG-6",
+      "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
+      "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
+      "score": "8/10",
+      "boxOff": 1000,
+      "premier": false,
+      "dateId": 3,
+      "movieId": 3
+    }
+  ],
+  "movies": [
     {
       "id": 0,
       "img": "assets/wakanda_poster.jpg",
@@ -593,60 +801,7 @@
       "description": "Whenever i have time i will add some description",
       "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "score": "8/10",
-      "premier": true,
-      "dateId": 1
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "score": "8/10",
-      "premier": true,
-      "dateId": 2
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "score": "8/10",
-      "premier": true,
-      "dateId": 3
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "score": "8/10",
-      "premier": true,
-      "dateId": 4
-    },
-    {
-      "id": 0,
-      "img": "assets/wakanda_poster.jpg",
-      "title": "Black Panther: Wakanda Forever",
-      "genre": "Action, Super hero",
-      "length": "130 min",
-      "ageRest": "PG-13",
-      "description": "Whenever i have time i will add some description",
-      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "score": "8/10",
-      "premier": true,
-      "dateId": 6
+      "premier": true
     },
     {
       "id": 1,
@@ -658,8 +813,7 @@
       "description": "Whenever i have time i will add some description",
       "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "score": "6/10",
-      "premier": false,
-      "dateId": 3
+      "premier": false
     },
     {
       "id": 2,
@@ -671,37 +825,8 @@
       "description": "Whenever i have time i will add some description",
       "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
       "score": "8/10",
-      "director": "James Cameron",
-      "actors": [
-        "Stephen Lang",
-        "Zoe Saldana",
-        "Sam Worthington",
-        "Sigourney Weaver"
-      ],
       "boxOff": 1000,
-      "premier": false,
-      "dateId": 1
-    },
-    {
-      "id": 2,
-      "img": "assets/avatar2_poster.jpg",
-      "title": "Avatar: Istota wody",
-      "genre": "Science-Fiction",
-      "length": "193 min",
-      "ageRest": "PG-12",
-      "description": "Whenever i have time i will add some description",
-      "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
-      "score": "8/10",
-      "director": "James Cameron",
-      "actors": [
-        "Stephen Lang",
-        "Zoe Saldana",
-        "Sam Worthington",
-        "Sigourney Weaver"
-      ],
-      "boxOff": 1000,
-      "premier": false,
-      "dateId": 6
+      "premier": false
     },
     {
       "id": 3,
@@ -713,58 +838,8 @@
       "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
       "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
       "score": "8/10",
-      "director": "James Cameron",
-      "actors": [
-        "Stephen Lang",
-        "Zoe Saldana",
-        "Sam Worthington",
-        "Sigourney Weaver"
-      ],
       "boxOff": 1000,
-      "premier": false,
-      "dateId": 6
-    },
-    {
-      "id": 3,
-      "img": "assets/kot_poster.jpg",
-      "title": "Kot w butach. Ostanie życzenie",
-      "genre": "Aniowany, Familijny, Przygodowy",
-      "length": "100 min",
-      "ageRest": "PG-6",
-      "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
-      "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
-      "score": "8/10",
-      "director": "James Cameron",
-      "actors": [
-        "Stephen Lang",
-        "Zoe Saldana",
-        "Sam Worthington",
-        "Sigourney Weaver"
-      ],
-      "boxOff": 1000,
-      "premier": false,
-      "dateId": 2
-    },
-    {
-      "id": 3,
-      "img": "assets/kot_poster.jpg",
-      "title": "Kot w butach. Ostanie życzenie",
-      "genre": "Aniowany, Familijny, Przygodowy",
-      "length": "100 min",
-      "ageRest": "PG-6",
-      "description": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks",
-      "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
-      "score": "8/10",
-      "director": "James Cameron",
-      "actors": [
-        "Stephen Lang",
-        "Zoe Saldana",
-        "Sam Worthington",
-        "Sigourney Weaver"
-      ],
-      "boxOff": 1000,
-      "premier": false,
-      "dateId": 3
+      "premier": false
     }
   ],
   "dates": [

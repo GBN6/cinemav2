@@ -42,7 +42,7 @@ export class UserWatchlistService {
   isMovieInWachlist(movieId: number) {
     return this.store.select((state) => {
       return state.userWatchList.userWatchlist.some(
-        (watchlist) => watchlist.movies.id === movieId
+        (watchlist) => watchlist.movies.movieId === movieId
       );
     });
   }
@@ -52,7 +52,7 @@ export class UserWatchlistService {
       return state.userWatchList.userWatchlist.find((watchlistMovie) => {
         if (
           watchlistMovie.userId === userId &&
-          watchlistMovie.movies.id === movieId
+          watchlistMovie.movies.movieId === movieId
         ) {
           return watchlistMovie.id;
         }

@@ -40,6 +40,7 @@ export class MoviesListComponent {
         .slice(0, 10);
       this.week.push(day);
     }
+    console.log(this.week);
   }
 
   private setTodayDate() {
@@ -71,18 +72,20 @@ export class MoviesListComponent {
       id: this.clickedIndex,
       date: this.week[this.clickedIndex],
     });
-    this.location.replaceState(`${index}`);
+    this.location.replaceState(`day/${index}`);
   }
 
   ngOnInit() {
     this.getDates();
     this.setTodayDate();
     this.activeRoute.params.subscribe((params) => {
-      if (params['id'] === '112') {
+      if (
+        +params['id'] < this.clickedIndex ||
+        +params['id'] > this.week.length
+      ) {
         this.selectDate(this.clickedIndex);
       } else {
         this.selectDate(+params['id']);
-        this.cdr.detectChanges;
       }
     });
   }

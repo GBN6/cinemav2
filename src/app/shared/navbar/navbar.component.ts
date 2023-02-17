@@ -29,6 +29,11 @@ export class NavbarComponent {
   ticketState$ = this.ticketStateService.ticketState$;
   cartStatus: boolean = false;
 
+  getToday() {
+    const date = new Date();
+    return (date.getDay() - 1).toString();
+  }
+
   openCart() {
     if (this.cartStatus) {
       this.cartService.closeCart();

@@ -5,6 +5,7 @@
         ><button
           type="button"
           class="movie-hour-button"
+          [disabled]="!isShowAvaible(show.hour)"
           (click)="handleSelectedMovieAndShow(movie, show, date)"
         >
           {{ show.hour }}

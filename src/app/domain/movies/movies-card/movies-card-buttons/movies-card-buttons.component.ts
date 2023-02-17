@@ -54,7 +54,7 @@ export class MoviesCardButtonsComponent {
 
   removeMovieFromWishList() {
     this.userWishlistService
-      .findUserWatchListId(this.userId, this.movieCard.id)
+      .findUserWatchListId(this.userId, this.movieCard.movieId)
       .pipe(take(1))
       .subscribe((result) => {
         if (result) {
@@ -69,8 +69,8 @@ export class MoviesCardButtonsComponent {
 
   ngOnInit() {
     this.isMovieInWatchList$ = this.userWishlistService.isMovieInWachlist(
-      this.movieCard.id
+      this.movieCard.movieId
     );
-    this.userMovieRateService.fetchRating(this.movieCard.id);
+    this.userMovieRateService.fetchRating(this.movieCard.movieId);
   }
 }

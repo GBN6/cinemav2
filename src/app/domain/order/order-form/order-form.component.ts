@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { selectData } from 'src/app/auth/store/auth.selectors';
+import { NumbersOnlyDirective } from 'src/app/shared/directives/numbersOnly.directive';
 import { UserData } from '../order.interface';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {

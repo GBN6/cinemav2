@@ -27,6 +27,19 @@ export class MoviesShowsComponent {
 
   shows$: Observable<Show[]> | null = null;
 
+  isShowAvaible(hour: string) {
+    const showHour = hour.split(':');
+    const currentHour = new Date().getHours();
+    const currentMinutes = new Date().getMinutes();
+    const todayDate = new Date().toLocaleDateString('en-GB').slice(0, 10);
+    if (this.date.date !== todayDate) return true;
+    if (+showHour[0] < currentHour) return false;
+    if (+showHour[0] === currentHour && +showHour[1] < currentMinutes) {
+      return false;
+    }
+    return true;
+  }
+  // +showHour[1] < currentMinutes
   handleSelectedMovieAndShow(
     movie: MoviesCard,
     show: Show,
@@ -41,6 +54,6 @@ export class MoviesShowsComponent {
   }
 
   ngOnInit() {
-    this.shows$ = this.showsService.getShows(this.movie.id);
+    this.shows$ = this.showsService.getShows(this.movie.movieId);
   }
 }

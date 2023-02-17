@@ -1,5 +1,6 @@
 export interface MoviesCard {
   id: number;
+  movieId: number;
   img: string;
   title: string;
   genre: string;
@@ -17,7 +18,7 @@ export interface Show {
   screen: string;
   reservedSeats: string[];
   priceList: PriceList[];
-  filmId: number;
+  movieId: number;
 }
 
 export interface PriceList {

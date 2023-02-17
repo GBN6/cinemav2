@@ -48,6 +48,7 @@
             [class.error]="blikControl.touched && blikControl.errors"
             class="blik-input"
             placeholder="Kod Blik"
+            numbersOnly
           />
           <ng-container *ngIf="blikControl.errors as errors">
             <ng-container *ngIf="blikControl.touched">

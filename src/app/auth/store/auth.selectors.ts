@@ -4,6 +4,11 @@ import { AuthState } from '../auth.interface';
 
 export const selectAuth = (state: AppState) => state.auth;
 
+export const selectAccountType = createSelector(
+  selectAuth,
+  (state: AuthState) => state.accountType
+);
+
 export const selectIsUserLogged = createSelector(
   selectAuth,
   (state: AuthState) => state.isLogged

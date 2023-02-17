@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from 'src/app/auth/auth.guard';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { SelectedTicketsGuard } from 'src/app/shared/guards/selected-tickets.guard';
 import { SelectedMovieGuard } from 'src/app/shared/guards/selectedMovie.guard';
 import { HomeComponent } from './home.component';
@@ -14,6 +14,11 @@ import { HomeComponent } from './home.component';
         children: [
           {
             path: '',
+            redirectTo: 'day',
+            pathMatch: 'full',
+          },
+          {
+            path: 'day',
             loadChildren: () =>
               import('../movies/movies-list/movies-list.module'),
           },

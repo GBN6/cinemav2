@@ -1,7 +1,10 @@
 <header>
   <div class="header-container">
     <div class="header-container__title">
-      <a [routerLinkActive]="['active']" class="router-link" routerLink=""
+      <a
+        [routerLinkActive]="['active']"
+        class="router-link"
+        [routerLink]="getToday()"
         >FakeKino!</a
       >
     </div>
@@ -35,7 +38,7 @@
                 routerLink="/my-watchlist/{{ authState.id }}"
                 >Chcę obejrzeć</a
               >
-              <a class="dropdown-link" routerLink="/settings">Ustawienia</a>
+              <a class="dropdown-link">Ustawienia</a>
               <a class="dropdown-link" (click)="handleLogout()">Wyloguj</a>
             </div>
           </div>

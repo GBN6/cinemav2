@@ -13,6 +13,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesDatesComponent } from '../movies-dates/movies-dates.component';
 
+function getToday() {
+  const date = new Date();
+  return (date.getDay() - 1).toString();
+}
+
 @NgModule({
   declarations: [
     MoviesCardComponent,
@@ -25,13 +30,13 @@ import { MoviesDatesComponent } from '../movies-dates/movies-dates.component';
   imports: [
     RouterModule.forChild([
       {
-        path: ':id',
-        component: MoviesListComponent,
+        path: '',
+        redirectTo: getToday(),
+        pathMatch: 'full',
       },
       {
-        path: '',
-        redirectTo: '112',
-        pathMatch: 'full',
+        path: ':id',
+        component: MoviesListComponent,
       },
     ]),
     CommonModule,
