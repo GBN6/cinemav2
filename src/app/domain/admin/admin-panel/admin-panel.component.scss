@@ -1,0 +1,22 @@
+.admin-panel-container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-panel {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    background-color: var(--dark-lighter);
+    color: var(--primary);
+    font-size: 2rem;
+    padding: 3rem;
+    font-weight: 600;
+    border: 2px solid var(--primary);
+  }
+}

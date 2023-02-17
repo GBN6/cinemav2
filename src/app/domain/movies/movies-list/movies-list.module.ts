@@ -30,13 +30,13 @@ function getToday() {
   imports: [
     RouterModule.forChild([
       {
+        path: ':id',
+        component: MoviesListComponent,
+      },
+      {
         path: '',
         redirectTo: getToday(),
         pathMatch: 'full',
-      },
-      {
-        path: ':id',
-        component: MoviesListComponent,
       },
     ]),
     CommonModule,

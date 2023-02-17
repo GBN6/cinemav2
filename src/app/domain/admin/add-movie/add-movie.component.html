@@ -1,0 +1,6 @@
+<h1>ADD MOVIE WORKS</h1>
+<ng-container *ngIf="movieGenres$ | async as genres">
+  <ng-container *ngIf="moviePegi$ | async as pegi">
+    <app-add-movie-form [genres]="genres" [pegi]="pegi"></app-add-movie-form>
+  </ng-container>
+</ng-container>

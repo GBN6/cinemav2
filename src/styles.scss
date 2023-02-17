@@ -33,10 +33,6 @@ $cinemav2-theme: mat.define-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($cinemav2-theme);
-
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
 :root {
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -138,3 +134,12 @@ button {
 }
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

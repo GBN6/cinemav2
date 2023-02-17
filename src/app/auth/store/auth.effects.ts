@@ -26,7 +26,11 @@ export class AuthEffects {
           map((result) => {
             this.tokenService.saveToken(result.accessToken);
             this.userWatchListService.getUserWatchlist(result.user.id);
-            this.router.navigate(['']);
+            if (result.user.accountType === 'admin') {
+              this.router.navigate(['admin-panel']);
+            } else {
+              this.router.navigate(['']);
+            }
             return AuthApiActions.loginSuccess(result);
           }),
           catchError((error) => {

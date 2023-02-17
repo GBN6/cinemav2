@@ -1,0 +1,28 @@
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 16px;
+
+  &__title,
+  &__desc,
+  &__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__checkbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__submit {
+    background-color: var(--dark);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}

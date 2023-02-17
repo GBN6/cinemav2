@@ -27,20 +27,27 @@
             <button class="header-button login-button" type="button">
               {{ authState.data!.userFirstName }}
             </button>
-            <div class="login-dropdown-content">
-              <a
-                class="dropdown-link"
-                routerLink="/my-tickets/{{ authState.id }}"
-                >Moje Bilety</a
-              >
-              <a
-                class="dropdown-link"
-                routerLink="/my-watchlist/{{ authState.id }}"
-                >Chcę obejrzeć</a
-              >
-              <a class="dropdown-link">Ustawienia</a>
-              <a class="dropdown-link" (click)="handleLogout()">Wyloguj</a>
-            </div>
+            <ng-container *ngIf="authState.accountType === 'admin'; else user">
+              <div class="login-dropdown-content">
+                <a class="dropdown-link" (click)="handleLogout()">Wyloguj</a>
+              </div>
+            </ng-container>
+            <ng-template #user>
+              <div class="login-dropdown-content">
+                <a
+                  class="dropdown-link"
+                  routerLink="/my-tickets/{{ authState.id }}"
+                  >Moje Bilety</a
+                >
+                <a
+                  class="dropdown-link"
+                  routerLink="/my-watchlist/{{ authState.id }}"
+                  >Chcę obejrzeć</a
+                >
+                <a class="dropdown-link">Ustawienia</a>
+                <a class="dropdown-link" (click)="handleLogout()">Wyloguj</a>
+              </div>
+            </ng-template>
           </div>
         </ng-container>
       </ng-container>

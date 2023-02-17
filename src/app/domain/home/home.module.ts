@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AdminGuard } from 'src/app/shared/guards/admin.guard';
 import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { SelectedTicketsGuard } from 'src/app/shared/guards/selected-tickets.guard';
 import { SelectedMovieGuard } from 'src/app/shared/guards/selectedMovie.guard';
@@ -12,6 +13,11 @@ import { HomeComponent } from './home.component';
         path: '',
         component: HomeComponent,
         children: [
+          {
+            path: 'admin-panel',
+            loadChildren: () => import('../admin/admin.module'),
+            canMatch: [AdminGuard],
+          },
           {
             path: '',
             redirectTo: 'day',
@@ -52,5 +58,6 @@ import { HomeComponent } from './home.component';
       },
     ]),
   ],
+  providers: [],
 })
 export default class HomeModule {}

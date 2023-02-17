@@ -14,6 +14,8 @@ import { UserWatchlistInitialState } from './domain/user-watchlist/store/watchli
 import { watchlistReducer } from './domain/user-watchlist/store/watchlist.reducer';
 import { userWatchlistEffects } from './domain/user-watchlist/store/watchlist.effects';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export interface AppState {
   auth: AuthState;
@@ -47,6 +49,7 @@ export interface AppState {
     StoreModule.forRoot({ auth: authReducer, userWatchList: watchlistReducer }),
     EffectsModule.forRoot([AuthEffects, userWatchlistEffects]),
     FontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
