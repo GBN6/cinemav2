@@ -1,0 +1,81 @@
+<form
+  class="add-show-form"
+  [formGroup]="addShowForm"
+  (ngSubmit)="handleSubmit()"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Wybierz film</mat-label>
+    <mat-select
+      [(ngModel)]="selectedMovieId"
+      name="movie"
+      [formControl]="movieIdCtrl"
+      [errorStateMatcher]="matcher"
+    >
+      <mat-option>Clear</mat-option>
+      <mat-option *ngFor="let movie of movies" [value]="movie.id">
+        {{ movie.title }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="movieIdCtrl.hasError('required')"
+      >You must make a selection</mat-error
+    >
+    <mat-error
+      *ngIf="
+        movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
+      "
+    >
+      Your selection is invalid
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Wybierz sale</mat-label>
+    <mat-select
+      [(ngModel)]="selectedScreen"
+      name="screen"
+      [formControl]="screenCtrl"
+      [errorStateMatcher]="matcher"
+    >
+      <mat-option>Clear</mat-option>
+      <mat-option *ngFor="let screen of screens" [value]="screen.name">
+        {{ screen.name }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="movieIdCtrl.hasError('required')"
+      >You must make a selection</mat-error
+    >
+    <mat-error
+      *ngIf="
+        movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
+      "
+    >
+      Your selection is invalid
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="primary" class="fieldset__input">
+    <mat-label>Data</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [min]="today"
+      [max]="nextweek()"
+      formControlName="day"
+    />
+    <mat-error *ngIf="dayCtrl.errors as errors">
+      <ng-container *ngIf="errors['required']"
+        >To pole jest wymagane.</ng-container
+      >
+      <ng-container *ngIf="errors['matDatepickerMin']"
+        >Data nie może być w przeszłości.</ng-container
+      >
+    </mat-error>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button class="add-movie-form__submit" mat-fab extended color="primary">
+    Dodaj seans
+  </button>
+</form>

@@ -351,11 +351,7 @@
         "C5",
         "B7",
         "A4",
-        "E8",
-        "D8",
-        "A9",
-        "A1",
-        "A1"
+        "E8"
       ],
       "priceList": [
         {
@@ -844,6 +840,18 @@
       "longDescription": "Nadchodzi sequel nominowanej do Oscara® w 2011 roku animacji „Kot w Butach”. Film zarobił na całym świecie ponad 550 milionów dolarów. Kontynuacja Dreamworks Animation pod tytułem „Kot w butach. Ostatnie życzenia” zostanie wyreżyserowana przez Joela Crawforda i wyprodukowana przez Marka Swifta. Głosu tytułowemu kotu ponownie użyczy nominowany do Oscara® Antonio Banderas. Kot w Butach odkryje, że jest pasjonatem przygód. Wykorzystał już wszystkie swoje osiem z dziewięciu istnień. Postanawia wyruszyć w podróż, aby znaleźć mityczne „Ostatnie Życzenie” i przywrócić swoje dziewięć żyć.",
       "score": "8/10",
       "premier": false
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
+      "title": "ANT-MAN I OSA: KWANTOMANIA",
+      "genre": "Akcja, Sci-Fi",
+      "length": "125min",
+      "ageRest": "PG-12",
+      "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
+      "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
+      "score": "6/10",
+      "premier": true,
+      "id": 4
     }
   ],
   "dates": [
@@ -869,7 +877,7 @@
       "id": 6
     }
   ],
-  "pegi" : [
+  "pegi": [
     {
       "id": 0,
       "name": "PG-3"

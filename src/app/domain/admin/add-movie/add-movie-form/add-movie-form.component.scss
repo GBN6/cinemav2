@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   row-gap: 16px;
-  width: 60%;
 
   &__title,
   &__desc,
@@ -30,4 +29,8 @@
 
 .input-text-error {
   color: var(--error);
+}
+
+h3 {
+  color: var(--dark);
 }

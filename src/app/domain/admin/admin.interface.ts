@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export type Pegi = 'PG-3' | 'PG-7' | 'PG-12' | 'PG-16' | 'PG-18';
 
@@ -13,7 +13,6 @@ export type Genre =
   | 'Przygodowy';
 
 export interface Movie {
-  id: number;
   img: string;
   title: string;
   genre: string;
@@ -23,6 +22,13 @@ export interface Movie {
   longDescription: string;
   score: string;
   premier: boolean;
+}
+
+export interface Screen {
+  name: string;
+  rows: number;
+  colu: number;
+  specialSeats: string[];
 }
 
 export interface AddMovieForm {
@@ -37,6 +43,24 @@ export interface AddMovieForm {
   premier: FormControl<boolean>;
 }
 
+export interface AddShowForm {
+  movieId: FormControl<number | null>;
+  hour: FormControl<string>;
+  day: FormControl<string>;
+  screen: FormControl<string>;
+  priceList: FormArray<FormGroup<AddPriceListItem>>;
+}
+
+export interface AddPriceListItem {
+  type: FormControl<string>;
+  price: FormControl<number | null>;
+}
+
+export interface PriceList {
+  type: string;
+  price: number;
+}
+
 export interface PegiRating {
   id: number;
   name: Pegi;
@@ -45,4 +69,12 @@ export interface PegiRating {
 export interface FetchedGenre {
   id: number;
   name: Genre;
+}
+
+export interface FetchedMovie extends Movie {
+  id: number;
+}
+
+export interface FetchedScreen extends Screen {
+  id: number;
 }

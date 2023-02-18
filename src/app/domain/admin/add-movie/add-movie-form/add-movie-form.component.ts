@@ -1,7 +1,11 @@
-import { Component, EventEmitter, inject, Input } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  NonNullableFormBuilder,
+  PatternValidator,
+  Validators,
+} from '@angular/forms';
 import { trimValidator } from 'src/app/shared/validators/input-validator.validator';
-import { AddMovieForm, Genre, Pegi } from '../../admin.interface';
+import { AddMovieForm, Genre, Movie, Pegi } from '../../admin.interface';
 
 @Component({
   selector: 'app-add-movie-form[genres][pegi]',
@@ -11,7 +15,7 @@ import { AddMovieForm, Genre, Pegi } from '../../admin.interface';
 export class AddMovieFormComponent {
   @Input() genres!: Genre[];
   @Input() pegi!: Pegi[];
-  //   @Output() handleSubmitEmit = new EventEmitter<Movie>();
+  @Output() handleSubmitEmit = new EventEmitter<Movie>();
 
   private builder = inject(NonNullableFormBuilder);
   addMovieForm = this.createForm();
@@ -40,8 +44,18 @@ export class AddMovieFormComponent {
 
   handleSubmit() {
     this.addMovieForm.markAllAsTouched();
-    // if (this.addMovieForm.invalid) return;
-    console.log(this.addMovieForm.value);
+    if (this.addMovieForm.invalid) return;
+
+    const movieData = this.addMovieForm.getRawValue();
+    const { genre, length } = movieData;
+
+    if (length !== null) {
+      this.handleSubmitEmit.emit({
+        ...movieData,
+        length: length + 'min',
+        genre: genre.join(', '),
+      });
+    }
   }
 
   private createForm() {
@@ -51,7 +65,9 @@ export class AddMovieFormComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(100),
-          trimValidator,
+          Validators.pattern(
+            /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g
+          ),
         ],
       }),
       title: this.builder.control('', {
@@ -67,8 +83,8 @@ export class AddMovieFormComponent {
       }),
       length: this.builder.control(null, {
         validators: [
-          Validators.min(1),
-          Validators.max(999),
+          Validators.min(20),
+          Validators.max(400),
           Validators.required,
         ],
       }),
@@ -79,7 +95,7 @@ export class AddMovieFormComponent {
         validators: [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(100),
+          Validators.maxLength(150),
           trimValidator,
         ],
       }),

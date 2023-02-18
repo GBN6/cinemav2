@@ -6,14 +6,26 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { AdminPanelService } from './admin.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { AddMovieFormComponent } from './add-movie/add-movie/add-movie-form.component';
+import { AddMovieFormComponent } from './add-movie/add-movie-form/add-movie-form.component';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { NumbersOnlyDirective } from 'src/app/shared/directives/numbersOnly.directive';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddShowComponent } from './add-show/add-show.component';
+import { AddShowFormComponent } from './add-show/add-show-form/add-show-form.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
-  declarations: [AdminPanelComponent, AddMovieComponent, AddMovieFormComponent],
+  declarations: [
+    AdminPanelComponent,
+    AddMovieComponent,
+    AddMovieFormComponent,
+    AddShowComponent,
+    AddShowFormComponent,
+  ],
   imports: [
     RouterModule.forChild([
       {
@@ -24,6 +36,10 @@ import { NumbersOnlyDirective } from 'src/app/shared/directives/numbersOnly.dire
         path: 'add-movie',
         component: AddMovieComponent,
       },
+      {
+        path: 'add-show',
+        component: AddShowComponent,
+      },
     ]),
     MatButtonModule,
     ReactiveFormsModule,
@@ -32,6 +48,10 @@ import { NumbersOnlyDirective } from 'src/app/shared/directives/numbersOnly.dire
     MatCheckboxModule,
     MatRadioModule,
     NumbersOnlyDirective,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [AdminPanelService],
 })
