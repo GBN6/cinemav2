@@ -34,6 +34,10 @@ export class AddMovieFormComponent {
     }
   }
 
+  toggle() {
+    this.premierCtrl.setValue(!this.premierCtrl.value);
+  }
+
   handleSubmit() {
     this.addMovieForm.markAllAsTouched();
     // if (this.addMovieForm.invalid) return;
@@ -88,7 +92,11 @@ export class AddMovieFormComponent {
         ],
       }),
       score: this.builder.control('', {
-        validators: [Validators.required, trimValidator],
+        validators: [
+          Validators.required,
+          Validators.pattern('^[0-9]/10$'),
+          trimValidator,
+        ],
       }),
       premier: this.builder.control(false),
     });

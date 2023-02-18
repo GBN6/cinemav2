@@ -8,9 +8,10 @@
       <mat-label>Plakat</mat-label>
       <input matInput formControlName="img" placeholder="Link do plakatu" />
       <mat-error *ngIf="imgCtrl.errors as errors">
-        <ng-container *ngIf="errors['required']"
+        <ng-container *ngIf="errors['required']; else minCharacter"
           >To pole jest wymagane.</ng-container
         >
+        <ng-template #minCharacter> </ng-template>
       </mat-error>
     </mat-form-field>
 
@@ -25,6 +26,7 @@
     </mat-form-field>
   </div>
 
+  <h3>Wybierz kategorię filmu</h3>
   <div class="add-movie-form__checkbox">
     <mat-checkbox
       *ngFor="let genre of genres"
@@ -37,7 +39,15 @@
       <p class="font-text-1">{{ genre }}</p>
     </mat-checkbox>
   </div>
+  <ng-container *ngIf="genreCtrl.errors as errors">
+    <ng-container *ngIf="genreCtrl.touched">
+      <p class="input-text-error" *ngIf="errors['required']">
+        Wybierz chociaż jedną kategorię!
+      </p>
+    </ng-container>
+  </ng-container>
 
+  <h3>Ograniczenia wiekowe</h3>
   <mat-radio-group formControlName="ageRest">
     <mat-radio-button
       *ngFor="let pegi of pegi"
@@ -45,9 +55,16 @@
       color="primary"
       [value]="pegi"
     >
-      <p class="font-text-1">{{ pegi }}</p>
+      <p class="">{{ pegi }}</p>
     </mat-radio-button>
   </mat-radio-group>
+  <ng-container *ngIf="ageRestCtrl.errors as errors">
+    <ng-container *ngIf="ageRestCtrl.touched">
+      <p class="input-text-error" *ngIf="errors['required']">
+        Wybierz ograniczenia wiekowe
+      </p>
+    </ng-container>
+  </ng-container>
 
   <div class="add-movie-form__details">
     <mat-form-field class="add-movie-form__input">
@@ -70,6 +87,9 @@
       <mat-error *ngIf="scoreCtrl.errors as errors">
         <ng-container *ngIf="errors['required']"
           >To pole jest wymagane.</ng-container
+        >
+        <ng-container *ngIf="errors['pattern']"
+          >Ocena w postaci: x/10</ng-container
         >
       </mat-error>
     </mat-form-field>
@@ -95,10 +115,11 @@
       appearance="fill"
       class="details-form__description"
     >
+      <mat-label>Długi opis</mat-label>
       <textarea
         formControlName="description"
         matInput
-        placeholder="Dodaj opis..."
+        placeholder="Podaj dłuższą wersję opisu"
         cdkTextareaAutosize
         cdkAutosizeMinRows="5"
         cdkAutosizeMaxRows="15"
@@ -123,6 +144,14 @@
       </mat-hint>
     </mat-form-field>
   </div>
+  <mat-checkbox
+    class="checkbox-item"
+    formGroupName="genre"
+    (change)="toggle()"
+    color="primary"
+  >
+    <p class="font-text-1">Premiera</p>
+  </mat-checkbox>
 
   <button class="add-movie-form__submit" mat-fab extended color="primary">
     Dodaj film

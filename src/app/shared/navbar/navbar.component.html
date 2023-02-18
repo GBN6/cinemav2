@@ -1,27 +1,39 @@
 <header>
   <div class="header-container">
-    <div class="header-container__title">
-      <a
-        [routerLinkActive]="['active']"
-        class="router-link"
-        [routerLink]="getToday()"
-        >FakeKino!</a
-      >
-    </div>
-    <div class="header-container__buttons">
-      <ng-container *ngIf="authState | async as authState">
+    <ng-container *ngIf="authState | async as authState">
+      <div class="header-container__title">
+        <ng-container *ngIf="authState.accountType === 'admin'; else user">
+          <a
+            [routerLinkActive]="['active']"
+            class="router-link"
+            routerLink="admin-panel"
+            >FakeKino!</a
+          >
+        </ng-container>
+        <ng-template #user>
+          <a
+            [routerLinkActive]="['active']"
+            class="router-link"
+            [routerLink]="getToday()"
+            >FakeKino!</a
+          >
+        </ng-template>
+      </div>
+      <div class="header-container__buttons">
         <ng-container *ngIf="authState.isLogged; else notLogged">
           <ng-container *ngIf="ticketState$ | async as ticketState">
-            <button
-              (click)="openCart()"
-              class="header-button cart"
-              type="button"
-            >
-              <fa-icon [icon]="cart"></fa-icon>
-              <ng-container *ngIf="ticketState.length !== 0">
-                <div class="cart-ammount">{{ ticketState.length }}</div>
-              </ng-container>
-            </button>
+            <ng-container *ngIf="authState.accountType === 'user'">
+              <button
+                (click)="openCart()"
+                class="header-button cart"
+                type="button"
+              >
+                <fa-icon [icon]="cart"></fa-icon>
+                <ng-container *ngIf="ticketState.length !== 0">
+                  <div class="cart-ammount">{{ ticketState.length }}</div>
+                </ng-container>
+              </button>
+            </ng-container>
           </ng-container>
           <div class="dropdown">
             <button class="header-button login-button" type="button">
@@ -50,14 +62,14 @@
             </ng-template>
           </div>
         </ng-container>
-      </ng-container>
-      <ng-template #notLogged>
-        <a routerLink="/login"
-          ><button class="header-button login-button" type="button">
-            Zaloguj
-          </button></a
-        >
-      </ng-template>
-    </div>
+        <ng-template #notLogged>
+          <a routerLink="/login"
+            ><button class="header-button login-button" type="button">
+              Zaloguj
+            </button></a
+          >
+        </ng-template>
+      </div>
+    </ng-container>
   </div>
 </header>

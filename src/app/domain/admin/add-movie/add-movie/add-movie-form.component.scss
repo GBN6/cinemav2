@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   row-gap: 16px;
+  width: 60%;
 
   &__title,
   &__desc,
@@ -25,4 +26,8 @@
     font-weight: 600;
     font-size: 2rem;
   }
+}
+
+.input-text-error {
+  color: var(--error);
 }

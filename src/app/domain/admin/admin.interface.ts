@@ -3,12 +3,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export type Pegi = 'PG-3' | 'PG-7' | 'PG-12' | 'PG-16' | 'PG-18';
 
 export type Genre =
-  | 'dramat'
-  | 'thriller'
-  | 'kryminał'
-  | 'komedia'
-  | 'akcja'
-  | 'romans';
+  | 'Dramat'
+  | 'Thriller'
+  | 'Kryminał'
+  | 'Komedia'
+  | 'Akcja'
+  | 'Romans'
+  | 'Sci-Fi'
+  | 'Przygodowy';
 
 export interface Movie {
   id: number;

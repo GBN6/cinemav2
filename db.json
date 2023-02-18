@@ -894,27 +894,35 @@
   "movieGenres": [
     {
       "id": 1,
-      "name": "dramat"
+      "name": "Dramat"
     },
     {
       "id": 2,
-      "name": "thriller"
+      "name": "Thriller"
     },
     {
       "id": 3,
-      "name": "kryminał"
+      "name": "Kryminał"
     },
     {
       "id": 4,
-      "name": "komedia"
+      "name": "Komedia"
     },
     {
       "id": 5,
-      "name": "akcja"
+      "name": "Akcja"
     },
     {
       "id": 6,
-      "name": "romans"
+      "name": "Romans"
+    },
+    {
+      "id": 7,
+      "name": "Sci-Fi"
+    },
+    {
+      "id": 8,
+      "name": "Przygodowy"
     }
   ]
 }
