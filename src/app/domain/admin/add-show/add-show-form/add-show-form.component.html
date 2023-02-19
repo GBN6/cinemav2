@@ -68,9 +68,9 @@
         [matDatepicker]="picker"
         [min]="today"
         [max]="getLastDayOfWeek()"
-        formControlName="day"
+        formControlName="dateId"
       />
-      <mat-error *ngIf="dayCtrl.errors as errors">
+      <mat-error *ngIf="dateIdCtrl.errors as errors">
         <ng-container *ngIf="errors['required']"
           >To pole jest wymagane.</ng-container
         >
@@ -174,8 +174,14 @@
       </div>
     </li>
   </ol>
-
+  <ng-container *ngIf="showsColliding$$ | async as showsColliding">
+    <h2 *ngIf="showsColliding.showError">
+      Seanse się nakładają wybierz inną godzinę lub salę
+    </h2>
+  </ng-container>
   <button class="add-show-form__submit" mat-fab extended color="primary">
     Dodaj seans
   </button>
 </form>
+
+<!-- <h3>Seanse się nakładają wybierz inną godzinę lub salę</h3> -->

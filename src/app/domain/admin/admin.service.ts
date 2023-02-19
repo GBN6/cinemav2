@@ -13,6 +13,7 @@ import {
   FetchedGenre,
   FetchedMovie,
   FetchedScreen,
+  FetchedShows,
   Movie,
   PegiRating,
   Show,
@@ -25,6 +26,10 @@ export class AdminPanelService {
 
   addNewMovie(movie: Movie) {
     return this.http.post(this.apiUrl + `/movies`, movie);
+  }
+
+  addNewShow(show: Show) {
+    return this.http.post(this.apiUrl + `/show`, show);
   }
 
   getAllMovies() {
@@ -56,35 +61,9 @@ export class AdminPanelService {
   }
 
   getShows(dateId: number, screenName: string) {
-    return this.http.get<Show[]>(
+    return this.http.get<FetchedShows[]>(
       `${this.apiUrl}/show?dateId=${dateId}&screen=${screenName}`
     );
-  }
-
-  private getMovieLength(movieId: number) {
-    return this.http.get<FetchedMovie>(`${this.apiUrl}/movies/${movieId}`).pipe(
-      map((result) => {
-        return +result.length.split(' ')[0];
-      })
-    );
-  }
-
-  private splitHourIntoArray(hour: string) {
-    return hour.split(':');
-  }
-
-  private convertToMinutes(hour: string) {
-    const array = this.splitHourIntoArray(hour);
-    return +array[0] * 60 + +array[1];
-  }
-
-  private convertToHoursAndMinutes(totalMinutes: number) {
-    const hours = Math.floor(totalMinutes / 60);
-    let minutes = totalMinutes % 60;
-    if (minutes < 10) {
-      return `${hours}:0${minutes}`;
-    }
-    return `${hours}:${minutes}`;
   }
 
   selectedHourTimeSlot(selectedHour: string, movieLength: number) {
@@ -112,6 +91,7 @@ export class AdminPanelService {
     return this.getShows(dateId, screenName).pipe(
       switchMap((shows) => {
         const movieIds = shows.map((show) => show.movieId);
+        if (movieIds.length === 0) return of([]);
         const movieLengthReq = movieIds.map((movieId) =>
           this.getMovieLength(movieId)
         );
@@ -127,6 +107,7 @@ export class AdminPanelService {
         );
       }),
       map((results) => {
+        if (results.length === 0) return true;
         if (results.length === 1) {
           let showTimeSLot = this.selectedHourTimeSlot(
             results[0].hour,
@@ -166,18 +147,33 @@ export class AdminPanelService {
           return false;
         }
         return 'ERROR';
-        // return results.map((show) => {
-        //   const showTimeSLot = this.selectedHourTimeSlot(
-        //     show.hour,
-        //     show.movieLength + 15
-        //   );
-        //   console.log('wybrana godzina', selectedHour);
-        //   console.log('godzina juz zapisana seansu', show.hour);
-        //   console.log('time sloty', showTimeSLot.latestHour);
-        //   if (selectedHour > showTimeSLot.latestHour) return true;
-        //   return false;
-        // });
       })
     );
+  }
+
+  private getMovieLength(movieId: number) {
+    return this.http.get<FetchedMovie>(`${this.apiUrl}/movies/${movieId}`).pipe(
+      map((result) => {
+        return +result.length.split(' ')[0];
+      })
+    );
+  }
+
+  private splitHourIntoArray(hour: string) {
+    return hour.split(':');
+  }
+
+  private convertToMinutes(hour: string) {
+    const array = this.splitHourIntoArray(hour);
+    return +array[0] * 60 + +array[1];
+  }
+
+  private convertToHoursAndMinutes(totalMinutes: number) {
+    const hours = Math.floor(totalMinutes / 60);
+    let minutes = totalMinutes % 60;
+    if (minutes < 10) {
+      return `${hours}:0${minutes}`;
+    }
+    return `${hours}:${minutes}`;
   }
 }

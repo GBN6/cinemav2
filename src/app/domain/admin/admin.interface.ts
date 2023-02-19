@@ -32,7 +32,6 @@ export interface Screen {
 }
 
 export interface Show {
-  id: number;
   hour: string;
   screen: string;
   reservedSeats: any[];
@@ -61,7 +60,7 @@ export interface AddMovieForm {
 export interface AddShowForm {
   movieId: FormControl<MovieControl>;
   hour: FormControl<string>;
-  day: FormControl<string>;
+  dateId: FormControl<string>;
   screen: FormControl<string>;
   priceList: FormArray<FormGroup<AddPriceListItem>>;
 }
@@ -73,7 +72,7 @@ export interface MovieControl {
 
 export interface AddPriceListItem {
   type: FormControl<string>;
-  price: FormControl<number | null>;
+  price: FormControl<number>;
 }
 
 export interface PegiRating {
@@ -91,6 +90,10 @@ export interface FetchedMovie extends Movie {
 }
 
 export interface FetchedScreen extends Screen {
+  id: number;
+}
+
+export interface FetchedShows extends Show {
   id: number;
 }
 
