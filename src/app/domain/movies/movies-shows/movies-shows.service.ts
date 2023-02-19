@@ -5,9 +5,11 @@ import { Show } from '../movies.interface';
 @Injectable()
 export class MovieShowsService {
   private http = inject(HttpClient);
-  private movieUrl = 'http://localhost:3000/movies';
+  private movieUrl = 'http://localhost:3000/show';
 
-  getShows(id: number) {
-    return this.http.get<Show[]>(this.movieUrl + `/${id}/show`);
+  getShows(movieId: number, dateId: number) {
+    return this.http.get<Show[]>(
+      this.movieUrl + `?movieId=${movieId}&dateId=${dateId}`
+    );
   }
 }

@@ -1,9 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import {
-  NonNullableFormBuilder,
-  PatternValidator,
-  Validators,
-} from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { trimValidator } from 'src/app/shared/validators/input-validator.validator';
 import { AddMovieForm, Genre, Movie, Pegi } from '../../admin.interface';
 
@@ -52,7 +48,7 @@ export class AddMovieFormComponent {
     if (length !== null) {
       this.handleSubmitEmit.emit({
         ...movieData,
-        length: length + 'min',
+        length: length + ' min',
         genre: genre.join(', '),
       });
     }

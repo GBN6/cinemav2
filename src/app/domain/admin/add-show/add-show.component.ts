@@ -14,4 +14,10 @@ export class AddShowComponent {
   screens$ = this.adminPanelService.getAllScreens();
 
   newShowData$ = combineLatest([this.movies$, this.screens$]);
+
+  ngOnInit() {
+    // this.adminPanelService
+    //   .isDateAvaible('18:30', 100, 1, 'A')
+    //   .subscribe(console.log);
+  }
 }

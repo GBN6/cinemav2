@@ -1,0 +1,35 @@
+.add-show-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 16px;
+
+  &__submit {
+    background-color: var(--dark);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  &__ticket-type,
+  &__trash {
+    background-color: var(--dark-lighter) !important;
+    color: var(--primary) !important;
+    border-radius: 20px;
+  }
+
+  &__type,
+  &__movie,
+  &__time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.mat-form-wrapper {
+  width: 400px !important;
+}

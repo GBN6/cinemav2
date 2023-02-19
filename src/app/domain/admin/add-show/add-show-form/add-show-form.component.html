@@ -3,79 +3,179 @@
   [formGroup]="addShowForm"
   (ngSubmit)="handleSubmit()"
 >
-  <mat-form-field appearance="fill">
-    <mat-label>Wybierz film</mat-label>
-    <mat-select
-      [(ngModel)]="selectedMovieId"
-      name="movie"
-      [formControl]="movieIdCtrl"
-      [errorStateMatcher]="matcher"
-    >
-      <mat-option>Clear</mat-option>
-      <mat-option *ngFor="let movie of movies" [value]="movie.id">
-        {{ movie.title }}
-      </mat-option>
-    </mat-select>
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="movieIdCtrl.hasError('required')"
-      >You must make a selection</mat-error
-    >
-    <mat-error
-      *ngIf="
-        movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
+  <div class="add-show-form__movie">
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz film</mat-label>
+      <mat-select
+        [(ngModel)]="selectedMovieId"
+        name="movie"
+        [formControl]="movieIdCtrl"
+        [errorStateMatcher]="matcher"
+      >
+        <mat-option>Wyczyść</mat-option>
+        <mat-option
+          *ngFor="let movie of movies"
+          [value]="{
+            movieid: movie.id,
+            movieLength: +movie.length.split(' ')[0]
+          }"
+        >
+          {{ movie.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="movieIdCtrl.hasError('required')"
+        >You must make a selection</mat-error
+      >
+      <mat-error
+        *ngIf="
+          movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
+        "
+      >
+        Wybierz film!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz sale</mat-label>
+      <mat-select
+        [(ngModel)]="selectedScreen"
+        name="screen"
+        [formControl]="screenCtrl"
+        [errorStateMatcher]="matcher"
+      >
+        <mat-option>Wyczyść</mat-option>
+        <mat-option *ngFor="let screen of screens" [value]="screen.name">
+          {{ screen.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="movieIdCtrl.hasError('required')"
+        >Wybierz salę!</mat-error
+      >
+      <mat-error
+        *ngIf="
+          movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
+        "
+      >
+        Your selection is invalid
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="add-show-form__time">
+    <mat-form-field color="primary" class="fieldset__input">
+      <mat-label>Data</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [min]="today"
+        [max]="getLastDayOfWeek()"
+        formControlName="day"
+      />
+      <mat-error *ngIf="dayCtrl.errors as errors">
+        <ng-container *ngIf="errors['required']"
+          >To pole jest wymagane.</ng-container
+        >
+        <ng-container *ngIf="errors['matDatepickerMin']"
+          >Data nie może być w przeszłości.</ng-container
+        >
+      </mat-error>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="add-movie-form__input">
+      <mat-label>Godzina</mat-label>
+      <input
+        matInput
+        type="time"
+        formControlName="hour"
+        placeholder="Godzina rozpoczęcia"
+      />
+      <mat-error *ngIf="hourCtrl.errors as errors">
+        <ng-container *ngIf="errors['required']"
+          >To pole jest wymagane.</ng-container
+        >
+        <ng-container *ngIf="errors['min']">Minimum 20 minut</ng-container>
+        <ng-container *ngIf="errors['max']">Maksymalnie 400 minut</ng-container>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <h3>Wybierz typ biletów</h3>
+  <button
+    type="button"
+    (click)="addPriceListItem()"
+    mat-flat-button
+    class="add-show-form__ticket-type"
+  >
+    Dodaj kolejny rodzaj biletu
+  </button>
+  <ol>
+    <li
+      *ngFor="
+        let priceListForm of addShowForm.controls.priceList.controls;
+        let index = index
       "
     >
-      Your selection is invalid
-    </mat-error>
-  </mat-form-field>
+      <div class="add-show-form__type" [formGroup]="priceListForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Wybierz rodzaj biletu</mat-label>
+          <mat-select
+            name="type"
+            [formControl]="priceListForm.controls.type"
+            [errorStateMatcher]="matcher"
+          >
+            <mat-option>Wyczyść</mat-option>
+            <mat-option *ngFor="let type of ticketTypes" [value]="type.type">
+              {{ type.type }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="priceListForm.controls.type.hasError('required')"
+            >Wybierz rodzaj biletu</mat-error
+          >
+          <mat-error
+            *ngIf="
+              priceListForm.controls.type.hasError('pattern') &&
+              !priceListForm.controls.type.hasError('required')
+            "
+          >
+            Wybierz rodzaj biletu
+          </mat-error>
+        </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Wybierz sale</mat-label>
-    <mat-select
-      [(ngModel)]="selectedScreen"
-      name="screen"
-      [formControl]="screenCtrl"
-      [errorStateMatcher]="matcher"
-    >
-      <mat-option>Clear</mat-option>
-      <mat-option *ngFor="let screen of screens" [value]="screen.name">
-        {{ screen.name }}
-      </mat-option>
-    </mat-select>
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="movieIdCtrl.hasError('required')"
-      >You must make a selection</mat-error
-    >
-    <mat-error
-      *ngIf="
-        movieIdCtrl.hasError('pattern') && !movieIdCtrl.hasError('required')
-      "
-    >
-      Your selection is invalid
-    </mat-error>
-  </mat-form-field>
+        <mat-form-field class="add-movie-form__input">
+          <mat-label>Cena biletu</mat-label>
+          <input
+            matInput
+            numbersOnly
+            formControlName="price"
+            placeholder="Cena tego biletu w PLN"
+          />
+          <mat-error *ngIf="priceListForm.controls.price.errors as errors">
+            <ng-container *ngIf="errors['required']"
+              >To pole jest wymagane.</ng-container
+            >
+            <ng-container *ngIf="errors['min']">Minimum 10 PLN</ng-container>
+            <ng-container *ngIf="errors['max']"
+              >Maksymalnie 50 PLN</ng-container
+            >
+          </mat-error>
+        </mat-form-field>
+        <button
+          class="add-show-form__trash"
+          type="button"
+          (click)="removePriceListItem(index)"
+          mat-flat-button
+        >
+          X
+        </button>
+      </div>
+    </li>
+  </ol>
 
-  <mat-form-field color="primary" class="fieldset__input">
-    <mat-label>Data</mat-label>
-    <input
-      matInput
-      [matDatepicker]="picker"
-      [min]="today"
-      [max]="nextweek()"
-      formControlName="day"
-    />
-    <mat-error *ngIf="dayCtrl.errors as errors">
-      <ng-container *ngIf="errors['required']"
-        >To pole jest wymagane.</ng-container
-      >
-      <ng-container *ngIf="errors['matDatepickerMin']"
-        >Data nie może być w przeszłości.</ng-container
-      >
-    </mat-error>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <button class="add-movie-form__submit" mat-fab extended color="primary">
+  <button class="add-show-form__submit" mat-fab extended color="primary">
     Dodaj seans
   </button>
 </form>

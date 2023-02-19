@@ -21,7 +21,6 @@ export class MoviesListComponent {
   private moviesListService = inject(MoviesListService);
   private selectedStateService = inject(SelectedMovieStatfullService);
   private activeRoute = inject(ActivatedRoute);
-  private cdr = inject(ChangeDetectorRef);
   private location = inject(Location);
 
   private subscription = new Subscription();

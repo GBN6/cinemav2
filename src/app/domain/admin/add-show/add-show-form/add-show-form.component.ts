@@ -20,7 +20,10 @@ import {
   AddShowForm,
   FetchedMovie,
   FetchedScreen,
+  MovieControl,
+  TicketType,
 } from '../../admin.interface';
+import { AdminPanelService } from '../../admin.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -47,38 +50,69 @@ export class AddShowFormComponent {
   @Output() handleSubmitEvent = new EventEmitter<string>();
 
   private builder = inject(NonNullableFormBuilder);
-  addShowForm = this.createForm();
+  private adminPanelService = inject(AdminPanelService);
 
+  addShowForm = this.createForm();
   matcher = new MyErrorStateMatcher();
   today = new Date();
 
   selectedMovieId!: number;
   selectedScreen!: string;
+  ticketTypes: TicketType[] = [
+    { type: 'Ulgowy' },
+    { type: 'Senior' },
+    { type: 'Normalny' },
+  ];
 
-  nextweek() {
-    let today = new Date();
-    let nextweek = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + 7
-    );
-    return nextweek;
+  getLastDayOfWeek() {
+    let day = this.today.getDate() - this.today.getDay() + 6;
+    let lastDay = new Date(this.today.setDate(day));
+
+    return lastDay;
   }
 
+  // nextweek() {
+  //   let today = new Date();
+  //   let nextweek = new Date(
+  //     today.getFullYear(),
+  //     today.getMonth(),
+  //     today.getDate() + 6
+  //   );
+  //   return nextweek;
+  // }
+
   addPriceListItem() {
+    if (this.addShowForm.controls.priceList.length === 3) return;
     this.addShowForm.controls.priceList.push(this.createPriceListForm());
+  }
+
+  removePriceListItem(index: number) {
+    if (this.addShowForm.controls.priceList.length === 1) return;
+    this.addShowForm.controls.priceList.removeAt(index);
   }
 
   handleSubmit() {
     let pickedDate = new Date(this.dayCtrl.value);
     let day = pickedDate.getUTCDay();
+    if (
+      this.adminPanelService
+        .isDateAvaible(
+          this.hourCtrl.value,
+          this.movieIdCtrl.value.movieLength,
+          day,
+          this.screenCtrl.value
+        )
+        .subscribe(console.log)
+    ) {
+      console.log('mozna dodac');
+    }
     console.log(this.addShowForm.value);
     console.log(day);
   }
 
   private createForm() {
     return this.builder.group<AddShowForm>({
-      movieId: this.builder.control(null, {
+      movieId: this.builder.control({} as MovieControl, {
         validators: [Validators.required],
       }),
       hour: this.builder.control('', {
@@ -98,8 +132,16 @@ export class AddShowFormComponent {
 
   private createPriceListForm() {
     return this.builder.group<AddPriceListItem>({
-      type: this.builder.control(''),
-      price: this.builder.control(null),
+      type: this.builder.control('', {
+        validators: [Validators.required],
+      }),
+      price: this.builder.control(null, {
+        validators: [
+          Validators.required,
+          Validators.min(10),
+          Validators.max(50),
+        ],
+      }),
     });
   }
 
@@ -119,7 +161,5 @@ export class AddShowFormComponent {
     return this.addShowForm.controls.screen;
   }
 
-  ngOnInit() {
-    console.log(this.nextweek());
-  }
+  ngOnInit() {}
 }

@@ -31,6 +31,21 @@ export interface Screen {
   specialSeats: string[];
 }
 
+export interface Show {
+  id: number;
+  hour: string;
+  screen: string;
+  reservedSeats: any[];
+  priceList: PriceList[];
+  movieId: number;
+  dateId: number;
+}
+
+export interface PriceList {
+  type: string;
+  price: number;
+}
+
 export interface AddMovieForm {
   img: FormControl<string>;
   title: FormControl<string>;
@@ -44,21 +59,21 @@ export interface AddMovieForm {
 }
 
 export interface AddShowForm {
-  movieId: FormControl<number | null>;
+  movieId: FormControl<MovieControl>;
   hour: FormControl<string>;
   day: FormControl<string>;
   screen: FormControl<string>;
   priceList: FormArray<FormGroup<AddPriceListItem>>;
 }
 
+export interface MovieControl {
+  movieId: number;
+  movieLength: number;
+}
+
 export interface AddPriceListItem {
   type: FormControl<string>;
   price: FormControl<number | null>;
-}
-
-export interface PriceList {
-  type: string;
-  price: number;
 }
 
 export interface PegiRating {
@@ -77,4 +92,8 @@ export interface FetchedMovie extends Movie {
 
 export interface FetchedScreen extends Screen {
   id: number;
+}
+
+export interface TicketType {
+  type: 'Ulgowy' | 'Senior' | 'Normalny';
 }

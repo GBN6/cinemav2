@@ -54,6 +54,6 @@ export class MoviesShowsComponent {
   }
 
   ngOnInit() {
-    this.shows$ = this.showsService.getShows(this.movie.movieId);
+    this.shows$ = this.showsService.getShows(this.movie.movieId, this.date.id);
   }
 }
