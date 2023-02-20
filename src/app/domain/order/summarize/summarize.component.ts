@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { OrderService } from '../order/order.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-summarize',

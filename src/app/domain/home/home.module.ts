@@ -40,7 +40,8 @@ import { HomeComponent } from './home.component';
           },
           {
             path: 'summarize',
-            loadComponent: () => import('../summarize/summarize.component'),
+            loadComponent: () =>
+              import('../order/summarize/summarize.component'),
           },
           {
             path: 'my-tickets',
