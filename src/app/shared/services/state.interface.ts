@@ -17,6 +17,7 @@ export interface TicketState {
   movieTitle: string;
   date: string;
   hour: string;
+  screen: string;
   seat: Seat;
 }
 

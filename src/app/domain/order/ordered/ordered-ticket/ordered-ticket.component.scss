@@ -1,0 +1,66 @@
+.order-ticket {
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+  background-color: var(--white);
+  justify-content: space-around;
+  border: 1px solid var(--dark);
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1rem;
+}
+
+.ticket-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket-details,
+.ticket-pay {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-date,
+.ticket-hour {
+  font-weight: 600;
+}
+
+.ticket-title,
+.ticket-info-bold {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.ticket-logo {
+  text-align: center;
+  background-color: var(--dark);
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 600;
+}
+.ticket-when {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-ticket-btn {
+  padding: 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  background-color: var(--dark);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.ticket-price {
+  font-weight: 600;
+  font-size: 2rem;
+}

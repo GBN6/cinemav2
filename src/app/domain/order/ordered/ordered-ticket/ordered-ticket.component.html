@@ -1,0 +1,29 @@
+<div class="order-ticket">
+  <div class="ticket">
+    <div class="ticket-details">
+      <div class="ticket-main">
+        <div class="ticket-logo">FakeKino</div>
+        <div class="ticket-title">{{ orderedTicket.movieTitle }}</div>
+      </div>
+      <div class="ticket-price">{{ orderedTicket.seat.price }} PLN</div>
+    </div>
+
+    <div class="ticket-pay">
+      <div class="ticket-type">
+        {{ orderedTicket.seat.type }} | Miejsce:
+        <span class="ticket-info-bold">{{ orderedTicket.seat.position }}</span>
+        | SALA :
+        <span class="ticket-info-bold">{{ orderedTicket.screen }}</span>
+      </div>
+      <div class="ticket-when">
+        Data:
+        <div class="ticket-date">{{ orderedTicket.date }}</div>
+        Godzina:
+        <div class="ticket-hour">{{ orderedTicket.hour }}</div>
+      </div>
+    </div>
+    <img
+      [src]="barcodeApiUrl + 'http://localhost:4200/order/' + orderedTicket.id"
+    />
+  </div>
+</div>

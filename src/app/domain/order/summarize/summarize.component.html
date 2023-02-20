@@ -4,12 +4,18 @@
     <ng-container *ngIf="email$ | async as email">
       <p>
         Twoje bilety zostały wysłane na adres email:
-        <span class="order-email">{{ email }}</span>
+        <span class="order-email">{{ email.userEmail }}</span>
       </p>
+
+      <div class="qr-img-container">
+        <img
+          [src]="barcodeApiUrl + 'http://localhost:4200/order/' + email.orderId"
+        />
+      </div>
+      <a class="ticket-link" [routerLink]="['/order/', email.orderId]"
+        >Link do biletów</a
+      >
     </ng-container>
-    <div class="qr-img-container">
-      <img src="assets\qr.jpg" />
-    </div>
     <a class="go-back-btn" routerLink="">&#9754; Wróć na stronę główną</a>
   </div>
 </div>

@@ -43,3 +43,8 @@ export interface Address {
   postcode: string;
   city: string;
 }
+
+export interface OrderState {
+  userEmail: string;
+  orderId: number;
+}

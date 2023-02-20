@@ -12,13 +12,20 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 2rem;
 }
 
 .qr-img-container {
   width: 200px;
 }
 
-.summarize a {
+.ticket-link {
+  font-weight: 600;
+  color: var(--primary-darker);
+  font-size: 2rem;
+}
+
+.summarize .go-back-btn {
   cursor: pointer;
   background-color: var(--dark);
   color: var(--primary);

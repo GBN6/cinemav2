@@ -13,5 +13,7 @@ import { OrderService } from '../order.service';
 export default class SummarizeComponent {
   private orderService = inject(OrderService);
 
+  barcodeApiUrl = 'https://barcodeapi.org/api/qr/';
+
   email$ = this.orderService.orderEmail$;
 }

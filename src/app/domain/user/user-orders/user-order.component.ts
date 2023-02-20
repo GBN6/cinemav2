@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UserOrderItemComponent } from './user-order-item/user-order-item.component';
 import { UserOrderService } from './user-order.service';
 
@@ -9,7 +9,7 @@ import { UserOrderService } from './user-order.service';
   standalone: true,
   templateUrl: './user-order.component.html',
   styleUrls: ['./user-order.component.scss'],
-  imports: [CommonModule, UserOrderItemComponent],
+  imports: [CommonModule, UserOrderItemComponent, RouterModule],
   providers: [UserOrderService],
 })
 export default class UserOrdersComponent {

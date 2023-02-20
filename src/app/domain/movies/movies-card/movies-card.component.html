@@ -13,7 +13,20 @@
       <span>{{ movieCard.ageRest }} </span>
     </div>
     <p class="movieCard-desc">{{ movieCard.description }}</p>
-    <button type="button" class="show-info-button" (click)="showDescription()">
+    <button
+      *ngIf="showLongDescription"
+      type="button"
+      class="show-info-button"
+      (click)="showDescription()"
+    >
+      Schowaj
+    </button>
+    <button
+      *ngIf="!showLongDescription"
+      type="button"
+      class="show-info-button"
+      (click)="showDescription()"
+    >
       Więcej
     </button>
     <ng-container *ngIf="showLongDescription">

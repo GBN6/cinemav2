@@ -56,6 +56,10 @@ import { HomeComponent } from './home.component';
                 '../user/user-watchlist/user-watchlist/user-watchlist.component'
               ),
           },
+          {
+            path: 'order/:id',
+            loadComponent: () => import('../order/ordered/ordered.component'),
+          },
         ],
       },
     ]),

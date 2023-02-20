@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { Show } from '../movies/movies.interface';
-import { Order, UserData } from './order.interface';
+import { UserOrders } from '../user/user-orders/user-order.interface';
+import { Order, OrderState, UserData } from './order.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,16 +13,14 @@ export class OrderService {
   private http = inject(HttpClient);
   private orderUrl = 'http://localhost:3000/orders';
   private showUrl = 'http://localhost:3000/show';
-  private orderEmail$$ = new ReplaySubject<string>(1);
-
-  private orderId?: number = 0;
+  private orderEmail$$ = new BehaviorSubject<OrderState>({} as OrderState);
 
   get orderEmail$() {
     return this.orderEmail$$.asObservable();
   }
 
-  private getCurrentReservedSeats(number: number) {
-    return this.http.get<Show>(`${this.showUrl}/${number}`);
+  getOrderedTickets(orderId: number) {
+    return this.http.get<UserOrders>(this.orderUrl + `/${orderId}`);
   }
 
   addOrder(userId: number | null, userData: UserData, tickets: TicketState[]) {
@@ -53,30 +52,50 @@ export class OrderService {
         userId: userId,
       };
 
-      this.orderEmail$$.next(userMail);
-      this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe();
+      this.orderEmail$$.next({
+        ...this.orderEmail$$.value,
+        userEmail: userMail,
+      });
+      this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe((result) =>
+        this.orderEmail$$.next({
+          ...this.orderEmail$$.value,
+          orderId: result.id,
+        })
+      );
     } else {
-      this.orderEmail$$.next(userMail);
-      this.http.post<Order>(this.orderUrl, orderDTO).subscribe();
+      this.orderEmail$$.next({
+        ...this.orderEmail$$.value,
+        userEmail: userMail,
+      });
+      this.http.post<Order>(this.orderUrl, orderDTO).subscribe((result) =>
+        this.orderEmail$$.next({
+          ...this.orderEmail$$.value,
+          orderId: result.id,
+        })
+      );
     }
   }
-
-  addToReservedSeats(tickets: TicketState[]) {
-    const copyTickets = [...tickets];
-    console.log(copyTickets);
-    if (copyTickets.length === 0) return;
-    this.getCurrentReservedSeats(copyTickets[0].showId).subscribe(
-      ({ reservedSeats }) => {
-        this.http
-          .patch(`${this.showUrl}/${copyTickets[0].showId}`, {
-            reservedSeats: [...reservedSeats, copyTickets[0].seat.position],
-          })
-          .subscribe((data) => {
-            console.log(data);
-            copyTickets.splice(0, 1);
-            this.addToReservedSeats(copyTickets);
-          });
-      }
-    );
-  }
 }
+
+// addToReservedSeats(tickets: TicketState[]) {
+//   const copyTickets = [...tickets];
+//   console.log(copyTickets);
+//   if (copyTickets.length === 0) return;
+//   this.getCurrentReservedSeats(copyTickets[0].showId).subscribe(
+//     ({ reservedSeats }) => {
+//       this.http
+//         .patch(`${this.showUrl}/${copyTickets[0].showId}`, {
+//           reservedSeats: [...reservedSeats, copyTickets[0].seat.position],
+//         })
+//         .subscribe((data) => {
+//           console.log(data);
+//           copyTickets.splice(0, 1);
+//           this.addToReservedSeats(copyTickets);
+//         });
+//     }
+//   );
+// }
+
+// private getCurrentReservedSeats(number: number) {
+//   return this.http.get<Show>(`${this.showUrl}/${number}`);
+// }

@@ -1,0 +1,16 @@
+<div class="user-orders-container">
+  <h1>Bilety</h1>
+  <ng-container *ngIf="order$ | async as order; else loading">
+    <div class="user-orders">
+      <div class="user-order">
+        <app-ordered-ticket
+          *ngFor="let ticket of order.ticket"
+          [orderedTicket]="ticket"
+        ></app-ordered-ticket>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    <p>...Ładowanie</p>
+  </ng-template>
+</div>

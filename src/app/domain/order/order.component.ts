@@ -48,7 +48,7 @@ export class OrderComponent {
 
   getFullPrice(tickets: TicketState[]) {
     return tickets.reduce((total, price) => {
-      return (total += price.seat.price);
+      return (total += +price.seat.price);
     }, 0);
   }
 
@@ -68,7 +68,7 @@ export class OrderComponent {
     }
 
     console.log(this.userId);
-    this.orderService.addToReservedSeats(tickets);
+    // this.orderService.addToReservedSeats(tickets);
     this.orderService.addOrder(this.userId, this.userFormData, tickets);
     // this.movieStateService.clearMovieAndShowState();
     this.router.navigate(['summarize']);

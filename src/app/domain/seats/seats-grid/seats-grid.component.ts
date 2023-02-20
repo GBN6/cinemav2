@@ -33,6 +33,7 @@ export class SeatsGridComponent {
       date: this.date,
       hour: this.show.hour,
       movieTitle: this.movie.title,
+      screen: this.show.screen,
       seat: {
         position: position,
         price: this.show.priceList[0].price,

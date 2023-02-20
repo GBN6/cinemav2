@@ -9,8 +9,12 @@
             *ngFor="let ticket of order.ticket"
             [userOrderItem]="ticket"
           ></app-user-order-item>
-          <button type="button" class="download-ticket-btn">
-            Pobierz rachunek/fakturę
+          <button
+            routerLink="/order/{{ order.id }}"
+            type="button"
+            class="download-ticket-btn"
+          >
+            Przejdź do biletów
           </button>
         </div>
       </div>

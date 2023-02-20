@@ -102,6 +102,7 @@
           "date": "09/02/2023",
           "hour": "16.30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "A",
           "seat": {
             "position": "A12",
             "price": 30,
@@ -115,6 +116,7 @@
           "date": "09/02/2023",
           "hour": "16.30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "A",
           "seat": {
             "position": "B12",
             "price": 30,
@@ -146,6 +148,7 @@
           "date": "12/02/2023",
           "hour": "18.30",
           "movieTitle": "Kot w butach. Ostanie życzenie",
+          "screen": "B",
           "seat": {
             "position": "A9",
             "price": 30,
@@ -158,6 +161,7 @@
           "showId": 6,
           "date": "12/02/2023",
           "hour": "18.30",
+          "screen": "B",
           "movieTitle": "Kot w butach. Ostanie życzenie",
           "seat": {
             "position": "B9",
@@ -188,6 +192,7 @@
           "showId": 2,
           "date": "16/02/2023",
           "hour": "20.30",
+          "screen": "C",
           "movieTitle": "Black Panther: Wakanda Forever",
           "seat": {
             "position": "A16",
@@ -202,6 +207,7 @@
           "date": "16/02/2023",
           "hour": "20.30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "C",
           "seat": {
             "position": "B16",
             "price": 10,
@@ -214,6 +220,7 @@
           "showId": 2,
           "date": "16/02/2023",
           "hour": "20.30",
+          "screen": "C",
           "movieTitle": "Black Panther: Wakanda Forever",
           "seat": {
             "position": "C16",
@@ -245,6 +252,7 @@
           "date": "17/02/2023",
           "hour": "20.30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "A",
           "seat": {
             "position": "K16",
             "price": 20,
@@ -275,6 +283,7 @@
           "date": "17/02/2023",
           "hour": "20:30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "A",
           "seat": {
             "position": "L16",
             "price": 10,
@@ -288,9 +297,88 @@
           "date": "17/02/2023",
           "hour": "20:30",
           "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "A",
           "seat": {
             "position": "K16",
             "price": 20,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 6,
+      "userName": "Janek",
+      "userLastName": "Kowalski",
+      "userMail": "user@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Mon Feb 20 2023 14:30:11 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "5H33",
+          "showId": 33,
+          "date": "21/02/2023",
+          "hour": "08:00",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H5",
+            "price": "21",
+            "special": false,
+            "type": "Senior"
+          }
+        },
+        {
+          "id": "6H33",
+          "showId": 33,
+          "date": "21/02/2023",
+          "hour": "08:00",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H6",
+            "price": "21",
+            "special": false,
+            "type": "Senior"
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "userName": "Janek",
+      "userLastName": "Kowalski",
+      "userMail": "user@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "600700800",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Mon Feb 20 2023 14:37:11 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "12H35",
+          "showId": 35,
+          "date": "21/02/2023",
+          "hour": "14:30",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H12",
+            "price": "21",
             "special": false,
             "type": "Normalny"
           }
@@ -859,7 +947,12 @@
           "price": "21"
         }
       ],
-      "reservedSeats": [],
+      "reservedSeats": [
+        "H8",
+        "G8",
+        "H5",
+        "H6"
+      ],
       "id": 33
     },
     {
@@ -887,7 +980,9 @@
           "price": "21"
         }
       ],
-      "reservedSeats": [],
+      "reservedSeats": [
+        "H12"
+      ],
       "id": 35
     },
     {
@@ -1270,6 +1365,18 @@
     {
       "id": 8,
       "name": "Przygodowy"
+    }
+  ],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "fakeKino",
+      "discount": 20
+    },
+    {
+      "id": 2,
+      "code": "REACT",
+      "discount": 10
     }
   ]
 }

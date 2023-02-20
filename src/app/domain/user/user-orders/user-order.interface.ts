@@ -24,11 +24,12 @@ export interface UserOrdersTicket {
   movieTitle: string;
   date: string;
   hour: string;
+  screen: string;
   seat: UserOrdersSeat;
 }
 
 export interface UserOrdersSeat {
-  positon: string;
+  position: string;
   type: string;
   price: number;
   special: boolean;
