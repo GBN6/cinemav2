@@ -13,13 +13,7 @@
         [errorStateMatcher]="matcher"
       >
         <mat-option>Wyczyść</mat-option>
-        <mat-option
-          *ngFor="let movie of movies"
-          [value]="{
-            movieid: movie.id,
-            movieLength: +movie.length.split(' ')[0]
-          }"
-        >
+        <mat-option *ngFor="let movie of movies" [value]="movie">
           {{ movie.title }}
         </mat-option>
       </mat-select>
@@ -66,8 +60,8 @@
       <input
         matInput
         [matDatepicker]="picker"
-        [min]="today"
-        [max]="getLastDayOfWeek()"
+        [min]="tomorrow"
+        [max]="lastDate"
         formControlName="dateId"
       />
       <mat-error *ngIf="dateIdCtrl.errors as errors">

@@ -4,7 +4,6 @@ import {
   EventEmitter,
   inject,
   Input,
-  OnInit,
   Output,
 } from '@angular/core';
 import {
@@ -16,13 +15,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { BehaviorSubject, Observable, of, take, tap } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import {
   AddPriceListItem,
   AddShowForm,
   FetchedMovie,
   FetchedScreen,
-  MovieControl,
   Show,
   TicketType,
 } from '../../admin.interface';
@@ -51,7 +49,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class AddShowFormComponent {
   @Input() movies!: FetchedMovie[];
   @Input() screens!: FetchedScreen[];
-  @Output() handleSubmitEvent = new EventEmitter<Show>();
+  @Output() handleAddShow = new EventEmitter<Show>();
+  @Output() handleAddMovie = new EventEmitter<{
+    movie: FetchedMovie;
+    dateId: number;
+  }>();
 
   private builder = inject(NonNullableFormBuilder);
   private adminPanelService = inject(AdminPanelService);
@@ -63,7 +65,10 @@ export class AddShowFormComponent {
   addShowForm = this.createForm();
   matcher = new MyErrorStateMatcher();
   today = new Date();
-
+  tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+  first = this.today.getDate() - this.today.getDay() + 1; // Start from Monday
+  firstDate = new Date(this.today.setDate(this.first));
+  lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 6));
   selectedMovieId!: number;
   selectedScreen!: string;
   ticketTypes: TicketType[] = [
@@ -71,13 +76,6 @@ export class AddShowFormComponent {
     { type: 'Senior' },
     { type: 'Normalny' },
   ];
-
-  getLastDayOfWeek() {
-    let day = this.today.getDate() - this.today.getDay() + 6;
-    let lastDay = new Date(this.today.setDate(day));
-
-    return lastDay;
-  }
 
   addPriceListItem() {
     if (this.addShowForm.controls.priceList.length === 3) return;
@@ -89,11 +87,6 @@ export class AddShowFormComponent {
     this.addShowForm.controls.priceList.removeAt(index);
   }
 
-  selectedDayOfWeek() {
-    let pickedDate = new Date(this.dateIdCtrl.value);
-    return pickedDate.getUTCDay();
-  }
-
   handleSubmit() {
     let pickedDate = new Date(this.dateIdCtrl.value);
     let day = pickedDate.getUTCDay();
@@ -102,24 +95,33 @@ export class AddShowFormComponent {
     if (this.addShowForm.invalid) return;
 
     const showData = this.addShowForm.getRawValue();
+    console.log(showData);
     const { movieId } = showData;
+    let movieLength = +movieId.length.split(' ')[0];
 
     this.adminPanelService
       .isDateAvaible(
         this.hourCtrl.value,
-        this.movieIdCtrl.value.movieLength,
+        movieLength,
         day,
         this.screenCtrl.value
       )
+      .pipe(take(1))
       .subscribe((result) => {
         if (result === true) {
-          this.handleSubmitEvent.emit({
-            ...showData,
-            movieId: movieId.movieId,
+          this.handleAddMovie.emit({
+            movie: movieId,
             dateId: day,
-            reservedSeats: [''],
           });
+          this.handleAddShow.emit({
+            ...showData,
+            movieId: movieId.id,
+            dateId: day,
+            reservedSeats: [],
+          });
+
           this.showsColliding$$.next({ showError: false });
+          console.log('dodano nowy film');
         } else {
           this.showsColliding$$.next({ showError: true });
           console.log('nie dodano nowy film');
@@ -130,7 +132,7 @@ export class AddShowFormComponent {
 
   private createForm() {
     return this.builder.group<AddShowForm>({
-      movieId: this.builder.control({} as MovieControl, {
+      movieId: this.builder.control({} as FetchedMovie, {
         validators: [Validators.required],
       }),
       hour: this.builder.control('', {
@@ -177,6 +179,9 @@ export class AddShowFormComponent {
 
   get screenCtrl() {
     return this.addShowForm.controls.screen;
+  }
+  ngOnInit() {
+    console.log(this.tomorrow);
   }
 }
 

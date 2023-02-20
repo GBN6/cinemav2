@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
 import { UserWatchListItemComponent } from '../user-watchlist-item/user-watchlist-item.component';
-import { UserWatchlistService } from '../user-watchlist.service';
 
 @Component({
   selector: 'app-user-watchlist',

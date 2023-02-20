@@ -1,19 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import {
-  combineLatest,
-  forkJoin,
-  map,
-  mergeMap,
-  of,
-  switchMap,
-  take,
-} from 'rxjs';
+import { faSleigh } from '@fortawesome/free-solid-svg-icons';
+import { forkJoin, map, of, switchMap } from 'rxjs';
+import { MoviesCard } from '../movies/movies.interface';
 import {
   FetchedGenre,
   FetchedMovie,
   FetchedScreen,
   FetchedShows,
+  Film,
   Movie,
   PegiRating,
   Show,
@@ -32,8 +27,17 @@ export class AdminPanelService {
     return this.http.post(this.apiUrl + `/show`, show);
   }
 
+  addNewMovieToDate(film: Film) {
+    console.log(film);
+    return this.http.post(`${this.apiUrl}/films`, film);
+  }
+
   getAllMovies() {
     return this.http.get<FetchedMovie[]>(`${this.apiUrl}/movies`);
+  }
+
+  getAllFilms() {
+    return this.http.get<Film[]>(`${this.apiUrl}/films`);
   }
 
   getAllScreens() {
@@ -107,25 +111,36 @@ export class AdminPanelService {
         );
       }),
       map((results) => {
+        let selectedMovietimeSlot = this.selectedHourTimeSlot(
+          selectedHour,
+          selectedMovieLength
+        );
         if (results.length === 0) return true;
         if (results.length === 1) {
           let showTimeSLot = this.selectedHourTimeSlot(
             results[0].hour,
             results[0].movieLength + 15
           );
-          if (selectedHour > showTimeSLot.latestHour) return true;
+          if (selectedHour === results[0].hour) return false;
+          if (
+            selectedHour > showTimeSLot.latestHour ||
+            selectedMovietimeSlot.latestHour < results[0].hour
+          )
+            return true;
           return false;
         }
-        for (let i = 0; i < results.length; i++) {
+        const sorted = results.sort((showA, showB) =>
+          showA.hour > showB.hour ? 1 : -1
+        );
+        console.log(sorted);
+
+        for (let i = 0; i < sorted.length; i++) {
           let showTimeSLot = this.selectedHourTimeSlot(
-            results[i].hour,
-            results[i].movieLength + 15
-          );
-          let selectedMovietimeSlot = this.selectedHourTimeSlot(
-            selectedHour,
-            selectedMovieLength
+            sorted[i].hour,
+            sorted[i].movieLength + 15
           );
           console.log('wybrana godzina', selectedHour);
+          console.log('godzina dodanego seansu', sorted[i].hour);
           console.log(
             'godzina zakończenia poprzedniego seansu',
             showTimeSLot.latestHour
@@ -134,22 +149,33 @@ export class AdminPanelService {
             'godzina zakończenia aktualnie wybranego filmu',
             selectedMovietimeSlot.latestHour
           );
-          console.log(
-            'godzina rozpoczecia kolejnego seansu',
-            results[i + 1].hour
-          );
-          if (
-            selectedHour > showTimeSLot.latestHour &&
-            selectedMovietimeSlot.latestHour < results[i + 1].hour
-          ) {
+
+          console.log('godzina koljengo seansu', sorted[i + 1]);
+
+          if (i === sorted.length - 1) {
+            if (selectedHour < showTimeSLot.latestHour) return false;
             return true;
           }
+
+          if (selectedHour === sorted[i].hour) return false;
+          if (selectedMovietimeSlot.latestHour < sorted[i].hour) return true;
+          if (
+            selectedHour > showTimeSLot.latestHour &&
+            selectedMovietimeSlot.latestHour < sorted[i + 1].hour
+          ) {
+            return true;
+          } else if (selectedMovietimeSlot.latestHour > sorted[i + 1].hour) {
+            continue;
+          }
+
           return false;
         }
         return 'ERROR';
       })
     );
   }
+
+  //   if (selectedHour > sorted[i + 1].hour) return true;
 
   private getMovieLength(movieId: number) {
     return this.http.get<FetchedMovie>(`${this.apiUrl}/movies/${movieId}`).pipe(

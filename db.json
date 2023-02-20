@@ -36,9 +36,27 @@
   ],
   "userWatchList": [
     {
-      "id": 1,
+      "id": 2,
       "movies": {
-        "id": 4,
+        "id": 5,
+        "img": "assets/avatar2_poster.jpg",
+        "title": "Avatar: Istota wody",
+        "genre": "Science-Fiction",
+        "length": "193 min",
+        "ageRest": "PG-12",
+        "description": "Whenever i have time i will add some description",
+        "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+        "score": "8/10",
+        "premier": false,
+        "dateId": 0,
+        "movieId": 2
+      },
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "movies": {
+        "id": 0,
         "img": "assets/wakanda_poster.jpg",
         "title": "Black Panther: Wakanda Forever",
         "genre": "Action, Super hero",
@@ -48,7 +66,7 @@
         "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "score": "8/10",
         "premier": true,
-        "dateId": 4,
+        "dateId": 0,
         "movieId": 0
       },
       "userId": 1
@@ -440,6 +458,31 @@
       "dateId": 2
     },
     {
+      "id": 32,
+      "hour": "12:30",
+      "screen": "B",
+      "reservedSeats": [
+        "E3",
+        "D3"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "movieId": 0,
+      "dateId": 2
+    },
+    {
       "id": 4,
       "hour": "9:30",
       "screen": "c",
@@ -504,50 +547,6 @@
       ],
       "movieId": 0,
       "dateId": 6
-    },
-    {
-      "id": 7,
-      "hour": "15:30",
-      "screen": "A",
-      "reservedSeats": [],
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "movieId": 1,
-      "dateId": 1
-    },
-    {
-      "id": 8,
-      "hour": "20:05",
-      "screen": "A",
-      "reservedSeats": [],
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "movieId": 1,
-      "dateId": 1
     },
     {
       "id": 9,
@@ -834,6 +833,90 @@
       ],
       "movieId": 3,
       "dateId": 6
+    },
+    {
+      "movieId": 1,
+      "hour": "12:30",
+      "dateId": 0,
+      "screen": "B",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "23"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 16
+    },
+    {
+      "movieId": 4,
+      "hour": "08:00",
+      "dateId": 1,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 33
+    },
+    {
+      "movieId": 4,
+      "hour": "20:00",
+      "dateId": 1,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 34
+    },
+    {
+      "movieId": 4,
+      "hour": "14:30",
+      "dateId": 1,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 35
+    },
+    {
+      "movieId": 4,
+      "hour": "17:00",
+      "dateId": 1,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 36
+    },
+    {
+      "movieId": 4,
+      "hour": "23:00",
+      "dateId": 1,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 37
     }
   ],
   "films": [
@@ -894,7 +977,7 @@
       "movieId": 0
     },
     {
-      "id": 6,
+      "id": 4,
       "img": "assets/avatar2_poster.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
@@ -908,7 +991,7 @@
       "movieId": 2
     },
     {
-      "id": 7,
+      "id": 5,
       "img": "assets/avatar2_poster.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
@@ -922,7 +1005,7 @@
       "movieId": 2
     },
     {
-      "id": 9,
+      "id": 6,
       "img": "assets/avatar2_poster.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
@@ -936,7 +1019,7 @@
       "movieId": 2
     },
     {
-      "id": 10,
+      "id": 7,
       "img": "assets/avatar2_poster.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
@@ -950,7 +1033,7 @@
       "movieId": 2
     },
     {
-      "id": 11,
+      "id": 8,
       "img": "assets/avatar2_poster.jpg",
       "title": "Avatar: Istota wody",
       "genre": "Science-Fiction",
@@ -964,7 +1047,7 @@
       "movieId": 2
     },
     {
-      "id": 13,
+      "id": 9,
       "img": "assets/kot_poster.jpg",
       "title": "Kot w butach. Ostanie życzenie",
       "genre": "Aniowany, Familijny, Przygodowy",
@@ -978,7 +1061,7 @@
       "movieId": 3
     },
     {
-      "id": 14,
+      "id": 10,
       "img": "assets/kot_poster.jpg",
       "title": "Kot w butach. Ostanie życzenie",
       "genre": "Aniowany, Familijny, Przygodowy",
@@ -992,7 +1075,7 @@
       "movieId": 3
     },
     {
-      "id": 15,
+      "id": 11,
       "img": "assets/kot_poster.jpg",
       "title": "Kot w butach. Ostanie życzenie",
       "genre": "Aniowany, Familijny, Przygodowy",
@@ -1006,7 +1089,7 @@
       "movieId": 3
     },
     {
-      "id": 16,
+      "id": 12,
       "img": "assets/apokawixa_poster.jpeg",
       "title": "Apokawixa",
       "genre": "Horro",
@@ -1020,18 +1103,32 @@
       "movieId": 1
     },
     {
+      "id": 1.1437628299237614,
+      "img": "assets/apokawixa_poster.jpeg",
+      "title": "Apokawixa",
+      "genre": "Horro",
+      "length": "110 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "6/10",
+      "premier": false,
+      "dateId": 0,
+      "movieId": 1
+    },
+    {
       "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
       "title": "ANT-MAN I OSA: KWANTOMANIA",
       "genre": "Akcja, Sci-Fi",
-      "length": "125min",
+      "length": "125 min",
       "ageRest": "PG-12",
       "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
       "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
       "score": "6/10",
       "premier": true,
-      "id": 17,
-      "movieId": 4,
-      "dateId": 4
+      "id": 4.886147905578594,
+      "dateId": 1,
+      "movieId": 4
     }
   ],
   "movies": [

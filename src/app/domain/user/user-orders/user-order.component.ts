@@ -18,5 +18,5 @@ export default class UserOrdersComponent {
 
   private userId = this.route.snapshot.params['id'];
 
-  userOrders$ = this.userOrderService.getUserOrders(this.userId);
+  userOrders$ = this.userOrderService.getUserOrders();
 }

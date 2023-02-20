@@ -43,15 +43,16 @@ import { HomeComponent } from './home.component';
             loadComponent: () => import('../summarize/summarize.component'),
           },
           {
-            path: 'my-tickets/:id',
-            loadComponent: () => import('../user-orders/user-order.component'),
+            path: 'my-tickets',
+            loadComponent: () =>
+              import('../user/user-orders/user-order.component'),
             canActivate: [AuthGuard],
           },
           {
-            path: 'my-watchlist/:id',
+            path: 'my-watchlist',
             loadComponent: () =>
               import(
-                '../user-watchlist/user-watchlist/user-watchlist.component'
+                '../user/user-watchlist/user-watchlist/user-watchlist.component'
               ),
           },
         ],

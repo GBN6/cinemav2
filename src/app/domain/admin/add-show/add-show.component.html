@@ -1,7 +1,12 @@
 <div class="add-show">
   <h1>Dodaj seans</h1>
   <ng-container *ngIf="newShowData$ | async as newShowData">
-    <app-add-show-form [movies]="newShowData[0]" [screens]="newShowData[1]">
+    <app-add-show-form
+      (handleAddMovie)="addMovieToDate($event, newShowData[2])"
+      (handleAddShow)="addShow($event)"
+      [movies]="newShowData[0]"
+      [screens]="newShowData[1]"
+    >
     </app-add-show-form>
   </ng-container>
 </div>

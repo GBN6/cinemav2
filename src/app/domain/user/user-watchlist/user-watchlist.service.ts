@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
-import { WatchlistActions } from './store/watchlist.actions';
 import { UserWatchList } from './user-watchlist.interface';
 
 @Injectable({
@@ -14,8 +12,6 @@ export class UserWatchlistService {
   private store = inject<Store<AppState>>(Store);
 
   private apiUrl = 'http://localhost:3000';
-
-  // userWatchList?userId=1
 
   getUserWatchlist(userId: number) {
     return this.http.get<UserWatchList[]>(

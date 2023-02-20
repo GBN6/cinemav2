@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, of, switchMap, tap, catchError } from 'rxjs';
 import { AppState } from 'src/app/app.module';
-import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchlist.service';
+import { UserWatchlistService } from 'src/app/domain/user/user-watchlist/user-watchlist.service';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
 import { AuthActions, AuthApiActions, AuthErrorActions } from './auth.actions';

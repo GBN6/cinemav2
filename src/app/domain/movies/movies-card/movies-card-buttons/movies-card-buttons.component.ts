@@ -2,12 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of, take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
-import { WatchlistActions } from 'src/app/domain/user-watchlist/store/watchlist.actions';
-import { UserWatchlistService } from 'src/app/domain/user-watchlist/user-watchlist.service';
 import { MoviesCard } from '../../movies.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { UserMovieRatingComponent } from '../user-movie-rating/user-movie-rating.component';
 import { UserMovieRateService } from '../user-movie-rating/user-movie-rating.service';
+import { UserWatchlistService } from 'src/app/domain/user/user-watchlist/user-watchlist.service';
+import { WatchlistActions } from 'src/app/domain/user/user-watchlist/store/watchlist.actions';
 
 @Component({
   selector: 'app-movies-card-buttons[movieCard][userId]',

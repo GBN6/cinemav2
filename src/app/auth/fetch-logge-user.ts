@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
 import { TokenService } from './token.service';
 import { AuthActions } from './store/auth.actions';
-import { UserWatchlistService } from '../domain/user-watchlist/user-watchlist.service';
-import { WatchlistActions } from '../domain/user-watchlist/store/watchlist.actions';
+import { UserWatchlistService } from '../domain/user/user-watchlist/user-watchlist.service';
+import { WatchlistActions } from '../domain/user/user-watchlist/store/watchlist.actions';
 
 export function fetchLoggedUser() {
   const tokenService = inject(TokenService);

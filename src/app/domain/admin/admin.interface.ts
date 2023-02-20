@@ -58,7 +58,7 @@ export interface AddMovieForm {
 }
 
 export interface AddShowForm {
-  movieId: FormControl<MovieControl>;
+  movieId: FormControl<FetchedMovie>;
   hour: FormControl<string>;
   dateId: FormControl<string>;
   screen: FormControl<string>;
@@ -99,4 +99,19 @@ export interface FetchedShows extends Show {
 
 export interface TicketType {
   type: 'Ulgowy' | 'Senior' | 'Normalny';
+}
+
+export interface Film {
+  id: number;
+  img: string;
+  title: string;
+  genre: string;
+  length: string;
+  ageRest: string;
+  description: string;
+  longDescription: string;
+  score: string;
+  premier: boolean;
+  dateId: number;
+  movieId: number;
 }

@@ -1,4 +1,4 @@
-import { MoviesCard } from '../movies/movies.interface';
+import { MoviesCard } from '../../movies/movies.interface';
 
 export interface UserWatchList {
   id: number;
