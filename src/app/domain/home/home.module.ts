@@ -55,6 +55,7 @@ import { HomeComponent } from './home.component';
               import(
                 '../user/user-watchlist/user-watchlist/user-watchlist.component'
               ),
+            canActivate: [AuthGuard],
           },
           {
             path: 'order/:id',

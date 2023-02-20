@@ -4,6 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, of, switchMap, tap, catchError } from 'rxjs';
 import { AppState } from 'src/app/app.module';
+import { WatchlistActions } from 'src/app/domain/user/user-watchlist/store/watchlist.actions';
 import { UserWatchlistService } from 'src/app/domain/user/user-watchlist/user-watchlist.service';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
@@ -25,7 +26,9 @@ export class AuthEffects {
         return this.authService.login(loginCredentials).pipe(
           map((result) => {
             this.tokenService.saveToken(result.accessToken);
-            this.userWatchListService.getUserWatchlist(result.user.id);
+            this.store.dispatch(
+              WatchlistActions.addWatchlist({ userId: result.user.id })
+            );
             if (result.user.accountType === 'admin') {
               this.router.navigate(['admin-panel']);
             } else {
