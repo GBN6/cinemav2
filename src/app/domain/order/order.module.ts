@@ -7,6 +7,8 @@ import OrderDiscountCodeComponent from './order-discount-code/order-discount-cod
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrderComponent } from './order.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatLoaderComponent } from 'src/app/core/loader/loader.component';
+import { ErrorComponent } from 'src/app/core/error/error.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     NumbersOnlyDirective,
     ReactiveFormsModule,
     MatButtonModule,
+    MatLoaderComponent,
+    ErrorComponent,
   ],
   providers: [],
 })

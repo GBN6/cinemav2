@@ -1,5 +1,5 @@
-<div class="movie-card-buttons">
-  <ng-container *ngIf="userMovieRateState$ | async as userMovieRate">
+<ng-container *ngIf="userMovieRateState$ | async as userMovieRate">
+  <div class="movie-card-buttons">
     <button
       type="button"
       *ngIf="!userMovieRate.hasUserRated; else userVoted"
@@ -13,30 +13,30 @@
         Twoja ocena: {{ userMovieRate.rating }}
       </p>
     </ng-template>
-  </ng-container>
 
-  <ng-container
-    *ngIf="{ response: isMovieInWatchList$ | async } as isMovieInWatchList"
-  >
     <ng-container
-      *ngIf="!isMovieInWatchList.response; else removeMovieCardToWishList"
+      *ngIf="{ response: isMovieInWatchList$ | async } as isMovieInWatchList"
     >
-      <button
-        (click)="addMovieToWishList()"
-        type="button"
-        class="movie-card-buttons__watch"
+      <ng-container
+        *ngIf="!isMovieInWatchList.response; else removeMovieCardToWishList"
       >
-        Chcę zobaczyć
-      </button>
+        <button
+          (click)="addMovieToWishList()"
+          type="button"
+          class="movie-card-buttons__watch"
+        >
+          Chcę zobaczyć
+        </button>
+      </ng-container>
+      <ng-template #removeMovieCardToWishList>
+        <button
+          (click)="removeMovieFromWishList()"
+          type="button"
+          class="movie-card-buttons__watch"
+        >
+          Obejrzałem!
+        </button>
+      </ng-template>
     </ng-container>
-    <ng-template #removeMovieCardToWishList>
-      <button
-        (click)="removeMovieFromWishList()"
-        type="button"
-        class="movie-card-buttons__watch"
-      >
-        Obejrzałem!
-      </button>
-    </ng-template>
-  </ng-container>
-</div>
+  </div>
+</ng-container>

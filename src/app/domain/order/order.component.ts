@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.module';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { UserData } from './order.interface';
@@ -19,9 +20,11 @@ export class OrderComponent {
   private orderService = inject(OrderService);
   private store = inject<Store<AppState>>(Store);
   private router = inject(Router);
+  private errorService = inject(ErrorhandlerService);
 
   private subscription = new Subscription();
 
+  errorHandler$ = this.errorService.error$;
   ticketState$ = this.ticketStateService.ticketState$;
   discountState$ = this.orderService.discount$;
   userId: number | null = null;

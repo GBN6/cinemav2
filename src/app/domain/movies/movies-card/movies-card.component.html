@@ -34,7 +34,7 @@
         {{ movieCard.longDescription }}
       </p>
     </ng-container>
-    <ng-container *ngIf="selectedDate$ | async as selectedDate">
+    <ng-container *ngIf="selectedDate$ | async as selectedDate; error">
       <app-movies-shows
         [date]="selectedDate"
         [movie]="movieCard"
@@ -46,7 +46,6 @@
       <p>Ocena:</p>
       <p>{{ movieCard.score }}</p>
     </div>
-
     <ng-container *ngIf="authState | async as authState">
       <ng-container *ngIf="authState.isLogged">
         <app-movies-card-buttons

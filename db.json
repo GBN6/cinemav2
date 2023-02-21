@@ -1059,7 +1059,10 @@
         }
       ],
       "reservedSeats": [
-        "H8"
+        "H8",
+        "H11",
+        "H3",
+        "H12"
       ],
       "id": 34
     },
@@ -1376,20 +1379,6 @@
       "premier": true,
       "id": 4.55098501225107,
       "dateId": 2,
-      "movieId": 4
-    },
-    {
-      "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
-      "title": "ANT-MAN I OSA: KWANTOMANIA",
-      "genre": "Akcja, Sci-Fi",
-      "length": "125 min",
-      "ageRest": "PG-12",
-      "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
-      "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
-      "score": "6/10",
-      "premier": true,
-      "id": 4.958714367604919,
-      "dateId": 3,
       "movieId": 4
     }
   ],

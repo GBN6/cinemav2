@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { MoviesCard } from '../movies.interface';
 import { MoviesListService } from './movies-list.service';
@@ -20,6 +21,7 @@ import { MoviesListService } from './movies-list.service';
 export class MoviesListComponent {
   private moviesListService = inject(MoviesListService);
   private selectedStateService = inject(SelectedMovieStatfullService);
+  private errorService = inject(ErrorhandlerService);
   private activeRoute = inject(ActivatedRoute);
   private location = inject(Location);
 
@@ -29,6 +31,7 @@ export class MoviesListComponent {
   clickedIndex = 0;
   currentIndex = 0;
   movies$: Observable<MoviesCard[]> | null = null;
+  errorHandler$ = this.errorService.error$;
 
   private getDates() {
     let curr = new Date();

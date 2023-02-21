@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { AuthState } from './auth/auth.interface';
@@ -14,6 +14,8 @@ import { userWatchlistEffects } from './domain/user/user-watchlist/store/watchli
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { fetchLoggedUser } from './auth/fetch-logge-user';
+import { LoaderInterceptor } from './core/interceptor/loader-handler.interceptor';
+import { ErrorhandlerInterceptor } from './core/interceptor/error.interceptor';
 
 export interface AppState {
   auth: AuthState;
@@ -50,6 +52,16 @@ export interface AppState {
     BrowserAnimationsModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorhandlerInterceptor,
+      multi: true,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: fetchLoggedUser,

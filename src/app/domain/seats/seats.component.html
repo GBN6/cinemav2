@@ -1,5 +1,5 @@
-<div class="seat-selection-container">
-  <ng-container *ngIf="selectedState$ | async as selectedState; else loading">
+<ng-container *ngIf="selectedState$ | async as selectedState; else error">
+  <div class="seat-selection-container">
     <div class="movie-title">
       {{ selectedState.selectedMovie.title }},
       {{ selectedState.selectedDate.date }}
@@ -30,8 +30,10 @@
         </a>
       </div>
     </ng-container>
-  </ng-container>
-  <ng-template #loading>
-    <p>...Ładowanie</p>
-  </ng-template>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>

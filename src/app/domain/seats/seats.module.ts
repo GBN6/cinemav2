@@ -8,6 +8,9 @@ import { SeatsGridComponent } from './seats-grid/seats-grid.component';
 import { SeatsSelectedComponent } from './seat-selected/seats-selected.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatLoaderComponent } from 'src/app/core/loader/loader.component';
+import { ErrorComponent } from 'src/app/core/error/error.component';
+ErrorComponent;
 
 @NgModule({
   declarations: [SeatsComponet, SeatsGridComponent, SeatsSelectedComponent],
@@ -22,6 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     FormsModule,
     FontAwesomeModule,
+    ErrorComponent,
+    MatLoaderComponent,
   ],
   providers: [SeatsService],
 })

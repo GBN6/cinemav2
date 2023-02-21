@@ -1,18 +1,19 @@
 <div class="home-container">
-  <ng-container *ngIf="movies$ | async as movies; else loading">
-    <div class="home-container__dates">
-      <button
-        type="button"
-        class="dates-button"
-        *ngFor="let date of week; let i = index"
-        (click)="selectDate(i)"
-        [disabled]="currentIndex > i"
-        [ngClass]="clickedIndex === i ? 'dates-button--active' : ''"
-      >
-        {{ date.slice(0, 5) }}
-      </button>
-    </div>
+  <div class="home-container__dates">
+    <button
+      type="button"
+      class="dates-button"
+      *ngFor="let date of week; let i = index"
+      (click)="selectDate(i)"
+      [disabled]="currentIndex > i"
+      [ngClass]="clickedIndex === i ? 'dates-button--active' : ''"
+    >
+      {{ date.slice(0, 5) }}
+    </button>
+  </div>
 
+  <app-loader [diameter]="100"></app-loader>
+  <ng-container *ngIf="movies$ | async as movies; else error">
     <div class="home-container__movies">
       <div *ngFor="let movie of movies">
         <app-movies-card [movieCard]="movie"></app-movies-card>
@@ -22,6 +23,10 @@
       <h1>Brak seansów w wybrany dzień!</h1>
     </ng-container>
   </ng-container>
-  <ng-template #loading> ...Ładowanie </ng-template>
 </div>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>
 <app-footer></app-footer>

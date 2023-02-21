@@ -1,6 +1,8 @@
-<div class="user-orders-container">
-  <h1>Bilety</h1>
-  <ng-container *ngIf="order$ | async as order; else loading">
+<app-loader [diameter]="50"></app-loader>
+<ng-container *ngIf="order$ | async as order; else error">
+  <div class="user-orders-container">
+    <h1>Bilety</h1>
+
     <div class="user-orders">
       <div class="user-order">
         <app-ordered-ticket
@@ -9,8 +11,10 @@
         ></app-ordered-ticket>
       </div>
     </div>
-  </ng-container>
-  <ng-template #loading>
-    <p>...Ładowanie</p>
-  </ng-template>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>

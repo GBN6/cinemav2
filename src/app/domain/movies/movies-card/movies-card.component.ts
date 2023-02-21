@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.module';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { MoviesCard } from '../movies.interface';
 
@@ -19,9 +20,11 @@ export class MoviesCardComponent {
   @Input() movieCard!: MoviesCard;
   private selectedMovieService = inject(SelectedMovieStatfullService);
   private store = inject<Store<AppState>>(Store);
+  private errorService = inject(ErrorhandlerService);
 
   authState = this.store.select((state) => state.auth);
   selectedDate$ = this.selectedMovieService.stateSelectedDate$;
+  errorHandler$ = this.errorService.error$;
 
   showLongDescription = false;
 

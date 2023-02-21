@@ -5,6 +5,7 @@ import {
   Input,
 } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { SelectedMovieStatfullService } from 'src/app/shared/services/selected-movie.state.service';
 import { SelectedDate } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
@@ -24,8 +25,10 @@ export class MoviesShowsComponent {
   private showsService = inject(MovieShowsService);
   private selectedStateService = inject(SelectedMovieStatfullService);
   private ticketStateService = inject(TicketStateService);
+  private errorService = inject(ErrorhandlerService);
 
   shows$: Observable<Show[]> | null = null;
+  errorHandler$ = this.errorService.error$;
 
   isShowAvaible(hour: string) {
     const showHour = hour.split(':');

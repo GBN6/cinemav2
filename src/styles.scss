@@ -29,10 +29,15 @@ $cinemav2-theme: mat.define-light-theme(
   )
 );
 
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #ff2a2a !important;
+}
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($cinemav2-theme);
+
 :root {
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",

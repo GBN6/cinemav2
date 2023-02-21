@@ -12,6 +12,8 @@ import { UserMovieRatingComponent } from '../movies-card/user-movie-rating/user-
 import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesDatesComponent } from '../movies-dates/movies-dates.component';
+import { MatLoaderComponent } from 'src/app/core/loader/loader.component';
+import { ErrorComponent } from 'src/app/core/error/error.component';
 
 function getToday() {
   const date = new Date();
@@ -43,6 +45,8 @@ function getToday() {
     FooterComponent,
     MatDialogModule,
     FontAwesomeModule,
+    MatLoaderComponent,
+    ErrorComponent,
   ],
   providers: [MovieShowsService, MoviesListService],
 })

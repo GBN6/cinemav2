@@ -8,6 +8,7 @@ import { UserMovieRatingComponent } from '../user-movie-rating/user-movie-rating
 import { UserMovieRateService } from '../user-movie-rating/user-movie-rating.service';
 import { UserWatchlistService } from 'src/app/domain/user/user-watchlist/user-watchlist.service';
 import { WatchlistActions } from 'src/app/domain/user/user-watchlist/store/watchlist.actions';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 
 @Component({
   selector: 'app-movies-card-buttons[movieCard][userId]',
@@ -23,9 +24,11 @@ export class MoviesCardButtonsComponent {
   private store = inject<Store<AppState>>(Store);
   private dialogWindow = inject(MatDialog);
   private userMovieRateService = inject(UserMovieRateService);
+  private errorService = inject(ErrorhandlerService);
 
   isMovieInWatchList$: Observable<boolean | null> = of(null);
   userMovieRateState$ = this.userMovieRateService.ratingState$;
+  errorHandler$ = this.errorService.error$;
 
   userRate: number = 0;
 

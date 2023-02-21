@@ -1,3 +1,4 @@
+<app-loader [diameter]="20"></app-loader>
 <div class="seat-grid-and-legend">
   <ng-container *ngIf="screenGrid$ | async as screenGrid; else loading">
     <ng-container *ngIf="selectedSeats$ | async as selectedSeats">
