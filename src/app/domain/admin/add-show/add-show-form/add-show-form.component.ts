@@ -66,7 +66,7 @@ export class AddShowFormComponent {
   matcher = new MyErrorStateMatcher();
   today = new Date();
   tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
-  first = this.today.getDate() - this.today.getDay() + 1; // Start from Monday
+  first = this.today.getDate() - this.today.getDay() + 1;
   firstDate = new Date(this.today.setDate(this.first));
   lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 6));
   selectedMovieId!: number;
@@ -120,6 +120,8 @@ export class AddShowFormComponent {
             reservedSeats: [],
           });
 
+          this.addShowForm.reset();
+          this.addShowForm.markAsUntouched();
           this.showsColliding$$.next({ showError: false });
           console.log('dodano nowy film');
         } else {

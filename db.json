@@ -385,6 +385,51 @@
         }
       ],
       "userId": 1
+    },
+    {
+      "id": 8,
+      "userName": "Mariusz",
+      "userLastName": "Pudzianowski",
+      "userMail": "tobynic@niedalo.pl",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Tue Feb 21 2023 08:15:38 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "3H35",
+          "showId": 35,
+          "date": "21/02/2023",
+          "hour": "14:30",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H3",
+            "price": "21",
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "4H35",
+          "showId": 35,
+          "date": "21/02/2023",
+          "hour": "14:30",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H4",
+            "price": "21",
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -981,7 +1026,9 @@
         }
       ],
       "reservedSeats": [
-        "H12"
+        "H12",
+        "H3",
+        "H4"
       ],
       "id": 35
     },
@@ -1012,6 +1059,88 @@
       ],
       "reservedSeats": [],
       "id": 37
+    },
+    {
+      "movieId": 0,
+      "hour": "18:30",
+      "dateId": 3,
+      "screen": "B",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 38
+    },
+    {
+      "movieId": 4,
+      "hour": "15:40",
+      "dateId": 2,
+      "screen": "A",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 39
+    },
+    {
+      "movieId": 4,
+      "hour": "20:00",
+      "dateId": 3,
+      "screen": "C",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "21"
+        },
+        {
+          "type": "Normalny",
+          "price": "42"
+        },
+        {
+          "type": "Ulgowy",
+          "price": "21"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 40
+    },
+    {
+      "movieId": 2,
+      "hour": "19:00",
+      "dateId": 2,
+      "screen": "C",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "40"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 41
+    },
+    {
+      "movieId": 2,
+      "hour": "12:00",
+      "dateId": 3,
+      "screen": "B",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": "40"
+        },
+        {
+          "type": "Ulgowy",
+          "price": "20"
+        }
+      ],
+      "reservedSeats": [],
+      "id": 42
     }
   ],
   "films": [
@@ -1224,6 +1353,48 @@
       "id": 4.886147905578594,
       "dateId": 1,
       "movieId": 4
+    },
+    {
+      "id": 0.41092680212601773,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "score": "8/10",
+      "premier": true,
+      "dateId": 3,
+      "movieId": 0
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
+      "title": "ANT-MAN I OSA: KWANTOMANIA",
+      "genre": "Akcja, Sci-Fi",
+      "length": "125 min",
+      "ageRest": "PG-12",
+      "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
+      "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
+      "score": "6/10",
+      "premier": true,
+      "id": 4.55098501225107,
+      "dateId": 2,
+      "movieId": 4
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
+      "title": "ANT-MAN I OSA: KWANTOMANIA",
+      "genre": "Akcja, Sci-Fi",
+      "length": "125 min",
+      "ageRest": "PG-12",
+      "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
+      "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
+      "score": "6/10",
+      "premier": true,
+      "id": 4.958714367604919,
+      "dateId": 3,
+      "movieId": 4
     }
   ],
   "movies": [
@@ -1286,6 +1457,18 @@
       "score": "6/10",
       "premier": true,
       "id": 4
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/24/29/842429/8054124.3.jpg",
+      "title": "Asteriks i Obeliks: Imperium Smoka",
+      "genre": "Komedia, Przygodowy",
+      "length": "110 min",
+      "ageRest": "PG-7",
+      "description": "Jest rok 50 p.n.e. Cesarzowa Chin, w wyniku zamachu stanu przeprowadzonego przez zdradzieckiego księcia, zostaje uwięziona.",
+      "longDescription": "Córka porwanej władczyni – księżniczka Sass-Yi, wyrusza do odległej Galii, aby szukać pomocy dla swojego kraju. Tak oto poznaje Asteriksa i Obeliksa – dwóch dzielnych bohaterów. Galowie z wielką chęcią przystają na prośbę księżniczki i wspólnie z jej przyjaciółmi oraz odpowiednim zapasem magicznego napoju wyruszają w długą i pełną przygód podróż na Daleki Wschód",
+      "score": "6/10",
+      "premier": true,
+      "id": 5
     }
   ],
   "dates": [

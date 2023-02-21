@@ -67,9 +67,13 @@ export class OrderComponent {
       return;
     }
 
-    console.log(this.userId);
     // this.orderService.addToReservedSeats(tickets);
-    this.orderService.addOrder(this.userId, this.userFormData, tickets);
+    this.orderService.addOrder(
+      this.userId,
+      this.userFormData,
+      this.getFullPrice(tickets),
+      tickets
+    );
     // this.movieStateService.clearMovieAndShowState();
     this.router.navigate(['summarize']);
     this.ticketStateService.clearTicketsState();

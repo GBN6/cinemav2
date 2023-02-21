@@ -51,6 +51,7 @@ export class AddMovieFormComponent {
         length: length + ' min',
         genre: genre.join(', '),
       });
+      this.addMovieForm.reset();
     }
   }
 

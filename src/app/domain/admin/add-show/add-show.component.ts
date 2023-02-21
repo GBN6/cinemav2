@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { combineLatest } from 'rxjs';
 import { FetchedMovie, Film, Show } from '../admin.interface';
 import { AdminPanelService } from '../admin.service';
@@ -10,12 +11,19 @@ import { AdminPanelService } from '../admin.service';
 })
 export class AddShowComponent {
   private adminPanelService = inject(AdminPanelService);
+  private snackBar = inject(MatSnackBar);
 
   movies$ = this.adminPanelService.getAllMovies();
   screens$ = this.adminPanelService.getAllScreens();
   films$ = this.adminPanelService.getAllFilms();
 
   newShowData$ = combineLatest([this.movies$, this.screens$, this.films$]);
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5 * 1000,
+    });
+  }
 
   addMovieToDate(
     event: { movie: FetchedMovie; dateId: number },
@@ -40,7 +48,9 @@ export class AddShowComponent {
   }
 
   addShow(show: Show) {
-    this.adminPanelService.addNewShow(show).subscribe(console.log);
+    this.adminPanelService
+      .addNewShow(show)
+      .subscribe({ next: () => this.openSnackBar('Dodano nowy seans', 'X') });
   }
 
   ngOnInit() {

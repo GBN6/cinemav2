@@ -23,7 +23,12 @@ export class OrderService {
     return this.http.get<UserOrders>(this.orderUrl + `/${orderId}`);
   }
 
-  addOrder(userId: number | null, userData: UserData, tickets: TicketState[]) {
+  addOrder(
+    userId: number | null,
+    userData: UserData,
+    fullPrice: number,
+    tickets: TicketState[]
+  ) {
     const {
       userName,
       userLastName,
@@ -41,6 +46,7 @@ export class OrderService {
       discountCode,
       userPhoneNumber,
       userInvoiceForm,
+      fullPrice: fullPrice,
       paiedAt: new Date().toString(),
       ticket: tickets,
     };
@@ -56,6 +62,7 @@ export class OrderService {
         ...this.orderEmail$$.value,
         userEmail: userMail,
       });
+
       this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe((result) =>
         this.orderEmail$$.next({
           ...this.orderEmail$$.value,
@@ -67,6 +74,7 @@ export class OrderService {
         ...this.orderEmail$$.value,
         userEmail: userMail,
       });
+
       this.http.post<Order>(this.orderUrl, orderDTO).subscribe((result) =>
         this.orderEmail$$.next({
           ...this.orderEmail$$.value,
