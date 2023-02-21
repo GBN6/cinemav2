@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { BehaviorSubject, take } from 'rxjs';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import {
   AddPriceListItem,
   AddShowForm,
@@ -57,10 +58,13 @@ export class AddShowFormComponent {
 
   private builder = inject(NonNullableFormBuilder);
   private adminPanelService = inject(AdminPanelService);
+  private errorService = inject(ErrorhandlerService);
 
   showsColliding$$ = new BehaviorSubject<{ showError: boolean }>({
     showError: false,
   });
+
+  errorHandler$ = this.errorService.error$;
 
   addShowForm = this.createForm();
   matcher = new MyErrorStateMatcher();

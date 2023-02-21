@@ -17,6 +17,8 @@ import { AddShowFormComponent } from './add-show/add-show-form/add-show-form.com
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatLoaderComponent } from 'src/app/core/loader/loader.component';
+import { ErrorComponent } from 'src/app/core/error/error.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatLoaderComponent,
+    ErrorComponent,
   ],
   providers: [AdminPanelService],
 })

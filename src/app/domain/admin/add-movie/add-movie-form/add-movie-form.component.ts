@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { trimValidator } from 'src/app/shared/validators/input-validator.validator';
 import { AddMovieForm, Genre, Movie, Pegi } from '../../admin.interface';
 
@@ -13,7 +14,10 @@ export class AddMovieFormComponent {
   @Input() pegi!: Pegi[];
   @Output() handleSubmitEmit = new EventEmitter<Movie>();
 
+  private errorService = inject(ErrorhandlerService);
   private builder = inject(NonNullableFormBuilder);
+
+  errorHandler$ = this.errorService.error$;
   addMovieForm = this.createForm();
 
   private addToGenre(genre: Genre) {

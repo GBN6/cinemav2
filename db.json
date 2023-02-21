@@ -36,9 +36,9 @@
   ],
   "userWatchList": [
     {
-      "id": 2,
+      "id": 1,
       "movies": {
-        "id": 5,
+        "id": 7,
         "img": "assets/avatar2_poster.jpg",
         "title": "Avatar: Istota wody",
         "genre": "Science-Fiction",
@@ -48,26 +48,8 @@
         "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
         "score": "8/10",
         "premier": false,
-        "dateId": 0,
+        "dateId": 3,
         "movieId": 2
-      },
-      "userId": 1
-    },
-    {
-      "id": 3,
-      "movies": {
-        "id": 0,
-        "img": "assets/wakanda_poster.jpg",
-        "title": "Black Panther: Wakanda Forever",
-        "genre": "Action, Super hero",
-        "length": "130 min",
-        "ageRest": "PG-13",
-        "description": "Whenever i have time i will add some description",
-        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "score": "8/10",
-        "premier": true,
-        "dateId": 0,
-        "movieId": 0
       },
       "userId": 1
     }

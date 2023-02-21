@@ -1,6 +1,8 @@
-<div class="watchlist-container">
-  <h1>Filmy do obejrzenia</h1>
-  <ng-container *ngIf="userWatchlist$ | async as userMovieWatchList">
+<app-loader [diameter]="50"></app-loader>
+<ng-container *ngIf="userWatchlist$ | async as userMovieWatchList">
+  <div class="watchlist-container">
+    <h1>Filmy do obejrzenia</h1>
+
     <ng-container *ngIf="userMovieWatchList.length; else emptyWishList">
       <app-user-watchlist-item
         *ngFor="let movie of userMovieWatchList"
@@ -11,5 +13,10 @@
     <ng-template #emptyWishList>
       <h2>Brak filmów do obejrzenia</h2>
     </ng-template>
-  </ng-container>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>

@@ -1,6 +1,7 @@
-<div class="user-orders-container">
-  <h1>Twoje Bilety</h1>
-  <ng-container *ngIf="userOrders$ | async as userOrders; else loading">
+<app-loader [diameter]="50"></app-loader>
+<ng-container *ngIf="userOrders$ | async as userOrders; else error">
+  <div class="user-orders-container">
+    <h1>Twoje Bilety</h1>
     <ng-container *ngIf="userOrders.length; else noOrders">
       <div class="user-orders" *ngFor="let order of userOrders">
         <div class="user-order">
@@ -22,8 +23,10 @@
     <ng-template #noOrders>
       <h1>Brak poprzednich zamówień</h1>
     </ng-template>
-  </ng-container>
-  <ng-template #loading>
-    <p>...Ładowanie</p>
-  </ng-template>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>

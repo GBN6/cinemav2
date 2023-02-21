@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { combineLatest } from 'rxjs';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { FetchedMovie, Film, Show } from '../admin.interface';
 import { AdminPanelService } from '../admin.service';
 
@@ -12,7 +13,9 @@ import { AdminPanelService } from '../admin.service';
 export class AddShowComponent {
   private adminPanelService = inject(AdminPanelService);
   private snackBar = inject(MatSnackBar);
+  private errorService = inject(ErrorhandlerService);
 
+  errorHandler$ = this.errorService.error$;
   movies$ = this.adminPanelService.getAllMovies();
   screens$ = this.adminPanelService.getAllScreens();
   films$ = this.adminPanelService.getAllFilms();

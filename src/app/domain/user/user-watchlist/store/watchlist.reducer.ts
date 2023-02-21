@@ -12,7 +12,7 @@ export const watchlistReducer = createReducer(
 
   on(WatchlistAPIActions.addMovieToWatchlistSuccess, (state, action) => ({
     ...state,
-    userWatchlist: [...state.userWatchlist, action],
+    userWatchlist: [...state.userWatchlist, action.userWatchlist],
   })),
 
   on(WatchlistAPIActions.removeMovieFromWatchlistSuccess, (state, action) => {

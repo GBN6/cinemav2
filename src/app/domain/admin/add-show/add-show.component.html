@@ -1,6 +1,8 @@
-<div class="add-show">
-  <h1>Dodaj seans</h1>
-  <ng-container *ngIf="newShowData$ | async as newShowData">
+<app-loader [diameter]="50"></app-loader>
+<ng-container *ngIf="newShowData$ | async as newShowData; else error">
+  <div class="add-show">
+    <h1>Dodaj seans</h1>
+
     <app-add-show-form
       (handleAddMovie)="addMovieToDate($event, newShowData[2])"
       (handleAddShow)="addShow($event)"
@@ -8,5 +10,10 @@
       [screens]="newShowData[1]"
     >
     </app-add-show-form>
-  </ng-container>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>

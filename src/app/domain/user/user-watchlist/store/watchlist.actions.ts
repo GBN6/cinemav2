@@ -25,7 +25,7 @@ export const WatchlistAPIActions = createActionGroup({
   events: {
     'fetch userWacthlist success': props<{ userWatchList: UserWatchList[] }>(),
     'fetch userWacthlist failure': emptyProps(),
-    'add movie to watchlist success': props<UserWatchList>(),
+    'add movie to watchlist success': props<{ userWatchlist: UserWatchList }>(),
     'add movie to watchlist failure': emptyProps(),
     'remove movie from watchlist success': props<{ userWatchListId: number }>(),
     'remove movie from watchlist failure': emptyProps(),

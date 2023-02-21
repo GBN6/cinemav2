@@ -259,3 +259,6 @@
     Dodaj film
   </button>
 </form>
+<ng-container *ngIf="errorHandler$ | async">
+  <app-error></app-error>
+</ng-container>

@@ -177,5 +177,6 @@
     Dodaj seans
   </button>
 </form>
-
-<!-- <h3>Seanse się nakładają wybierz inną godzinę lub salę</h3> -->
+<ng-container *ngIf="errorHandler$ | async">
+  <app-error></app-error>
+</ng-container>

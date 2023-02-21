@@ -20,7 +20,9 @@ export class userWatchlistEffects {
           .addMovieToWatchList(userId, userWatchlist)
           .pipe(
             map((result) => {
-              return WatchlistAPIActions.addMovieToWatchlistSuccess(result);
+              return WatchlistAPIActions.addMovieToWatchlistSuccess({
+                userWatchlist: result,
+              });
             }),
             catchError((error) => {
               console.log(error);

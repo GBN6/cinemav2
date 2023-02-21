@@ -1,6 +1,7 @@
-<div class="add-movie">
-  <h1>Dodaj film do bazy danych</h1>
-  <ng-container *ngIf="movieGenres$ | async as genres">
+<app-loader [diameter]="50"></app-loader>
+<ng-container *ngIf="movieGenres$ | async as genres; else error">
+  <div class="add-movie">
+    <h1>Dodaj film do bazy danych</h1>
     <ng-container *ngIf="moviePegi$ | async as pegi">
       <app-add-movie-form
         (handleSubmitEmit)="addMovie($event)"
@@ -8,5 +9,10 @@
         [pegi]="pegi"
       ></app-add-movie-form>
     </ng-container>
-  </ng-container>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>
