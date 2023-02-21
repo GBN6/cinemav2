@@ -15,6 +15,7 @@ export const AuthActions = createActionGroup({
     login: props<LoginData>(),
     'get user': props<{ userId: number }>(),
     logout: emptyProps(),
+    'set visitor': emptyProps(),
   },
 });
 

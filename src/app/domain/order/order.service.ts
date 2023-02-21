@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { TicketState } from 'src/app/shared/services/state.interface';
+import { Discount, TicketState } from 'src/app/shared/services/state.interface';
 import { Show } from '../movies/movies.interface';
 import { UserOrders } from '../user/user-orders/user-order.interface';
 import { Order, OrderState, UserData } from './order.interface';
@@ -12,15 +12,32 @@ import { Order, OrderState, UserData } from './order.interface';
 export class OrderService {
   private http = inject(HttpClient);
   private orderUrl = 'http://localhost:3000/orders';
-  private showUrl = 'http://localhost:3000/show';
+  private codeUrl = 'http://localhost:3000/coupons';
   private orderEmail$$ = new BehaviorSubject<OrderState>({} as OrderState);
+  private discountCodeState$$ = new BehaviorSubject<Discount | null>(null);
 
   get orderEmail$() {
     return this.orderEmail$$.asObservable();
   }
 
+  get discount$() {
+    return this.discountCodeState$$.asObservable();
+  }
+
   getOrderedTickets(orderId: number) {
     return this.http.get<UserOrders>(this.orderUrl + `/${orderId}`);
+  }
+
+  addDiscount(code: string) {
+    this.http
+      .get<Discount[]>(`${this.codeUrl}?code=${code}`)
+      .subscribe((result) => {
+        this.discountCodeState$$.next(result[0]);
+      });
+  }
+
+  removeDiscount() {
+    this.discountCodeState$$.next(null);
   }
 
   addOrder(

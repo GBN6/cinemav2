@@ -1,0 +1,28 @@
+<form
+  class="discount-form"
+  [formGroup]="discountCodeForm"
+  (ngSubmit)="handleSubmit()"
+>
+  <div class="user-input">
+    <input
+      [class.error]="codeCtrl.errors"
+      type="text"
+      id="voucher-code"
+      class="input"
+      placeholder="Kod znizkowy"
+      formControlName="discountCode"
+    />
+    <ng-container *ngIf="codeCtrl.errors as errors">
+      <ng-container *ngIf="codeCtrl.dirty"
+        ><p>Kod jest nieprawidłowy</p>
+      </ng-container>
+    </ng-container>
+  </div>
+  <button
+    class="discount-form__add"
+    mat-flat-button
+    [disabled]="!discountCodeForm.valid"
+  >
+    Zatwierdź
+  </button>
+</form>

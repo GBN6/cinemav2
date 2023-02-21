@@ -64,6 +64,11 @@
 
 .tickets-total-price {
   color: var(--primary);
+
+  &__old {
+    color: var(--error);
+    text-decoration: line-through;
+  }
 }
 
 .router-link {

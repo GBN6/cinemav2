@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
 import { MoviesCard, Show } from 'src/app/domain/movies/movies.interface';
-import { SelectedDate, TicketState } from './state.interface';
+import {
+  Discount,
+  FullPrice,
+  SelectedDate,
+  TicketState,
+} from './state.interface';
 
 @Injectable({
   providedIn: 'root',

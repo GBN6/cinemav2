@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { OrderService } from 'src/app/domain/order/order.service';
 import { TicketState } from '../services/state.interface';
 import { TicketStateService } from '../services/ticket.state.service';
 import { CartItemComponent } from './cart-item/cart-item.component';
@@ -16,9 +17,11 @@ import { CartService } from './cart.service';
 export class CartComponent {
   private ticketService = inject(TicketStateService);
   private cartService = inject(CartService);
+  private orderService = inject(OrderService);
 
   ticketState$ = this.ticketService.ticketState$;
   cartStatus$ = this.cartService.cartStatus$;
+  discountState$ = this.orderService.discount$;
 
   cartModal(cartstatus: boolean) {
     if (cartstatus) {
@@ -40,9 +43,13 @@ export class CartComponent {
     }
   }
 
-  getFullPrice(tickets: TicketState[]) {
-    return tickets.reduce((total, price) => {
-      return (total += price.seat.price);
+  getFullPrice(tickets: TicketState[], discount?: number) {
+    let fullPrice = tickets.reduce((total, price) => {
+      return (total += +price.seat.price);
     }, 0);
+
+    if (!discount) return fullPrice;
+    if (fullPrice - discount < 0) return 0;
+    return fullPrice - discount;
   }
 }

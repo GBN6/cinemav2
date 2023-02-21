@@ -49,5 +49,10 @@ export const authReducer = createReducer(
       status: 'failed',
       errorMessage: error,
     },
+  })),
+
+  on(AuthActions.setVisitor, (state) => ({
+    ...state,
+    accountType: 'visitor',
   }))
 );

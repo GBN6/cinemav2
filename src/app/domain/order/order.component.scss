@@ -46,6 +46,22 @@
   font-weight: 600;
   font-size: 2rem;
   color: var(--secondary);
+
+  &__discount {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__discount--old {
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--error);
+    text-decoration: line-through;
+  }
+}
+
+.seat-price {
+  align-self: flex-end;
 }
 
 .special-seat {
@@ -60,7 +76,7 @@
   background-color: var(--dark);
   font-weight: 600;
   color: var(--primary);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 20px;
   margin-bottom: 6rem;
   text-decoration: none;

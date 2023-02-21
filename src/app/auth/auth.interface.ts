@@ -51,6 +51,6 @@ export interface LoadingInitial {
   status: 'initial';
 }
 
-export type AccountType = 'user' | 'admin' | null;
+export type AccountType = 'user' | 'admin' | 'visitor' | null;
 
 type Loading = LoadingError | LoadingPending | LoadingInitial;

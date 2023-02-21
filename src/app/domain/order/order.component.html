@@ -20,8 +20,25 @@
       </div>
       <div class="all" *ngIf="getFullPrice(tickets)">
         <p class="total-price">ŁĄCZNIE:</p>
-        <p class="total-price">{{ getFullPrice(tickets) }} PLN</p>
+        <ng-container
+          *ngIf="discountState$ | async as discount; else noDiscount"
+        >
+          <div class="total-price__discount">
+            <p class="total-price__discount--old">
+              {{ getFullPrice(tickets) }} PLN
+            </p>
+            <p class="total-price">
+              {{ getFullPrice(tickets, discount.discount) }} PLN
+            </p>
+          </div>
+        </ng-container>
+        <ng-template #noDiscount>
+          <p class="total-price">{{ getFullPrice(tickets) }} PLN</p>
+        </ng-template>
       </div>
+      <app-order-discount-code
+        (discountCodeEvent)="handleAddDiscountCode($event)"
+      ></app-order-discount-code>
     </div>
     <app-order-form
       (openModal)="handleModalFlag($event)"

@@ -430,6 +430,51 @@
           }
         }
       ]
+    },
+    {
+      "id": 9,
+      "userName": "Zbigniew",
+      "userLastName": "Stonoga",
+      "userMail": "stonoga@gmail.com",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "fullPrice": 22,
+      "paiedAt": "Tue Feb 21 2023 12:27:07 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "4H36",
+          "showId": 36,
+          "date": "21/02/2023",
+          "hour": "17:00",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H4",
+            "price": "21",
+            "special": false,
+            "type": "Senior"
+          }
+        },
+        {
+          "id": "5H36",
+          "showId": 36,
+          "date": "21/02/2023",
+          "hour": "17:00",
+          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
+          "screen": "A",
+          "seat": {
+            "position": "H5",
+            "price": "21",
+            "special": false,
+            "type": "Senior"
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -547,7 +592,9 @@
       "id": 2,
       "hour": "14:30",
       "screen": "B",
-      "reservedSeats": [],
+      "reservedSeats": [
+        "E8"
+      ],
       "priceList": [
         {
           "type": "Normalny",
@@ -1011,7 +1058,9 @@
           "price": "21"
         }
       ],
-      "reservedSeats": [],
+      "reservedSeats": [
+        "H8"
+      ],
       "id": 34
     },
     {
@@ -1028,37 +1077,20 @@
       "reservedSeats": [
         "H12",
         "H3",
-        "H4"
+        "H4",
+        "H7",
+        "H8",
+        "H9",
+        "H1",
+        "E12",
+        "A12",
+        "H11",
+        "G11",
+        "A1",
+        "B1",
+        "A10"
       ],
       "id": 35
-    },
-    {
-      "movieId": 4,
-      "hour": "17:00",
-      "dateId": 1,
-      "screen": "A",
-      "priceList": [
-        {
-          "type": "Senior",
-          "price": "21"
-        }
-      ],
-      "reservedSeats": [],
-      "id": 36
-    },
-    {
-      "movieId": 4,
-      "hour": "23:00",
-      "dateId": 1,
-      "screen": "A",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": "21"
-        }
-      ],
-      "reservedSeats": [],
-      "id": 37
     },
     {
       "movieId": 0,
@@ -1073,42 +1105,6 @@
       ],
       "reservedSeats": [],
       "id": 38
-    },
-    {
-      "movieId": 4,
-      "hour": "15:40",
-      "dateId": 2,
-      "screen": "A",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": "21"
-        }
-      ],
-      "reservedSeats": [],
-      "id": 39
-    },
-    {
-      "movieId": 4,
-      "hour": "20:00",
-      "dateId": 3,
-      "screen": "C",
-      "priceList": [
-        {
-          "type": "Senior",
-          "price": "21"
-        },
-        {
-          "type": "Normalny",
-          "price": "42"
-        },
-        {
-          "type": "Ulgowy",
-          "price": "21"
-        }
-      ],
-      "reservedSeats": [],
-      "id": 40
     },
     {
       "movieId": 2,

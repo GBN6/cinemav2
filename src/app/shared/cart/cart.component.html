@@ -11,9 +11,23 @@
           ></app-cart-item>
         </div>
 
-        <div class="tickets-total-price">
-          Suma do zapłaty: {{ getFullPrice(tickets) }} PLN
-        </div>
+        <ng-container
+          *ngIf="discountState$ | async as discount; else noDiscount"
+        >
+          <div class="tickets-total-price">
+            Suma do zapłaty:
+            <span class="tickets-total-price__old"
+              >{{ getFullPrice(tickets) }} PLN</span
+            >
+            {{ getFullPrice(tickets, discount.discount) }} PLN
+          </div>
+        </ng-container>
+        <ng-template #noDiscount>
+          <div class="tickets-total-price">
+            Suma do zapłaty: {{ getFullPrice(tickets) }} PLN
+          </div>
+        </ng-template>
+
         <a
           *ngIf="tickets.length"
           (click)="closeCart()"

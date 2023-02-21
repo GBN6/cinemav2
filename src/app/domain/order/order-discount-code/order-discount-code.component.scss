@@ -1,0 +1,28 @@
+.discount-form {
+  display: flex;
+  gap: 1rem;
+
+  &__add:disabled {
+    border-radius: 20px;
+  }
+
+  &__add:not(:disabled) {
+    border-radius: 20px;
+    color: var(--primary);
+    background-color: var(--dark);
+  }
+}
+
+form input {
+  padding: 1rem;
+  border: 2px solid var(--dark-grey);
+  border-radius: 20px;
+}
+
+form p {
+  color: rgb(255, 92, 92);
+}
+
+form input.error.input.ng-touched {
+  border: 2px solid rgb(253, 86, 86);
+}

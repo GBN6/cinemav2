@@ -23,7 +23,9 @@ export class OrderComponent {
   private subscription = new Subscription();
 
   ticketState$ = this.ticketStateService.ticketState$;
+  discountState$ = this.orderService.discount$;
   userId: number | null = null;
+  currentPrice: number = 0;
   userFormData!: UserData;
 
   modalFlag = false;
@@ -46,14 +48,29 @@ export class OrderComponent {
     this.subscription.add(sub);
   }
 
-  getFullPrice(tickets: TicketState[]) {
-    return tickets.reduce((total, price) => {
+  getFullPrice(tickets: TicketState[], discount?: number) {
+    let fullPrice = tickets.reduce((total, price) => {
       return (total += +price.seat.price);
     }, 0);
+
+    if (!discount) {
+      this.currentPrice = fullPrice;
+      return fullPrice;
+    }
+    if (fullPrice - discount < 0) {
+      this.currentPrice = 0;
+      return 0;
+    }
+    this.currentPrice = fullPrice - discount;
+    return fullPrice - discount;
   }
 
   handleUserDataForm(userFormData: UserData) {
     this.userFormData = userFormData;
+  }
+
+  handleAddDiscountCode(code: string) {
+    this.orderService.addDiscount(code);
   }
 
   handleModalFlag(status: boolean) {
@@ -62,21 +79,21 @@ export class OrderComponent {
 
   submitPayment(tickets: TicketState[]) {
     console.log(tickets);
+    console.log(this.currentPrice);
     this.blikControl.markAllAsTouched();
     if (this.blikControl.invalid) {
       return;
     }
 
-    // this.orderService.addToReservedSeats(tickets);
     this.orderService.addOrder(
       this.userId,
       this.userFormData,
-      this.getFullPrice(tickets),
+      this.currentPrice,
       tickets
     );
-    // this.movieStateService.clearMovieAndShowState();
-    this.router.navigate(['summarize']);
+    this.orderService.removeDiscount();
     this.ticketStateService.clearTicketsState();
+    this.router.navigate(['summarize']);
   }
 
   closeModal() {

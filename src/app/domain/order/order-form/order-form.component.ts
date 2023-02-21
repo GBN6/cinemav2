@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { selectData } from 'src/app/auth/store/auth.selectors';
-import { NumbersOnlyDirective } from 'src/app/shared/directives/numbersOnly.directive';
+import { trimValidator } from 'src/app/shared/validators/input-validator.validator';
 import { UserData } from '../order.interface';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {
@@ -38,6 +38,7 @@ export class OrderFormComponent implements OnInit {
           Validators.required,
           Validators.pattern('[a-zA-Z ]*'),
           Validators.maxLength(50),
+          trimValidator,
         ],
       }),
       userLastName: this.fb.control('', {
@@ -45,6 +46,7 @@ export class OrderFormComponent implements OnInit {
           Validators.required,
           Validators.pattern('[a-zA-Z ]*'),
           Validators.maxLength(50),
+          trimValidator,
         ],
       }),
       userPhoneNumber: this.fb.control('', {
@@ -58,12 +60,14 @@ export class OrderFormComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
+          trimValidator,
         ],
       }),
       userMailConfirmation: this.fb.control('', {
         validators: [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
+          trimValidator,
         ],
       }),
       userInvoiceForm: this.fb.group({
@@ -81,7 +85,11 @@ export class OrderFormComponent implements OnInit {
         userStreet: this.fb.control(
           { disabled: true, value: '' },
           {
-            validators: [Validators.required, Validators.maxLength(50)],
+            validators: [
+              Validators.required,
+              Validators.maxLength(50),
+              trimValidator,
+            ],
           }
         ),
         userPostCode: this.fb.control(
@@ -100,14 +108,12 @@ export class OrderFormComponent implements OnInit {
               Validators.required,
               Validators.pattern('[a-zA-Z ]*'),
               Validators.maxLength(50),
+              trimValidator,
             ],
           }
         ),
       }),
       userNewsletter: this.fb.control(false),
-      discountCode: this.fb.control('', {
-        validators: [Validators.pattern('^[a-zA-Z0-9]{7}$')],
-      }),
     },
     { validators: [emailConfirm] }
   );

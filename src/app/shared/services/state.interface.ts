@@ -27,3 +27,14 @@ export interface Seat {
   price: number;
   special: boolean;
 }
+
+export interface FullPrice {
+  price: number;
+  dicsount: Discount;
+}
+
+export interface Discount {
+  id: number;
+  code: string;
+  discount: number;
+}
