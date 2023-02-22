@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MoviesDatesComponent } from '../movies-dates/movies-dates.component';
 import { MatLoaderComponent } from 'src/app/core/loader/loader.component';
 import { ErrorComponent } from 'src/app/core/error/error.component';
+import { NotAdminGuard } from 'src/app/shared/guards/not-admin.guard';
 
 function getToday() {
   const date = new Date();

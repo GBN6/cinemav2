@@ -87,16 +87,13 @@ export class OrderComponent {
     if (this.blikControl.invalid) {
       return;
     }
-
     this.orderService.addOrder(
       this.userId,
       this.userFormData,
       this.currentPrice,
       tickets
     );
-    this.orderService.removeDiscount();
-    this.ticketStateService.clearTicketsState();
-    this.router.navigate(['summarize']);
+    this.closeModal();
   }
 
   closeModal() {

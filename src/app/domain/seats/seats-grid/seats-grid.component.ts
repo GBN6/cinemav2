@@ -4,6 +4,7 @@ import {
   inject,
   Input,
 } from '@angular/core';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { TicketState } from 'src/app/shared/services/state.interface';
 import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { MoviesCard, Show } from '../../movies/movies.interface';
@@ -22,9 +23,11 @@ export class SeatsGridComponent {
 
   private seatsService = inject(SeatsService);
   private ticketService = inject(TicketStateService);
+  private errorService = inject(ErrorhandlerService);
 
   screenGrid$ = this.seatsService.screenGrid$;
   selectedSeats$ = this.ticketService.selectedSeats$;
+  errorHandler$ = this.errorService.error$;
 
   private addToTicketState(id: string, position: string, special: boolean) {
     const ticketDTO: TicketState = {

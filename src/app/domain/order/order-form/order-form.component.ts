@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { AppState } from 'src/app/app.module';
 import { selectData } from 'src/app/auth/store/auth.selectors';
+import { ErrorhandlerService } from 'src/app/core/interceptor/error-handler.service';
 import { trimValidator } from 'src/app/shared/validators/input-validator.validator';
 import { UserData } from '../order.interface';
 
@@ -28,7 +29,10 @@ export class OrderFormComponent implements OnInit {
   @Output() openModal = new EventEmitter<boolean>();
 
   private fb = inject(NonNullableFormBuilder);
+  private errorService = inject(ErrorhandlerService);
   private store = inject<Store<AppState>>(Store);
+
+  errorHandler$ = this.errorService.error$;
 
   orderForm = this.fb.group(
     {

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { Discount, TicketState } from 'src/app/shared/services/state.interface';
+import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { Show } from '../movies/movies.interface';
 import { UserOrders } from '../user/user-orders/user-order.interface';
 import { Order, OrderState, UserData } from './order.interface';
@@ -11,8 +13,12 @@ import { Order, OrderState, UserData } from './order.interface';
 })
 export class OrderService {
   private http = inject(HttpClient);
+  private router = inject(Router);
+  private ticketStateService = inject(TicketStateService);
+
   private orderUrl = 'http://localhost:3000/orders';
   private codeUrl = 'http://localhost:3000/coupons';
+
   private orderEmail$$ = new BehaviorSubject<OrderState>({} as OrderState);
   private discountCodeState$$ = new BehaviorSubject<Discount | null>(null);
 
@@ -33,11 +39,16 @@ export class OrderService {
       .get<Discount[]>(`${this.codeUrl}?code=${code}`)
       .subscribe((result) => {
         this.discountCodeState$$.next(result[0]);
+        this.deleteDiscountCodeFromDB(result[0].id).subscribe();
       });
   }
 
   removeDiscount() {
     this.discountCodeState$$.next(null);
+  }
+
+  deleteDiscountCodeFromDB(couponId: number) {
+    return this.http.delete(`${this.codeUrl}/${couponId}`);
   }
 
   addOrder(
@@ -80,24 +91,30 @@ export class OrderService {
         userEmail: userMail,
       });
 
-      this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe((result) =>
+      this.http.post<Order>(this.orderUrl, userOrderDTO).subscribe((result) => {
         this.orderEmail$$.next({
           ...this.orderEmail$$.value,
           orderId: result.id,
-        })
-      );
+        });
+        this.removeDiscount();
+        this.ticketStateService.clearTicketsState();
+        this.router.navigate(['order/summarize']);
+      });
     } else {
       this.orderEmail$$.next({
         ...this.orderEmail$$.value,
         userEmail: userMail,
       });
 
-      this.http.post<Order>(this.orderUrl, orderDTO).subscribe((result) =>
+      this.http.post<Order>(this.orderUrl, orderDTO).subscribe((result) => {
         this.orderEmail$$.next({
           ...this.orderEmail$$.value,
           orderId: result.id,
-        })
-      );
+        });
+        this.removeDiscount();
+        this.ticketStateService.clearTicketsState();
+        this.router.navigate(['order/summarize']);
+      });
     }
   }
 }

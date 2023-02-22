@@ -38,18 +38,18 @@
     {
       "id": 1,
       "movies": {
-        "id": 7,
-        "img": "assets/avatar2_poster.jpg",
-        "title": "Avatar: Istota wody",
-        "genre": "Science-Fiction",
-        "length": "193 min",
-        "ageRest": "PG-12",
+        "id": 1,
+        "img": "assets/wakanda_poster.jpg",
+        "title": "Black Panther: Wakanda Forever",
+        "genre": "Action, Super hero",
+        "length": "130 min",
+        "ageRest": "PG-13",
         "description": "Whenever i have time i will add some description",
-        "longDescription": "Akcja filmu „Avatar: Istota wody” rozgrywa się ponad dziesięć lat po wydarzeniach z pierwszej części. To opowieść o rodzinie Jake’a i Neytiri oraz ich staraniach, by zapewnić bezpieczeństwo sobie i swoim dzieciom, mimo tragedii, których wspólnie doświadczają i bitew, które muszą stoczyć, aby przeżyć.W filmie wyreżyserowanym przez Jamesa Camerona, wyprodukowanym przez Camerona i Jona Landau, występują: Zoe Saldana, Sam Worthington, Sigourney Weaver, Stephen Lang, Cliff Curtis, Joel David Moore, CCH Pounder, Edie Falco, Jemaine Clement i Kate Winslet.",
+        "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "score": "8/10",
-        "premier": false,
-        "dateId": 3,
-        "movieId": 2
+        "premier": true,
+        "dateId": 2,
+        "movieId": 0
       },
       "userId": 1
     }
@@ -295,7 +295,6 @@
       "userName": "Janek",
       "userLastName": "Kowalski",
       "userMail": "user@gmail.com",
-      "discountCode": "",
       "userPhoneNumber": "",
       "userInvoiceForm": {
         "userNIP": "",
@@ -303,34 +302,21 @@
         "userPostCode": "",
         "userCity": ""
       },
-      "paiedAt": "Mon Feb 20 2023 14:30:11 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "fullPrice": 30,
+      "paiedAt": "Wed Feb 22 2023 10:50:13 GMT+0100 (czas środkowoeuropejski standardowy)",
       "ticket": [
         {
-          "id": "5H33",
-          "showId": 33,
-          "date": "21/02/2023",
-          "hour": "08:00",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
+          "id": "9A15",
+          "showId": 15,
+          "date": "25/02/2023",
+          "hour": "17:00",
+          "movieTitle": "Avatar: Istota wody",
+          "screen": "B",
           "seat": {
-            "position": "H5",
-            "price": "21",
+            "position": "A9",
+            "price": 30,
             "special": false,
-            "type": "Senior"
-          }
-        },
-        {
-          "id": "6H33",
-          "showId": 33,
-          "date": "21/02/2023",
-          "hour": "08:00",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
-          "seat": {
-            "position": "H6",
-            "price": "21",
-            "special": false,
-            "type": "Senior"
+            "type": "Normalny"
           }
         }
       ],
@@ -341,7 +327,6 @@
       "userName": "Janek",
       "userLastName": "Kowalski",
       "userMail": "user@gmail.com",
-      "discountCode": "",
       "userPhoneNumber": "600700800",
       "userInvoiceForm": {
         "userNIP": "",
@@ -349,114 +334,39 @@
         "userPostCode": "",
         "userCity": ""
       },
-      "paiedAt": "Mon Feb 20 2023 14:37:11 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "fullPrice": 60,
+      "paiedAt": "Wed Feb 22 2023 10:51:02 GMT+0100 (czas środkowoeuropejski standardowy)",
       "ticket": [
         {
-          "id": "12H35",
-          "showId": 35,
-          "date": "21/02/2023",
-          "hour": "14:30",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
+          "id": "16L4",
+          "showId": 4,
+          "date": "24/02/2023",
+          "hour": "9:30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "c",
           "seat": {
-            "position": "H12",
-            "price": "21",
+            "position": "L16",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "15L4",
+          "showId": 4,
+          "date": "24/02/2023",
+          "hour": "9:30",
+          "movieTitle": "Black Panther: Wakanda Forever",
+          "screen": "c",
+          "seat": {
+            "position": "L15",
+            "price": 30,
             "special": false,
             "type": "Normalny"
           }
         }
       ],
       "userId": 1
-    },
-    {
-      "id": 8,
-      "userName": "Mariusz",
-      "userLastName": "Pudzianowski",
-      "userMail": "tobynic@niedalo.pl",
-      "discountCode": "",
-      "userPhoneNumber": "",
-      "userInvoiceForm": {
-        "userNIP": "",
-        "userStreet": "",
-        "userPostCode": "",
-        "userCity": ""
-      },
-      "paiedAt": "Tue Feb 21 2023 08:15:38 GMT+0100 (czas środkowoeuropejski standardowy)",
-      "ticket": [
-        {
-          "id": "3H35",
-          "showId": 35,
-          "date": "21/02/2023",
-          "hour": "14:30",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
-          "seat": {
-            "position": "H3",
-            "price": "21",
-            "special": false,
-            "type": "Normalny"
-          }
-        },
-        {
-          "id": "4H35",
-          "showId": 35,
-          "date": "21/02/2023",
-          "hour": "14:30",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
-          "seat": {
-            "position": "H4",
-            "price": "21",
-            "special": false,
-            "type": "Normalny"
-          }
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "userName": "Zbigniew",
-      "userLastName": "Stonoga",
-      "userMail": "stonoga@gmail.com",
-      "userPhoneNumber": "",
-      "userInvoiceForm": {
-        "userNIP": "",
-        "userStreet": "",
-        "userPostCode": "",
-        "userCity": ""
-      },
-      "fullPrice": 22,
-      "paiedAt": "Tue Feb 21 2023 12:27:07 GMT+0100 (czas środkowoeuropejski standardowy)",
-      "ticket": [
-        {
-          "id": "4H36",
-          "showId": 36,
-          "date": "21/02/2023",
-          "hour": "17:00",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
-          "seat": {
-            "position": "H4",
-            "price": "21",
-            "special": false,
-            "type": "Senior"
-          }
-        },
-        {
-          "id": "5H36",
-          "showId": 36,
-          "date": "21/02/2023",
-          "hour": "17:00",
-          "movieTitle": "ANT-MAN I OSA: KWANTOMANIA",
-          "screen": "A",
-          "seat": {
-            "position": "H5",
-            "price": "21",
-            "special": false,
-            "type": "Senior"
-          }
-        }
-      ]
     }
   ],
   "blik": [
@@ -575,7 +485,8 @@
       "hour": "14:30",
       "screen": "B",
       "reservedSeats": [
-        "E8"
+        "E8",
+        "E9"
       ],
       "priceList": [
         {
@@ -600,7 +511,17 @@
       "screen": "B",
       "reservedSeats": [
         "E3",
-        "D3"
+        "D3",
+        "E6",
+        "A9",
+        "E9",
+        "A1",
+        "E7",
+        "B9",
+        "E1",
+        "A3",
+        "A7",
+        "A5"
       ],
       "priceList": [
         {
@@ -625,7 +546,10 @@
       "screen": "B",
       "reservedSeats": [
         "E3",
-        "D3"
+        "D3",
+        "E7",
+        "E7",
+        "E8"
       ],
       "priceList": [
         {
@@ -648,7 +572,12 @@
       "id": 4,
       "hour": "9:30",
       "screen": "c",
-      "reservedSeats": [],
+      "reservedSeats": [
+        "L1",
+        "K1",
+        "L16",
+        "L15"
+      ],
       "priceList": [
         {
           "type": "Normalny",
@@ -692,7 +621,11 @@
       "id": 6,
       "hour": "15:30",
       "screen": "B",
-      "reservedSeats": [],
+      "reservedSeats": [
+        "B5",
+        "E7",
+        "E9"
+      ],
       "priceList": [
         {
           "type": "Normalny",
@@ -824,7 +757,9 @@
       "id": 13,
       "hour": "16:00",
       "screen": "C",
-      "reservedSeats": [],
+      "reservedSeats": [
+        "L16"
+      ],
       "priceList": [
         {
           "type": "Normalny",
@@ -868,7 +803,9 @@
       "id": 15,
       "hour": "17:00",
       "screen": "B",
-      "reservedSeats": [],
+      "reservedSeats": [
+        "A9"
+      ],
       "priceList": [
         {
           "type": "Normalny",
@@ -1102,7 +1039,9 @@
           "price": "40"
         }
       ],
-      "reservedSeats": [],
+      "reservedSeats": [
+        "L16"
+      ],
       "id": 41
     },
     {
@@ -1120,8 +1059,31 @@
           "price": "20"
         }
       ],
-      "reservedSeats": [],
+      "reservedSeats": [
+        "D3",
+        "E3",
+        "E9"
+      ],
       "id": 42
+    },
+    {
+      "movieId": 2,
+      "hour": "08:00",
+      "dateId": 3,
+      "screen": "B",
+      "priceList": [
+        {
+          "type": "Senior",
+          "price": "12"
+        }
+      ],
+      "reservedSeats": [
+        "A9",
+        "A1",
+        "E9",
+        "E1"
+      ],
+      "id": 43
     }
   ],
   "films": [
@@ -1348,20 +1310,6 @@
       "premier": true,
       "dateId": 3,
       "movieId": 0
-    },
-    {
-      "img": "https://fwcdn.pl/fpo/28/25/842825/8058951.3.jpg",
-      "title": "ANT-MAN I OSA: KWANTOMANIA",
-      "genre": "Akcja, Sci-Fi",
-      "length": "125 min",
-      "ageRest": "PG-12",
-      "description": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie",
-      "longDescription": "Superbohaterowie Scott Lang (Paul Rudd) i Hope Van Dyne (Evangeline Lilly) powracają jako Ant-Man i Osa w nowym, pełnym przygód filmie. Wraz z rodzicami Hope, Hankiem Pymem (Michael Douglas) i Janet Van Dyne (Michelle Pfeiffer), oraz córką Scotta, Cassie Lang (Kathryn Newton) będą eksplorować Wymiar Kwantowy, gdzie spotkają zadziwiające, nieznane istoty. To, co tam przeżyją, zmieni ich wyobrażenia o tym, co jest możliwe.",
-      "score": "6/10",
-      "premier": true,
-      "id": 4.55098501225107,
-      "dateId": 2,
-      "movieId": 4
     }
   ],
   "movies": [
@@ -1519,13 +1467,13 @@
   ],
   "coupons": [
     {
-      "id": 1,
-      "code": "fakeKino",
-      "discount": 20
-    },
-    {
       "id": 2,
       "code": "REACT",
+      "discount": 10
+    },
+    {
+      "id": 1,
+      "code": "fakeKino",
       "discount": 10
     }
   ]

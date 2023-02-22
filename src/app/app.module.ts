@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { fetchLoggedUser } from './auth/fetch-logge-user';
 import { LoaderInterceptor } from './core/interceptor/loader-handler.interceptor';
 import { ErrorhandlerInterceptor } from './core/interceptor/error.interceptor';
+import { CanLoginGuard } from './shared/guards/can-login.guard';
 
 export interface AppState {
   auth: AuthState;
@@ -34,6 +35,7 @@ export interface AppState {
           {
             path: 'login',
             loadChildren: () => import('./auth/auth.module'),
+            canActivate: [CanLoginGuard],
           },
           {
             path: '',

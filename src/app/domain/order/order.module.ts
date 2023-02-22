@@ -22,6 +22,10 @@ import { ErrorComponent } from 'src/app/core/error/error.component';
         path: '',
         component: OrderComponent,
       },
+      {
+        path: 'summarize',
+        loadComponent: () => import('../order/summarize/summarize.component'),
+      },
     ]),
     CommonModule,
     FormsModule,

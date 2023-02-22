@@ -8,7 +8,6 @@ import { WatchlistActions } from '../domain/user/user-watchlist/store/watchlist.
 
 export function fetchLoggedUser() {
   const tokenService = inject(TokenService);
-  const userWatchListService = inject(UserWatchlistService);
   const store = inject<Store<AppState>>(Store);
 
   const { token, decodedToken } = tokenService;

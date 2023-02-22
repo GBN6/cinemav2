@@ -1,11 +1,10 @@
-<ng-container *ngIf="ticketState$ | async as tickets; else error">
+<ng-container *ngIf="ticketState$ | async as tickets">
   <div class="form-container">
     <div class="order-title">
       <h1>Podsumowanie</h1>
     </div>
     <div class="selected-seats">
       <div class="one-ticket" *ngFor="let ticket of tickets">
-        <app-loader [diameter]="20"></app-loader>
         <div class="seat" *ngIf="ticket.seat.price">
           <div class="ticekt-movie-title">{{ ticket.movieTitle }}:</div>
           <div class="ticekt-date">{{ ticket.date }}, {{ ticket.hour }}</div>
@@ -95,9 +94,9 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #error>
+    <div *ngIf="errorHandler$ | async">
+      <app-error></app-error>
+    </div>
+  </ng-template>
 </ng-container>
-<ng-template #error>
-  <div *ngIf="errorHandler$ | async">
-    <app-error></app-error>
-  </div>
-</ng-template>

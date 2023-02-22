@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AdminGuard } from 'src/app/shared/guards/admin.guard';
 import { AuthGuard } from 'src/app/shared/guards/auth.guard';
+import { NotAdminGuard } from 'src/app/shared/guards/not-admin.guard';
 import { SelectedTicketsGuard } from 'src/app/shared/guards/selected-tickets.guard';
 import { SelectedMovieGuard } from 'src/app/shared/guards/selectedMovie.guard';
+import { UserOrVisitor } from 'src/app/shared/guards/user-or-visitor.guard';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -14,11 +16,6 @@ import { HomeComponent } from './home.component';
         component: HomeComponent,
         children: [
           {
-            path: 'admin-panel',
-            loadChildren: () => import('../admin/admin.module'),
-            canMatch: [AdminGuard],
-          },
-          {
             path: '',
             redirectTo: 'day',
             pathMatch: 'full',
@@ -27,6 +24,12 @@ import { HomeComponent } from './home.component';
             path: 'day',
             loadChildren: () =>
               import('../movies/movies-list/movies-list.module'),
+            canActivate: [UserOrVisitor],
+          },
+          {
+            path: 'admin-panel',
+            loadChildren: () => import('../admin/admin.module'),
+            canMatch: [AdminGuard],
           },
           {
             path: 'seats/:id',
@@ -39,15 +42,10 @@ import { HomeComponent } from './home.component';
             canActivate: [SelectedTicketsGuard],
           },
           {
-            path: 'summarize',
-            loadComponent: () =>
-              import('../order/summarize/summarize.component'),
-          },
-          {
             path: 'my-tickets',
             loadComponent: () =>
               import('../user/user-orders/user-order.component'),
-            canActivate: [AuthGuard],
+            canActivate: [AuthGuard, NotAdminGuard],
           },
           {
             path: 'my-watchlist',
@@ -55,7 +53,7 @@ import { HomeComponent } from './home.component';
               import(
                 '../user/user-watchlist/user-watchlist/user-watchlist.component'
               ),
-            canActivate: [AuthGuard],
+            canActivate: [AuthGuard, NotAdminGuard],
           },
           {
             path: 'order/:id',

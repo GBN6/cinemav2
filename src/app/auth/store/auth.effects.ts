@@ -64,7 +64,7 @@ export class AuthEffects {
         ofType(AuthActions.logout),
         tap(() => {
           this.tokenService.removeToken();
-          this.router.navigate(['']);
+          this.router.navigate(['/day']);
         })
       ),
     {

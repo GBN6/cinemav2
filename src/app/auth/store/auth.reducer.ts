@@ -38,7 +38,7 @@ export const authReducer = createReducer(
   on(AuthActions.logout, (state) => ({
     ...state,
     isLogged: false,
-    accountType: null,
+    accountType: 'visitor',
     id: null,
     data: null,
   })),

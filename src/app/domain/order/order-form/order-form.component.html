@@ -292,4 +292,7 @@
     Zamawiam
   </button>
   <h1></h1>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
 </form>

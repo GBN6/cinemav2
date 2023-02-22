@@ -1,6 +1,6 @@
 <app-loader [diameter]="20"></app-loader>
-<div class="seat-grid-and-legend">
-  <ng-container *ngIf="screenGrid$ | async as screenGrid; else loading">
+<ng-container *ngIf="screenGrid$ | async as screenGrid; else error">
+  <div class="seat-grid-and-legend">
     <ng-container *ngIf="selectedSeats$ | async as selectedSeats">
       <div class="seats-grid-container">
         <div
@@ -37,8 +37,10 @@
       <span>VIP</span>
       <!-- <div class="legend-square bigger"></div><span>KANAPA</span> -->
     </div>
-  </ng-container>
-  <ng-template #loading>
-    <h1>...Ładowanie</h1>
-  </ng-template>
-</div>
+  </div>
+</ng-container>
+<ng-template #error>
+  <div *ngIf="errorHandler$ | async">
+    <app-error></app-error>
+  </div>
+</ng-template>
