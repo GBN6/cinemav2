@@ -69,10 +69,11 @@ export class AddShowFormComponent {
   addShowForm = this.createForm();
   matcher = new MyErrorStateMatcher();
   today = new Date();
-  tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+  minimumDate = new Date();
+  // minimumDate = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
   first = this.today.getDate() - this.today.getDay() + 1;
   firstDate = new Date(this.today.setDate(this.first));
-  lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 6));
+  lastDate = new Date(this.today.setDate(this.firstDate.getDate() + 7));
   selectedMovieId!: number;
   selectedScreen!: string;
   ticketTypes: TicketType[] = [
@@ -80,6 +81,57 @@ export class AddShowFormComponent {
     { type: 'Senior' },
     { type: 'Normalny' },
   ];
+
+  private createForm() {
+    return this.builder.group<AddShowForm>({
+      movieId: this.builder.control({} as FetchedMovie, {
+        validators: [Validators.required],
+      }),
+      hour: this.builder.control('', {
+        validators: [Validators.required],
+      }),
+      dateId: this.builder.control('', {
+        validators: [Validators.required],
+      }),
+      screen: this.builder.control('', {
+        validators: [Validators.required],
+      }),
+      priceList: this.builder.array<FormGroup<AddPriceListItem>>([
+        this.createPriceListForm(),
+      ]),
+    });
+  }
+
+  private createPriceListForm() {
+    return this.builder.group<AddPriceListItem>({
+      type: this.builder.control('', {
+        validators: [Validators.required],
+      }),
+      price: this.builder.control(0, {
+        validators: [
+          Validators.required,
+          Validators.min(10),
+          Validators.max(50),
+        ],
+      }),
+    });
+  }
+
+  get movieIdCtrl() {
+    return this.addShowForm.controls.movieId;
+  }
+
+  get hourCtrl() {
+    return this.addShowForm.controls.hour;
+  }
+
+  get dateIdCtrl() {
+    return this.addShowForm.controls.dateId;
+  }
+
+  get screenCtrl() {
+    return this.addShowForm.controls.screen;
+  }
 
   addPriceListItem() {
     if (this.addShowForm.controls.priceList.length === 3) return;
@@ -136,67 +188,5 @@ export class AddShowFormComponent {
       });
   }
 
-  private createForm() {
-    return this.builder.group<AddShowForm>({
-      movieId: this.builder.control({} as FetchedMovie, {
-        validators: [Validators.required],
-      }),
-      hour: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      dateId: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      screen: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      priceList: this.builder.array<FormGroup<AddPriceListItem>>([
-        this.createPriceListForm(),
-      ]),
-    });
-  }
-
-  private createPriceListForm() {
-    return this.builder.group<AddPriceListItem>({
-      type: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      price: this.builder.control(0, {
-        validators: [
-          Validators.required,
-          Validators.min(10),
-          Validators.max(50),
-        ],
-      }),
-    });
-  }
-
-  get movieIdCtrl() {
-    return this.addShowForm.controls.movieId;
-  }
-
-  get hourCtrl() {
-    return this.addShowForm.controls.hour;
-  }
-
-  get dateIdCtrl() {
-    return this.addShowForm.controls.dateId;
-  }
-
-  get screenCtrl() {
-    return this.addShowForm.controls.screen;
-  }
-  ngOnInit() {
-    console.log(this.tomorrow);
-  }
+  ngOnInit() {}
 }
-
-// nextweek() {
-//   let today = new Date();
-//   let nextweek = new Date(
-//     today.getFullYear(),
-//     today.getMonth(),
-//     today.getDate() + 6
-//   );
-//   return nextweek;
-// }

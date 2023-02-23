@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TicketStateService } from 'src/app/shared/services/ticket.state.service';
 import { OrderService } from '../order.service';
 
 @Component({
@@ -12,8 +13,13 @@ import { OrderService } from '../order.service';
 })
 export default class SummarizeComponent {
   private orderService = inject(OrderService);
+  private ticketService = inject(TicketStateService);
 
   barcodeApiUrl = 'https://barcodeapi.org/api/qr/';
 
   email$ = this.orderService.orderEmail$;
+
+  ngOnInit() {
+    this.ticketService.clearTicketsState();
+  }
 }

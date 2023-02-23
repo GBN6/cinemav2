@@ -80,7 +80,7 @@
     <ng-container *ngIf="orderForm.controls.userPhoneNumber.errors as errors">
       <ng-container *ngIf="orderForm.controls.userPhoneNumber.touched">
         <p *ngIf="errors['pattern']" class="text-danger">
-          Podaj NUMER telefonu
+          Podaj 9 cyfr numeru telefonu
         </p>
         <p *ngIf="errors['minlength'] as minLength">
           Podałeś {{ minLength.actualLength }} znaków, minimum to

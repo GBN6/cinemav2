@@ -34,7 +34,7 @@ export interface Screen {
 export interface Show {
   hour: string;
   screen: string;
-  reservedSeats: any[];
+  reservedSeats: string[];
   priceList: PriceList[];
   movieId: number;
   dateId: number;

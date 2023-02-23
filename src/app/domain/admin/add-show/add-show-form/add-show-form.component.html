@@ -18,7 +18,7 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="movieIdCtrl.hasError('required')"
-        >You must make a selection</mat-error
+        >Musisz wybrać film</mat-error
       >
       <mat-error
         *ngIf="
@@ -60,7 +60,7 @@
       <input
         matInput
         [matDatepicker]="picker"
-        [min]="tomorrow"
+        [min]="minimumDate"
         [max]="lastDate"
         formControlName="dateId"
       />
@@ -145,7 +145,7 @@
             matInput
             numbersOnly
             formControlName="price"
-            placeholder="Cena tego biletu w PLN"
+            placeholder="Cena biletu w PLN"
           />
           <mat-error *ngIf="priceListForm.controls.price.errors as errors">
             <ng-container *ngIf="errors['required']"

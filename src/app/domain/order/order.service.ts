@@ -97,7 +97,6 @@ export class OrderService {
           orderId: result.id,
         });
         this.removeDiscount();
-        this.ticketStateService.clearTicketsState();
         this.router.navigate(['order/summarize']);
       });
     } else {
@@ -112,7 +111,6 @@ export class OrderService {
           orderId: result.id,
         });
         this.removeDiscount();
-        this.ticketStateService.clearTicketsState();
         this.router.navigate(['order/summarize']);
       });
     }

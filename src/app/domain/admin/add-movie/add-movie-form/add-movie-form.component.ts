@@ -30,35 +30,6 @@ export class AddMovieFormComponent {
     );
   }
 
-  toggleGenre(genre: Genre) {
-    if (this.genreCtrl.value.includes(genre)) {
-      this.removeGenre(genre);
-    } else {
-      this.addToGenre(genre);
-    }
-  }
-
-  toggle() {
-    this.premierCtrl.setValue(!this.premierCtrl.value);
-  }
-
-  handleSubmit() {
-    this.addMovieForm.markAllAsTouched();
-    if (this.addMovieForm.invalid) return;
-
-    const movieData = this.addMovieForm.getRawValue();
-    const { genre, length } = movieData;
-
-    if (length !== null) {
-      this.handleSubmitEmit.emit({
-        ...movieData,
-        length: length + ' min',
-        genre: genre.join(', '),
-      });
-      this.addMovieForm.reset();
-    }
-  }
-
   private createForm() {
     return this.builder.group<AddMovieForm>({
       img: this.builder.control('', {
@@ -153,6 +124,35 @@ export class AddMovieFormComponent {
 
   get premierCtrl() {
     return this.addMovieForm.controls.premier;
+  }
+
+  toggleGenre(genre: Genre) {
+    if (this.genreCtrl.value.includes(genre)) {
+      this.removeGenre(genre);
+    } else {
+      this.addToGenre(genre);
+    }
+  }
+
+  toggle() {
+    this.premierCtrl.setValue(!this.premierCtrl.value);
+  }
+
+  handleSubmit() {
+    this.addMovieForm.markAllAsTouched();
+    if (this.addMovieForm.invalid) return;
+
+    const movieData = this.addMovieForm.getRawValue();
+    const { genre, length } = movieData;
+
+    if (length !== null) {
+      this.handleSubmitEmit.emit({
+        ...movieData,
+        length: length + ' min',
+        genre: genre.join(', '),
+      });
+      this.addMovieForm.reset();
+    }
   }
 
   ngOnInit() {}
