@@ -319,6 +319,51 @@
           }
         }
       ]
+    },
+    {
+      "id": 12,
+      "userName": "costam",
+      "userLastName": "costam",
+      "userMail": "costam@gmail.com",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "fullPrice": 60,
+      "paiedAt": "Thu Feb 23 2023 11:23:49 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": "12L13",
+          "showId": 13,
+          "date": "23/02/2023",
+          "hour": "16:00",
+          "movieTitle": "Avatar: Istota wody",
+          "screen": "C",
+          "seat": {
+            "position": "L12",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        },
+        {
+          "id": "13L13",
+          "showId": 13,
+          "date": "23/02/2023",
+          "hour": "16:00",
+          "movieTitle": "Avatar: Istota wody",
+          "screen": "C",
+          "seat": {
+            "position": "L13",
+            "price": 30,
+            "special": false,
+            "type": "Normalny"
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -719,7 +764,9 @@
         "L1",
         "I1",
         "B1",
-        "A2"
+        "A2",
+        "L12",
+        "L13"
       ],
       "priceList": [
         {
